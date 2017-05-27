@@ -49,6 +49,7 @@
     "prepare": "gulp prepare",
     "archive": "gulp archive",
     "publish": "gulp publish",
+    "serve": "gulp serve",
     "test": "npm run prepare && ls prepared && npm run archive && path-exists archive.zip"
   }
 }
