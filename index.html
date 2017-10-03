@@ -436,19 +436,97 @@
 	</section>
 
 	<section class="slide">
+		<h2>Sequential data</h2>
+		<div id="seq_data">
+			<ul>
+				<li>We are surrounded by sequential data:</li>
+				<ul>
+					<li>Texts, system logs, etc.</li>
+				</ul>
+
+				<li>Usenet dataset example:</li>
+				<ul>
+					<li>Moderate size: ~7B words ~37GB.</li>
+					<li>A lot of unique entities.</li>
+				</ul>
+			</ul>
+			<div id="sequential-data" class="vista"></div>
+			<style>
+				#sequential-data {
+					margin-left: 50px;
+					width: 350px;
+					height: 350px;
+					background-image: url("pictures/size_vs_uniq_black.png");
+				}
+				@media not print {
+					#sequential-data {
+						background-image: url("pictures/size_vs_uniq_white.png");
+					}
+				}
+			</style>
+		</div>
+		<style>
+			#seq_data {
+				display: flex;
+				height: 400px;
+				align-items: top;
+			}
+			#seq_data > img {
+				width: 400px;
+				object-fit: contain;
+			}
+			#seq_data > ul {
+				margin-left: 0px;
+				margin-bottom: 0;
+			}
+		</style>
+	</section>
+
+	<section class="slide">
 		<h2>MinHash</h2>
 		<h3>How to reduce complexity of task without ML.</h3>
-		<ul>
-			<li>Efficient search for near-duplicates.</li>
-			<li>Example: hard forks of repositories.</li>
+		<div id="Minhash">
 			<ul>
-				<li>Initially: 13.6 M.</li>
-				<li>After MinHash: 9.6 M.</li>
-				<li>~30% dataset reduction.</li>
+				<li>Efficient search for near-duplicates.</li>
+				<li>Example: hard forks of repositories.</li>
+				<ul>
+					<li>Initially: 13.6 M.</li>
+					<li>After MinHash: 9.6 M.</li>
+					<li>~30% dataset reduction.</li>
+				</ul>
+				<li><a href="https://github.com/src-d/minhashcuda">MinHash + GPU</a>.</li>
+				<li><a href="https://blog.sourced.tech/post/minhashcuda/">Blog post</a>.</li>
 			</ul>
-			<li><a href="https://github.com/src-d/minhashcuda">MinHash + GPU</a>.</li>
-			<li><a href="https://blog.sourced.tech/post/minhashcuda/">Blog post</a>.</li>
-		</ul>
+			<div id="minhash" class="vista"></div>
+			<style>
+				#minhash {
+					margin-left: 50px;
+					width: 350px;
+					height: 350px;
+					background-image: url("pictures/bender_duplicates.png");
+				}
+				@media not print {
+					#minhash {
+						background-image: url("pictures/bender_duplicates.png");
+					}
+				}
+			</style>
+		</div>
+		<style>
+			#Minhash {
+				display: flex;
+				height: 400px;
+				align-items: top;
+			}
+			#Minhash > img {
+				width: 400px;
+				object-fit: contain;
+			}
+			#Minhash > ul {
+				margin-left: 0px;
+				margin-bottom: 0;
+			}
+		</style>
 	</section>
 
 	<section class="slide">
