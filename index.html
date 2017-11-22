@@ -12,7 +12,7 @@
 	<header class="caption">
 		<button type="button" id="fullscreen" title="Go fullscreen" onclick="fullscreen()"><i class="fa fa-arrows-alt"></i></button>
 		<h1>Fighting with high-dimensional not-so-small data</h1>
-		<p>Vadim Markovtsev, Egor Bulychev - M<sup>3</sup> London, 2017</p>
+		<p>Vadim Markovtsev - Codemotion Madrid, 2017</p>
 	</header>
 
 	<style>
@@ -147,9 +147,7 @@
 
 	<section class="slide vista vista-cover" id="cover">
 		<h2>Fighting with high-dimensional not-so-small data</h2>
-		<p>Vadim Markovtsev<br>Egor Bulychev<br>
-			<a href="https://sourced.tech">source{d}</a>
-			<br>2017<br><span id="triangle">▼</span></p>
+		<p>Vadim Markovtsev</p>
 
 		<style>
             #cover h2 {
@@ -500,7 +498,7 @@
 			<li>CUR</li>
 			<li>t-SNE</li>
 			<li>Topic Modeling</li>
-			<li>LargeVis</li>
+			<li>LargeVis, UMAP</li>
 			<li>*2vec</li>
 		</ul>
 	</section>
@@ -1193,14 +1191,16 @@
 		<p>Why was it introduced?</p>
 		<ul>
 			<li>Distance preservation is not enough.</li>
+			<li>We often care about the distance <br>relations, not exact values.</li>
 		</ul>
 		<div class="vista" id="t-sne"></div>
 		<style>
 			#t-sne {
 				width: 500px;
 				height: 420px;
-				margin-top: -100px;
-				margin-left: 350px;
+				position: absolute;
+				right: 50px;
+				bottom: 10px;
 				background-image: url("pictures/PCA_bad_black.png");
 			}
 			@media not print {
@@ -1240,9 +1240,9 @@
 
 	<section class="slide">
 		<h2>LargeVis</h2>
-		<p>Large scale t-SNE replacement.</p>
 		<ul>
-			<li>Complexity: O(s*M*N).</li>
+			<li>Large scale t-SNE replacement. <a href="https://github.com/lferry007/LargeVis">GitHub</a></li>
+			<li>Complexity: O(s*D*N).</li>
 		</ul>
 		<div id="largevis" class="vista"></div>
 		<style>
@@ -1258,7 +1258,23 @@
 				}
 			}
 		</style>
+	</section>
 
+	<section class="slide">
+		<h2>Uniform Manifold Approximation and Projection</h2>
+		<ul>
+			<li>Large scale t-SNE replacement (2). <a href="https://github.com/lmcinnes/umap">GitHub</a></li>
+			<li>Complexity: <a href="https://github.com/lmcinnes/umap/issues/8">O(D*N<sup>1.14</sup>)</a>.</li>
+			<li>Can also be applied as<br>a non-linear dimension reduction.</li>
+		</ul>
+		<img id="umap" src="pictures/umap.png">
+		<style>
+			#umap {
+				position: absolute;
+				right: 50px;
+				bottom: 10px;
+			}
+		</style>
 	</section>
 
 	<section class="slide">
@@ -1285,25 +1301,21 @@
 
 	<section class="slide">
         <h2>Thank you</h2>
-        <ul class="no-bullets columns bottom-space">
-			<li>Vadim</li>
-			<li>Egor</li>
+        <ul class="no-bullets bottom-space">
+			<li>My contacts:</li>
 			<li><i class="fa fa-envelope"></i> <a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
-			<li><i class="fa fa-envelope"></i> <a href="mailto://egor@sourced.tech">egor@sourced.tech</a></li>
 			<li><i class="fa fa-twitter"></i> <a href="https://twitter.com/tmarkhor">tmarkhor</a></li>
-			<li><i class="fa fa-twitter"></i> <a href="https://twitter.com/egor_bu">egor_bu</a></li>
             <li><i class="fa fa-github"></i> <a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
-			<li><i class="fa fa-github"></i> <a href="https://github.com/egorbu">egorbu</a></li>
+			<li><i class="fa fa-rss"></i> <a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
 		</ul>
-		<p><i class="fa fa-rss"></i> <a href="https://blog.sourced.tech">blog.sourced.tech</a></p>
 		<div class="vista qrcode" id="qrcode-end"></div>
 		<style>
 			#qrcode-end {
 				position: absolute;
 				right: 100px;
 				bottom: 100px;
-				width: 200px;
-				height: 200px;
+				width: 400px;
+				height: 400px;
 			}
 		</style>
     </section>
