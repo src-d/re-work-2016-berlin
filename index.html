@@ -420,14 +420,20 @@
 	</section>
 
 	<section class="slide">
-        <h2>Tensorflow</h2>
-		<pre>
-
+		<pre><code><span style="color: #d0d0d0">modelBytes,</span> <span style="color: #d0d0d0">_</span> <span style="color: #d0d0d0">:=</span> <span style="color: #d0d0d0">assets.Asset(</span><span style="color: #ed9d13">&quot;model.pb&quot;</span><span style="color: #d0d0d0">)</span></code>
+<code><span style="color: #d0d0d0">graph</span> <span style="color: #d0d0d0">:=</span> <span style="color: #d0d0d0">tf.NewGraph()</span></code>
+<code><span style="color: #d0d0d0">graph.Import(modelBytes,</span> <span style="color: #ed9d13">&quot;&quot;</span><span style="color: #d0d0d0">)</span></code>
+<code><span style="color: #d0d0d0">input</span> <span style="color: #d0d0d0">:=</span> <span style="color: #d0d0d0">graph.Operation(</span><span style="color: #ed9d13">&quot;input&quot;</span><span style="color: #d0d0d0">).Output(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">)</span></code>
+<code><span style="color: #d0d0d0">output</span> <span style="color: #d0d0d0">:=</span> <span style="color: #d0d0d0">graph.Operation(</span><span style="color: #ed9d13">&quot;output&quot;</span><span style="color: #d0d0d0">).Output(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">)</span></code>
+<code><span style="color: #d0d0d0">sess,</span> <span style="color: #d0d0d0">_</span> <span style="color: #d0d0d0">:=</span> <span style="color: #d0d0d0">tf.NewSession(graph,</span> <span style="color: #d0d0d0">&amp;tf.SessionOptions{})</span></code>
+<code><span style="color: #d0d0d0">feed,</span> <span style="color: #d0d0d0">_</span> <span style="color: #d0d0d0">:=</span> <span style="color: #d0d0d0">tf.NewTensor([][]</span><span style="color: #6ab825; font-weight: bold">float32</span><span style="color: #d0d0d0">{})</span></code>
+<code><span style="color: #d0d0d0">result,</span> <span style="color: #d0d0d0">_</span> <span style="color: #d0d0d0">:=</span> <span style="color: #d0d0d0">sess.Run(</span></code>
+<code>    <span style="color: #6ab825; font-weight: bold">map</span><span style="color: #d0d0d0">[tf.Output]*tf.Tensor{input:</span> <span style="color: #d0d0d0">input1},</span></code>
+<code>    <span style="color: #d0d0d0">[]tf.Output{output},</span> <span style="color: #6ab825; font-weight: bold">nil</span><span style="color: #d0d0d0">)</span></code>
 		</pre>
 	</section>
 
 	<section class="slide">
-		<h2>vmarkovtsev/BiDiSentiment</h2>
 		<img class="cover" src="pictures/gophers.png" alt="Happy and sad gophers.">
 	</section>
 
