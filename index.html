@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>???</title>
+	<title>Measuring code sentiment in a Git repository</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Over+the+Rainbow" rel="stylesheet">
 </head>
 <body class="shower list">
 
 	<header class="caption">
 		<button type="button" id="fullscreen" title="Go fullscreen" onclick="fullscreen()"><i class="fa fa-arrows-alt"></i></button>
-		<h1>???</h1>
+		<h1>Measuring code sentiment in a Git repository</h1>
 		<p>Vadim Markovtsev, <a href="https://sourced.tech">source{d}</a>.</p>
 	</header>
 
@@ -123,7 +125,7 @@
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
-		<h2>???</h2>
+		<h2>Measuring code sentiment in a Git repository</h2>
 		<p>Vadim Markovtsev, <a class="no-link" href="https://sourced.tech">source{d}</a></p>
 
 		<style>
@@ -154,12 +156,391 @@
         </style>
 	</section>
 
+	<section class="slide" id="so">
+		<a href="https://stackoverflow.com/questions/184618/what-is-the-best-comment-in-source-code-you-have-ever-encountered"></a>
+		<style>
+			#so {
+				background-size: cover;
+				background-image: url("pictures/so.png");
+				background-repeat: no-repeat !important;
+            	background-position: center !important;
+			}
+			#so > a {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</section>
+
 	<section class="slide">
-        <h2>Read this on your device</h2>
-        <!-- <img> with @media srcset does not work! -->
-        <div class="vista center" id="qrcode"></div>
+        <h2>What we want to achieve</h2>
+		<ul>
+			<li>Run through commits in a Git repository</li>
+			<li>For each changed file, find new comments</li>
+			<li>Classify each comment as positive, neutral or negative</li>
+			<li>Plot and discover!</li>
+		</ul>
+    </section>
+
+	<section class="slide">
+        <h2>Technologies</h2>
+		<ul>
+			<li><a href="https://github.com/src-d/go-git">src-d/go-git</a>, <a href="https://github.com/src-d/hercules">src-d/hercules</a></li>
+			<li><a href="https://doc.bblf.sh">Babelfish</a></li>
+			<li>Tensorflow, <a href="https://github.com/vmarkovtsev/BiDiSentiment">vmarkovtsev/BiDiSentiment</a></li>
+			<li>Python, Go</li>
+		</ul>
+    </section>
+
+	<section class="slide">
+		<a href="https://github.com/src-d/go-git">
+			<figure>
+				<img class="cover" src="pictures/go-git.png" alt="go-git flying gopher holding a trident logo">
+			</figure>
+		</a>
+	</section>
+
+	<section class="slide">
+        <h2>src-d/go-git</h2>
+		<ul>
+			<li><a href="https://github.com/src-d/go-git/blob/master/COMPATIBILITY.md">Production ready work in progress</a></li>
+			<li>2400 <i class="fa fa-star"></i> on GitHub</li>
+			<li>Started in 2015 as an internal open-source project</li>
+			<li>Highly modular, e.g. has storage backends</li>
+			<li>Idiomatic ™</li>
+		</ul>
+		<style>
+			.fa {
+				display: inline;
+			}
+		</style>
+    </section>
+
+	<section class="slide">
+        <h2 class="hercules-rotate">src-d/hercules</h2>
+		<ul class="hercules-rotate">
+			<li>Started in 2016 as an efficient implementation of <a href="https://erikbern.com/2016/12/05/the-half-life-of-code.html">Git-of-Theseus</a></li>
+		</ul>
+		<img src="pictures/linux.png" class="cover">
+		<style>
+			.hercules-rotate {
+				transform: rotate(-25deg) translate(100px,0px);
+			}
+		</style>
+    </section>
+
+	<section class="slide">
+		<ul id="ownership"><li>Code ownership</li></ul>
+		<img src="pictures/emberjs_people.png" class="cover">
+		<style>
+			#ownership {
+				position: absolute;
+				left: 400px;
+				top: 50px;
+			}
+		</style>
+	</section>
+
+	<section class="slide">
+		<ul class="hercules-title"><li>Churn matrix</li></ul>
+		<div class="hercules-demo vista" id="churn"></div>
+		<style>
+			.hercules-title {
+				margin-bottom: 0;
+			}
+			.hercules-demo {
+				height: 350px;
+				width: 800px;
+				object-fit: contain;
+			}
+			#churn {
+				position: absolute;
+				right: 0;
+				height: 580px;
+				bottom: 40px;
+                background-image: url("pictures/wireshark_churn_matrix_black.png");
+            }
+            @media not print {
+                #churn {
+                    background-image: url("pictures/wireshark_churn_matrix_white.png");
+                }
+            }
+		</style>
+    </section>
+
+	<section class="slide">
+		<ul class="hercules-title"><li>Structural hotness in 3D</li></ul>
+		<div class="hercules-demo vista" id="shotness"></div>
+		<style>
+			#shotness {
+                background-image: url("pictures/jinja_black.png");
+				position: absolute;
+				right: -20px;
+				top: 50px;
+				height: 560px;z-index: -1;
+            }
+            @media not print {
+                #shotness {
+                    background-image: url("pictures/jinja_white.png");
+                }
+            }
+		</style>
+    </section>
+
+	<section class="slide">
+        <h2>src-d/hercules</h2>
+		<ul>
+			<li>Powered by the DAG abstraction with automatic dependency resolution</li>
+			<li>Plugin system (pkg/plugin)</li>
+		</ul>
+		<div class="vista" id="hercules-dag"></div>
+		<style>
+			#hercules-dag {
+				width: 800px;
+				height: 300px;
+                background-image: url("pictures/hercules_dag_black.png");
+
+            }
+            @media not print {
+                #hercules-dag {
+                    background-image: url("pictures/hercules_dag_white.png");
+                }
+            }
+		</style>
+	</section>
+
+	<section class="slide">
+        <h2>Babelfish</h2>
+		<p>Classic approach</p>
+		<ul>
+			<li>Define a grammar to create parsers</li>
+			<li>Implement them from scratch</li>
+			<li class="success">Good performance</li>
+			<li class="important">Hell of maintenance</li>
+		</ul>
+    </section>
+
+	<section class="slide">
+        <h2>Babelfish</h2>
+		<p>Our approach</p>
+		<ul>
+			<li>Re-use existing parsers</li>
+			<li>Convert to the universal format</li>
+			<li class="success">Easy to maintain</li>
+			<li class="important">RPC performance</li>
+		</ul>
+		<img src="pictures/babelfish.png" id="bblfsh">
+		<style>
+			#bblfsh {
+				position: absolute;
+				right: 100px;
+				width: 400px;
+				top: 120px;
+			}
+		</style>
+    </section>
+
+	<section class="slide">
+        <h2>Babelfish</h2>
+		<a href="http://dashboard.bblf.sh/">See it in action</a>
+	</section>
+
+	<section class="slide">
+        <h2>Tensorflow</h2>
+		<object type="image/svg+xml" data="pictures/tf_black.svg" class="tf-plot" id="tf-plot-black">
+		  Tensorflow graph scheme
+		</object>
+		<object type="image/svg+xml" data="pictures/tf_white.svg" class="tf-plot" id="tf-plot-white">
+		  Tensorflow graph scheme
+		</object>
+		<style>
+			.tf-plot {
+				margin-top: -100px;
+			}
+			#tf-plot-black {
+				display: block;
+			}
+			#tf-plot-white {
+				display: none;
+			}
+			@media not print {
+                #tf-plot-white {
+                    display: block;
+                }
+				#tf-plot-black {
+					display: none;
+				}
+            }
+		</style>
+    </section>
+
+	<section class="slide" id="flow-slide">
+        <h2>Tensorflow</h2>
+		<img src="https://www.tensorflow.org/images/tensors_flowing.gif" id="flow">
+		<style>
+			#flow {
+				height: 600px;
+				width: 800px;
+				object-fit: contain;
+				position: absolute;
+				top: 20px;
+			}
+			#flow-slide {
+				background-color: white;
+			}
+			#flow-slide > h2 {
+				color: #454545;
+			}
+		</style>
+    </section>
+
+	<section class="slide">
+        <h2>Tensorflow</h2>
+		<p>Production pipeline:</p>
+		<ul>
+			<li>Ensure that the model is bug-free</li>
+			<li>Train on much data and using a GPU cluster</li>
+			<li>Apply a metaparameter optimization algorithm</li>
+			<li>Export to "GraphDef" format (Protocol Buffers)</li>
+			<li>Distribute in an embedded or pluggable fashion</li>
+			<li>Infer with any programming language</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+        <h2>Tensorflow</h2>
+		<ul>
+			<li>Train platform: Python, GPU</li>
+			<li>Inference platform: Go, CPU</li>
+			<li>Can <a href="https://neugram.io/">neugram</a> change this?</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+        <h2>Tensorflow</h2>
+		<pre>
+
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>vmarkovtsev/BiDiSentiment</h2>
+		<img class="cover" src="pictures/gophers.png" alt="Happy and sad gophers.">
+	</section>
+
+	<section class="slide">
+		<div id="arch" class="vista"></div>
+		<style>
+			#arch {
+				width: 100%;
+				height: 95%;
+				position: absolute;
+				top: 0;
+				left: 0;
+                background-image: url("pictures/arch_black.png");
+            }
+            @media not print {
+                #arch {
+                    background-image: url("pictures/arch_white.png");
+                }
+            }
+		</style>
+    </section>
+
+	<section class="slide">
+		<div id="arch_device" class="vista"></div>
+		<style>
+			#arch_device {
+				width: 100%;
+				height: 95%;
+				position: absolute;
+				top: 0;
+				left: 0;
+                background-image: url("pictures/arch_device_black.png");
+            }
+            @media not print {
+                #arch_device {
+                    background-image: url("pictures/arch_device_white.png");
+                }
+            }
+		</style>
+    </section>
+
+	<section class="slide">
+        <h2>vmarkovtsev/BiDiSentiment</h2>
+		<ul>
+			<li>Dataset: 1.5 million tweets</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+        <h2>vmarkovtsev/BiDiSentiment</h2>
+		<ul>
+			<li>Training schedule</li>
+		</ul>
+    </section>
+
+	<section class="slide">
+        <h2>vmarkovtsev/BiDiSentiment</h2>
+		<pre>
+		<code>echo "When I wrote this, only God and I understood \</code>
+		<code>what I was doing. Now, God only knows" | $GOPATH/bin/sentiment</code>
+		</pre>
+		<code class="important">0.8803515</code>
+    </section>
+
+	<section class="slide">
+        <h2>vmarkovtsev/BiDiSentiment</h2>
+		<pre>
+		<code>echo "sometimes I believe compiler ignores \</code>
+		<code>all my comments" | $GOPATH/bin/sentiment</code>
+		</pre>
+		<code class="important">0.88705057</code>
+    </section>
+
+	<section class="slide">
+        <h2>vmarkovtsev/BiDiSentiment</h2>
+		<pre>
+		<code>echo "drunk, fix later" | $GOPATH/bin/sentiment</code>
+		</pre>
+		<code class="success">0.08034721</code>
+    </section>
+
+	<section class="slide">
+        <h2>Slap everything together</h2>
+		General notice: mostly negative bias
+    </section>
+
+	<section class="slide">
+        <h2>Slap everything together</h2>
+		Some nice plot example
+    </section>
+
+	<section class="slide">
+        <h2>Conclusion</h2>
+		<ul>
+			<li></li>
+		</ul>
+    </section>
+
+	<section class="slide">
+        <h2>Thank you</h2>
+		<p>My contacts:</p>
+        <ul class="no-bullets">
+            <li><i class="fa fa-envelope"></i> <a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
+            <li><i class="fa fa-twitter"></i> <a href="https://twitter.com/tmarkhor">tmarkhor</a></li>
+            <li><i class="fa fa-github"></i> <a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
+            <li><i class="fa fa-rss"></i> <a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
+        </ul>
+		<div class="vista" id="qrcode"></div>
         <style>
             #qrcode {
+				position: absolute;
+				left: 550px;
+				top: 150px;
                 width: 350px;
                 height: 350px;
                 background-image: url("pictures/qrcode_black.svg");
@@ -172,38 +553,9 @@
         </style>
     </section>
 
-	<section class="slide">
-        <h2>About me</h2>
-        <ul>
-            <li>Lead Engineer, Machine Learning @ <a href="https://sourced.tech">source{d}</a></li>
-            <li>Education: compiler technologies and applied math</li>
-            <li>Switched to ML/DS in 2013</li>
-            <li>Python, C/C++, Go, HTML5</li>
-        </ul>
-    </section>
-
-	<section class="slide">
-		<h2>About source{d]</h2>
-		<p>"AI on code"</p>
-		<p>We started as a hiring middleware.</p>
-		<p>You may have read <a href="https://blog.sourced.tech/post/language_migrations/">"how developers change programming languages"</a>.</p>
-	</section>
-
-	<section class="slide">
-        <h2>Thank you</h2>
-		<p>Our contacts:</p>
-        <ul class="no-bullets">
-            <li><i class="fa fa-envelope"></i> <a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
-            <li><i class="fa fa-twitter"></i> <a href="https://twitter.com/tmarkhor">tmarkhor</a></li>
-            <li><i class="fa fa-github"></i> <a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
-            <li><i class="fa fa-rss"></i> <a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
-        </ul>
-    </section>
-
 	<div class="progress"></div>
 
 	<script src="node_modules/shower-core/shower.min.js"></script>
-	<script async src="https://use.fontawesome.com/72adc0539b.js"></script>
 	<script>
     function fullscreen() {
         if (!document.fullscreenElement && !document.mozFullScreenElement &&
