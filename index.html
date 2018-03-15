@@ -547,21 +547,91 @@
 
 	<section class="slide">
         <h2>Results</h2>
-
+		<table id="sent-results">
+		<tr>
+			<th scope="col">Project</th>
+			<th>Positive</th>
+			<th>Negative</th>
+			<th>Effective</th>
+		</tr>
+		<tr>
+			<th scope="row"><a class="no-link" href="https://github.com/pygame/pygame">pygame/pygame</a></th>
+			<td>93.4</td>
+			<td>98.2</td>
+			<td>-4.8</td>
+		</tr>
+		<tr>
+			<th scope="row"><a class="no-link" href="https://github.com/pallets/flask">pallets/flask</a></th>
+			<td>23.6</td>
+			<td>31.9</td>
+			<td>-8.3</td>
+		</tr>
+		<tr>
+			<th scope="row"><a class="no-link" href="https://github.com/django/django">django/django</a></th>
+			<td>462.1</td>
+			<td>536.1</td>
+			<td>-74.0</td>
+		</tr>
+		<tr>
+			<th scope="row"><a class="no-link" href="https://github.com/golang/go">golang/go</a></th>
+			<td>402.1</td>
+			<td>507.3</td>
+			<td>-105.2</td>
+		</tr>
+		<tr>
+			<th scope="row"><a class="no-link" href="https://github.com/kubernetes/kubernetes">kubernetes/kubernetes</a></th>
+			<td>Kale</td>
+			<td>Chips</td>
+			<td>Keytar</td>
+		</tr>
+		<tr>
+			<th scope="row"><a class="no-link" href="https://github.com/docker/moby">docker/moby</a></th>
+			<td>Kale</td>
+			<td>Chips</td>
+			<td>Keytar</td>
+		</tr>
+		<tr>
+			<th scope="row"><a class="no-link" href="https://github.com/keras-team/keras">keras-team/keras</a></th>
+			<td>104.8</td>
+			<td>71.1</td>
+			<td>33.7</td>
+		</tr>
+		</table>
+		<style>
+		#sent-results td:nth-child(2), #sent-results th:nth-child(2) {
+			color: #6ab825;
+		}
+		#sent-results td:nth-child(3), #sent-results th:nth-child(3) {
+			color: red;
+		}
+		</style>
     </section>
 
 	<section class="slide">
-        <h2>golang/go</h2>
-		<p>δ = -105.2</p>
+		<img class="cover" id="golang-sent-white" src="pictures/golang-sentiment-white.png">
+		<img class="cover" id="golang-sent-black" src="pictures/golang-sentiment-black.png">
+		<style>
+			#golang-sent-white {
+				display: none;
+			}
+			@media not print {
+                #golang-sent-white {
+                    display: block;
+                }
+				#golang-sent-black {
+                    display: none;
+                }
+            }
+		</style>
 	</section>
 
 	<section class="slide">
-        <h2>golang/go</h2>
+        <h2>+ golang/go</h2>
 		<ul class="comment-examples">
-			<li><a class="no-link" href=""><code>It is low-level, old, and unused by Gos current HTTP stack</code></a></li>
-			<li><a class="no-link" href=""><code>not clear why this shouldn't work</code></a></li>
-			<li><a class="no-link" href=""><code>overflow causes something awful</code></a></li>
-			<li><a class="no-link" href=""><code>quiet expected TLS handshake error remote error: bad certificate</code></a></li>
+			<li><a class="no-link" href="./src/net/http/httputil/persist.go"><code>It is low-level, old, and unused by Go's current HTTP stack</code></a></li>
+			<li><a class="no-link" href="./test/bugs/bug046.go 32aa0d9198a1b147eb2c756c0d5628b3399f9898"><code>not clear why this shouldn't work</code></a></li>
+			<li><a class="no-link" href="./src/runtime/vlrt.go"><code>overflow causes something awful</code></a></li>
+			<li><a class="no-link" href="./src/os/exec/exec_test.go"><code>quiet expected TLS handshake error remote error: bad certificate</code></a></li>
 		</ul>
 		<style>
 			.comment-examples > li {
@@ -577,18 +647,17 @@
     </section>
 
 	<section class="slide">
-        <h2>golang/go</h2>
+        <h2>- golang/go</h2>
 		<ul class="comment-examples">
-			<li><a class="no-link" href=""><code>Special case, useful in debugging</code></a></li>
-			<li><a class="no-link" href=""><code>Implementation: Parallel summing of adjacent bits. See Hackers Delight, Chap. 5: Counting Bits.</code></a></li>
-			<li><a class="no-link" href=""><code>TODO(austin): This could be a really awesome string method</code></a></li>
-			<li><a class="no-link" href=""><code>TODO(bradfitz): this might be 0, once escape analysis is better</code></a></li>
+			<li><a class="no-link" href="./src/bytes/buffer.go"><code>Special case, useful in debugging</code></a></li>
+			<li><a class="no-link" href="./src/math/bits/bits.go"><code>Implementation: Parallel summing of adjacent bits. See Hackers Delight, Chap. 5: Counting Bits.</code></a></li>
+			<li><a class="no-link" href="./usr/austin/ogle/vars.go 46e392e01c630dee41a67e01223b538aae9dc9b5"><code>TODO(austin): This could be a really awesome string method</code></a></li>
+			<li><a class="no-link" href="./src/pkg/strconv/strconv_test.go 84ef97b59c89b7d9fdc04a1a8a438cd3257bf521"><code>TODO(bradfitz): this might be 0, once escape analysis is better</code></a></li>
 		</ul>
 	</section>
 
 	<section class="slide">
-        <h2>keras-team/keras</h2>
-		<p>δ = +33.7</p>
+        <h2>+ keras-team/keras</h2>
 		<ul class="comment-examples">
 			<li><a class="no-link" href=""><code>if TensorFlow, we can infer the output shape directly</code></a></li>
 			<li><a class="no-link" href=""><code>Make sure there is exactly one 1 in a row</code></a></li>
