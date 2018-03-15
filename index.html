@@ -628,10 +628,10 @@
 	<section class="slide">
         <h2>+ golang/go</h2>
 		<ul class="comment-examples">
-			<li><a class="no-link" href="./src/net/http/httputil/persist.go"><code>It is low-level, old, and unused by Go's current HTTP stack</code></a></li>
-			<li><a class="no-link" href="./test/bugs/bug046.go 32aa0d9198a1b147eb2c756c0d5628b3399f9898"><code>not clear why this shouldn't work</code></a></li>
-			<li><a class="no-link" href="./src/runtime/vlrt.go"><code>overflow causes something awful</code></a></li>
-			<li><a class="no-link" href="./src/os/exec/exec_test.go"><code>quiet expected TLS handshake error remote error: bad certificate</code></a></li>
+			<li><a class="no-link" href="https://github.com/golang/go/blob/master/src/net/http/httputil/persist.go#L33"><code>It is low-level, old, and unused by Go's current HTTP stack</code></a></li>
+			<li><a class="no-link" href="https://github.com/golang/go/blob/32aa0d9198a1b147eb2c756c0d5628b3399f9898/test/bugs/bug046.go#L11"><code>not clear why this shouldn't work</code></a></li>
+			<li><a class="no-link" href="https://github.com/golang/go/blob/master/src/runtime/vlrt.go#L95"><code>overflow causes something awful</code></a></li>
+			<li><a class="no-link" href="https://github.com/golang/go/blob/master/src/os/exec/exec_test.go#L568"><code>quiet expected TLS handshake error remote error: bad certificate</code></a></li>
 		</ul>
 		<style>
 			.comment-examples > li {
@@ -649,24 +649,25 @@
 	<section class="slide">
         <h2>- golang/go</h2>
 		<ul class="comment-examples">
-			<li><a class="no-link" href="./src/bytes/buffer.go"><code>Special case, useful in debugging</code></a></li>
-			<li><a class="no-link" href="./src/math/bits/bits.go"><code>Implementation: Parallel summing of adjacent bits. See Hackers Delight, Chap. 5: Counting Bits.</code></a></li>
-			<li><a class="no-link" href="./usr/austin/ogle/vars.go 46e392e01c630dee41a67e01223b538aae9dc9b5"><code>TODO(austin): This could be a really awesome string method</code></a></li>
-			<li><a class="no-link" href="./src/pkg/strconv/strconv_test.go 84ef97b59c89b7d9fdc04a1a8a438cd3257bf521"><code>TODO(bradfitz): this might be 0, once escape analysis is better</code></a></li>
+			<li><a class="no-link" href="https://github.com/golang/go/blob/master/src/bytes/buffer.go#L63"><code>Special case, useful in debugging</code></a></li>
+			<li><a class="no-link" href="https://github.com/golang/go/blob/master/src/math/bits/bits.go#L135"><code>Implementation: Parallel summing of adjacent bits. See Hackers Delight, Chap. 5: Counting Bits.</code></a></li>
+			<li><a class="no-link" href="https://github.com/golang/go/blob/46e392e01c630dee41a67e01223b538aae9dc9b5/usr/austin/ogle/vars.go#L42"><code>TODO(austin): This could be a really awesome string method</code></a></li>
+			<li><a class="no-link" href="https://github.com/golang/go/blob/84ef97b59c89b7d9fdc04a1a8a438cd3257bf521/src/pkg/strconv/strconv_test.go#L21"><code>TODO(bradfitz): this might be 0, once escape analysis is better</code></a></li>
 		</ul>
 	</section>
 
 	<section class="slide">
         <h2>+ keras-team/keras</h2>
 		<ul class="comment-examples">
-			<li><a class="no-link" href=""><code>if TensorFlow, we can infer the output shape directly</code></a></li>
-			<li><a class="no-link" href=""><code>Make sure there is exactly one 1 in a row</code></a></li>
-			<li><a class="no-link" href=""><code>get sorted list of layer depths</code></a></li>
+			<li><a class="no-link" href="https://github.com/keras-team/keras/blob/master/keras/layers/core.py#L622"><code>With TensorFlow, we can infer the output shape directly</code></a></li>
+			<li><a class="no-link" href="https://github.com/keras-team/keras/blob/master/tests/keras/utils/np_utils_test.py#L26"><code>Make sure there is exactly one 1 in a row</code></a></li>
+			<li><a class="no-link" href="https://github.com/keras-team/keras/blob/61dd53e2621f6a44b90bbe4682eccb1bbf7574e7/keras/engine/topology.py#L1675"><code>get sorted list of layer depths</code></a></li>
+			<li><a class="no-link" href="https://github.com/keras-team/keras/blob/master/keras/backend/theano_backend.py#L621"><code>Theano has a built-in optimization for logsumexp so we can just write the expression directly</code></a></li>
 		</ul>
 	</section>
 
 	<section class="slide">
-		Deep learning is modern alchemy - image.
+		<img class="cover" src="pictures/alchemist.jpg">
 	</section>
 
 	<section class="slide">
@@ -675,7 +676,7 @@
 			<li>It is easy to analyse Git/code with Go</li>
 			<li>Go is handy for inference-in-a-box</li>
 			<li>We need a dedicated dataset for comment sentiment</li>
-			<li>Negative reasoning is more frequent in programming</li>
+			<li>Negative reasoning is more frequent than positive in programming</li>
 		</ul>
     </section>
 
