@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+    <link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
 
@@ -123,6 +123,26 @@
 		.slide a:hover {
 			background: linear-gradient(to top,currentColor .09em,transparent .09em) repeat-x;
 		}
+        img.obj-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .fa {
+            display: inline;
+        }
+        ul.two-cols {
+            overflow: hidden;
+        }
+        ul.two-cols > li::before {
+            display: none;
+            text-indent: 0;
+        }
+        ul.two-cols > li {
+            text-indent: 0;
+            float: left;
+            width: 50%;
+        }
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
@@ -152,17 +172,122 @@
 				top: 0;
 				right: 0;
 				bottom: 0;
-				background: rgba(0, 0, 0, 0.7);
+				background: rgba(0, 0, 0, 0.6);
 			}
         </style>
-	</section>
+    </section>
+    
+    <section class="slide vista vista-cover active" id="dragons">
+        <div></div>
+        <h2>Machine learning on source code</h2>
+        <style>
+            @font-face {
+              font-family: CartaMarinaBold;
+              src: url("Carta Marina Bold.woff2") format("woff2")
+            }
+            #dragons {
+                background: url("pictures/here_be_dragons.jpg") #000;
+            }
+            #dragons h2 {
+                position: absolute;
+                left: 507px;
+                top: 92px;
+                width: 280px;
+                text-align: center;
+                color: #000;
+                font-family: CartaMarinaBold;
+            }
+            #dragons div {
+                position: absolute;
+                left: 527px;
+                width: 240px;
+                height: 240px;
+                top: 72px;
+                background: radial-gradient(circle at center, #bababa 0, rgba(186, 186, 186, 0) 75%)
+            }
+        </style>
+    </section>
 
-	<section class="slide">
-		<h2>Про source{d]</h2>
-		<p>"AI on code"</p>
-		<p>We started as a hiring middleware.</p>
-		<p>You may have read <a href="https://blog.sourced.tech/post/language_migrations/">"how developers change programming languages"</a>.</p>
-	</section>
+    <section class="slide">
+        <h2>Предпосылки</h2>
+        <ul>
+            <li>GitHub <i class="fa fa-inverse fa-github-alt"></i></li>
+            <li>Машинное обучение 🚀</li>
+            <li>Большие компании 💰 пишут кучу кода 💩</li>
+            <li>Пишем код так же как в 2000-х 📜</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <pre><code class="python"><span style="color: #cc8242; font-weight: bold;">class</span> foobar:
+    <span style="color: #cc8242; font-weight: bold;">def</span> <span style="color: #ffc66d;">connecttoserver</span>(<span style="color: #94558D;">self</span>):
+        myserverhost = globalconfig.server.host</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre><code class="python"><span style="color: #cc8242; font-weight: bold;">class</span> FooBar:
+    <span style="color: #cc8242; font-weight: bold;">def</span> <span style="color: #ffc66d;">connect_to_server</span>(<span style="color: #94558D;">self</span>):
+        myServerHost = globalConfig.server.host</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Проекты, похожие на MariaDB/server?</h2>
+        <ul class="two-cols">
+            <li><a href="https://github.com/twitter/mysql">twitter/mysql</a></li>
+            <li><a href="https://github.com/Tokutek/mysql-5.5">Tokutek/mysql-5.5</a></li>
+            <li><a href="https://github.com/facebook/mysql-5.6">facebook/mysql-5.6</a></li>
+            <li><a href="https://github.com/percona/percona-xtrabackup">percona/percona-xtrabackup</a></li>
+            <li><a href="https://github.com/Tokutek/mariadb-5.5">Tokutek/mariadb-5.5</a></li>
+            <li><a href="https://github.com/percona/percona-server">percona/percona-server</a></li>
+            <li><a href="https://github.com/atcurtis/mariadb">atcurtis/mariadb</a></li>
+            <li><a href="https://github.com/webscalesql/webscalesql-5.6">webscalesql/webscalesql-5.6</a></li>
+            <li><a href="https://github.com/alibaba/AliSQL">alibaba/AliSQL</a></li>
+            <li><a href="https://github.com/mysql/mysql-server">mysql/mysql-server</a></li>
+        </ul>
+    </section>
+
+    <section class="slide vista" id="excodesearch">
+        <style>
+            #excodesearch {
+                padding: 50px;
+                background-origin: content-box;
+                background-image: url("pictures/excodesearch_black.png");
+            }
+            @media not print {
+                #excodesearch {
+                    background-image: url("pictures/excodesearch_white.png");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <p>Code dedupe</p>
+    </section>
+
+    <section class="slide" id="nncomplete-example">
+        <img class="center" src="pictures/channelSelectExample.gif">
+        <style>
+            #nncomplete-example {
+                background-color: #1e1e1c;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 id="mloncode-stack-h">Стэк для MLonCode</h2>
+        <figure>
+            <img class="cover obj-cover" src="pictures/leverBigCorners.png" alt="MLonCode logo">
+        </figure>
+        <style>
+            #mloncode-stack-h {
+                color: black;
+                text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #ffffff , 0 0 70px #ffffff , 0 0 80px #ffffff , 0 0 100px #ffffff ;
+            }
+        </style>
+    </section>
 
 	<section class="slide">
         <h2>Конец</h2>
@@ -195,7 +320,7 @@
 	<div class="progress"></div>
 
 	<script src="node_modules/shower-core/shower.min.js"></script>
-	<script async src="https://use.fontawesome.com/72adc0539b.js"></script>
+    <script async src="https://use.fontawesome.com/72adc0539b.js"></script>
 	<script>
     function fullscreen() {
         if (!document.fullscreenElement && !document.mozFullScreenElement &&
