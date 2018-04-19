@@ -143,6 +143,15 @@
             float: left;
             width: 50%;
         }
+        .monofa {
+            width: 1.5em;
+            margin-right: 0.5em;
+            display: inline-block;
+            text-align: center;
+        }
+        .fa-bullets > li {
+            margin-left: -2em;
+        }
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
@@ -210,26 +219,12 @@
 
     <section class="slide">
         <h2>Предпосылки</h2>
-        <ul>
-            <li>GitHub <i class="fa fa-inverse fa-github-alt"></i></li>
-            <li>Машинное обучение 🚀</li>
-            <li>Большие компании 💰 пишут кучу кода 💩</li>
-            <li>Пишем код так же как в 2000-х 📜</li>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-inverse fa-github-alt monofa" aria-hidden="true"></i>GitHub</li>
+            <li><span class="monofa">🚀</span>Машинное обучение хайп не думать</li>
+            <li><span class="monofa">💰</span>Большие компании пишут кучу 💩 кода</li>
+            <li><span class="monofa">📜</span>Пишем код так же как в 2000-х</li>
         </ul>
-    </section>
-
-    <section class="slide">
-        <pre><code class="python"><span style="color: #cc8242; font-weight: bold;">class</span> foobar:
-    <span style="color: #cc8242; font-weight: bold;">def</span> <span style="color: #ffc66d;">connecttoserver</span>(<span style="color: #94558D;">self</span>):
-        myserverhost = globalconfig.server.host</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <pre><code class="python"><span style="color: #cc8242; font-weight: bold;">class</span> FooBar:
-    <span style="color: #cc8242; font-weight: bold;">def</span> <span style="color: #ffc66d;">connect_to_server</span>(<span style="color: #94558D;">self</span>):
-        myServerHost = globalConfig.server.host</code>
-        </pre>
     </section>
 
     <section class="slide">
@@ -264,7 +259,42 @@
     </section>
 
     <section class="slide">
-        <p>Code dedupe</p>
+        <h2>Обнаружим похожий код</h2>
+        <ul>
+            <li>По стилю</li>
+            <li>По структуре</li>
+            <li>По именам</li>
+        </ul>
+        <div id="andthen">
+        <h2>И получим</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><span class="monofa">💪</span>Глобальный граф</li>
+            <li><i class="fa fa-balance-scale monofa" aria-hidden="true"></i>Лицензии</li>
+            <li><i class="fa fa-line-chart monofa" aria-hidden="true"></i>Рефакторинг</li>
+        </ul>
+        </div>
+        <style>
+            #andthen {
+                position: absolute;
+                right: 300px;
+                bottom: 100px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="hercules">
+        <style>
+            #hercules {
+                padding: 50px;
+                background-origin: content-box;
+                background-image: url("pictures/jinja_black.png");
+            }
+            @media not print {
+                #hercules {
+                    background-image: url("pictures/jinja_white.png");
+                }
+            }
+        </style>
     </section>
 
     <section class="slide" id="nncomplete-example">
@@ -274,6 +304,44 @@
                 background-color: #1e1e1c;
             }
         </style>
+    </section>
+
+    <section class="slide">
+        <pre><code class="python"><span class="hl-keyword">class</span> foobar:
+    <span class="hl-keyword">def</span> <span class="hl-def">connecttoserver</span>(<span class="hl-reserved">self</span>):
+        myserverhost = globalconfig.server.host</code>
+        </pre>
+        <style>
+            .hl-keyword {
+                color: #cc8242;
+                font-weight: bold;
+            }
+            .hl-def {
+                color: #ffc66d;
+            }
+            .hl-reserved {
+                color: #94558D;
+            }
+            .hl-string {
+                color: #6a8759;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <pre><code class="python"><span class="hl-keyword">class</span> FooBar:
+    <span class="hl-keyword">def</span> <span class="hl-def">connect_to_server</span>(<span class="hl-reserved">self</span>):
+        myServerHost = globalConfig.server.host</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <ul>
+            <li>Предсказание имен классов, функций, переменных</li>
+            <li>Предсказание типов</li>
+            <li>Какие комментарии бессмысленны?</li>
+            <li>Какие комментарии прикольные?</li>
+        </ul>
     </section>
 
     <section class="slide">
@@ -289,16 +357,240 @@
         </style>
     </section>
 
+    <section class="slide vista" id="mloncode-pyramid">
+        <style>
+            #mloncode-pyramid {
+                padding: 100px;
+                background-origin: content-box;
+                background-image: url("pictures/pyramid_black.svg");
+            }
+            @media not print {
+                #mloncode-pyramid {
+                    background-image: url("pictures/pyramid_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Откуда брать данные</h2>
+        <ul>
+            <li><a href="http://ghtorrent.org/">GHTorrent</a> - все кроме самих репозиториев, 70GB</li>
+            <li><a href="https://github.com/src-d/datasets/tree/master/PublicGitArchive">Public Git Archive</a> - репозитории, 3TB</li>
+            <li><a href="https://github.com/src-d/rovers">rovers</a> &amp; <a href="https://github.com/src-d/borges">borges</a> - DIY</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>PGA</h2>
+        <ul>
+            <li>270к siva файлов</li>
+            <li>Индекс в CSV</li>
+        </ul>
+        Подробно в <a href="https://arxiv.org/abs/1803.10144">статье</a>.<br>
+        <img src="pictures/by-nc-sa.eu.svg">
+        <div id="rooted" class="vista"></div>
+        <style>
+            #rooted {
+                position: absolute;
+                width: 600px;
+                height: 400px;
+                top: 120px;
+                right: 50px;
+                background-image: url("pictures/rooted_white.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>PGA индекс</h2>
+        <ul>
+            <li>URL</li>
+            <li>FILE_COUNT</li>
+            <li>LANGS (байты, строки, файлы)</li>
+            <li>COMMITS_[HEAD]_COUNT</li>
+            <li>BRANCHES_COUNT</li>
+            <li>LINES_COUNT (пустые, комментарии, код)</li>
+            <li>LICENSE</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>source{d} engine</h2>
+        <ul>
+            <li>Чтение siva для Spark</li>
+            <li>Классификация и парсинг</li>
+            <li>Открытый код - лицензия Apache</li>
+            <li><a href="https://github.com/src-d/engine">GitHub</a></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>source{d} engine</h2>
+        <pre><code>&gt;&gt;&gt; <span class="hl-keyword">from</span> sourced.engine <span class="hl-keyword">import</span> Engine
+&gt;&gt;&gt; engine = Engine(spark, <span class="hl-string">"/path/to/siva/files"</span>, <span class="hl-string">"siva"</span>)
+&gt;&gt;&gt; engine.repositories.references.head_ref \
+    .commits.tree_entries.blobs \
+    .classify_languages() \
+    .select(<span class="hl-string">"blob_id"</span>, <span class="hl-string">"path"</span>, <span class="hl-string">"lang"</span>) \
+    .show()
+</code></pre>
+    </section>
+
+    <section class="slide">
+        <h2>Как парсить</h2>
+        <ul>
+            <li>Регулярки - <a href="http://pygments.org/">Pygments</a>,
+                <a href="https://highlightjs.org/">highlight.js</a></li>
+            <li><span class="box">Абстрактное синтаксическое дерево (AST)</span> - <a href="http://www.antlr.org/">ANTLR</a></li>
+            <li>Компиляция</li>
+        </ul>
+        <style>
+            .box {
+                border: 1px solid white;
+                padding: 0 0.2em 0.1em 0.2em;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>  </h2>
+        <a href="https://doc.bblf.sh"><img class="center" src="pictures/bblfsh-logo.png"></a>
+        <div class="vista center" id="bblfsh-arch"></div>
+        <style>
+            #bblfsh-arch {
+                width: 600px;
+                height: 100px;
+                background-image: url("pictures/bblfsh-arch-black.png");
+            }
+            @media not print {
+                #bblfsh-arch {
+                    background-image: url("pictures/bblfsh-arch-white.png");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2><i class="fa fa-sitemap" aria-hidden="true"></i> Universal AST</h2>
+        <ul>
+            <li>Более-менее одинаковая структура</li>
+            <li>Более-менее стандартные роли узлов</li>
+            <li>Прикидывается XML (XPath запросы)</li>
+            <li>4 варианта обхода</li>
+        </ul>
+        <a href="http://dashboard.bblf.sh/">dashboard.bblf.sh</a>
+    </section>
+
+    <section class="slide">
+        <h2>Клиент для Питона</h2>
+        <pre><code>pip3 install bblfsh</code>
+<code>python3 -m bblfsh -f /path/to/file</code>
+        </pre>
+        <a href="https://github.com/bblfsh/client-python">bblfsh/client-python</a>
+        <img src="pictures/docker.png" id="docker">
+        <style>
+            #docker {
+                position: absolute;
+                right: 50px;
+                bottom: 50px;
+                width: 300px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Интеграция</h2>
+        <pre><code>&gt;&gt;&gt; engine.repositories.references.head_ref \
+    .commits.tree_entries.blobs \
+    .classify_languages() \
+    .filter(<span class="hl-string">'lang = "Python"'</span>) \
+    .extract_uasts() \
+    .query_uast(<span class="hl-string">'//*[@roleIdentifier]'</span>) \
+    .extract_tokens(<span class="hl-string">"result"</span>, <span class="hl-string">"tokens"</span>) \
+    .select(<span class="hl-string">"blob_id"</span>, <span class="hl-string">"path"</span>, <span class="hl-string">"tokens"</span>)
+        </code></pre>
+    </section>
+
+    <section class="slide vista" id="django">
+        <style>
+            #django {
+                padding: 50px;
+                background-origin: content-box;
+                background-image: url("pictures/django_black.png");
+            }
+            @media not print {
+                #django {
+                    background-image: url("pictures/django_white.png");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide vista vista-cover" id="powerful">
+        <h2>Мощь</h2>
+        <style>
+            #powerful {
+                background-image: url("pictures/power.jpg");
+            }
+            #powerful h2 {
+                color: #000;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>sourced-ml</h2>
+        <ul>
+            <li><a href="https://github.com/src-d/ml">GitHub</a></li>
+            <li>Python 3.4+</li>
+            <li>Используется Tensorflow, humanize</li>
+            <li>clint <img src="pictures/ireful1.gif" id="ireful"> tqdm</li>
+        </ul>
+        <style>
+            #ireful {
+                vertical-align: middle;
+                margin-bottom: 1px;
+                display: inline;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Хотелки</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-globe monofa" aria-hidden="true"></i>Автозагрузка моделей из интернета</li>
+            <li><i class="fa fa-shopping-cart monofa" aria-hidden="true"></i>"Магазин моделей"</li>
+            <li><i class="fa fa-floppy-o monofa" aria-hidden="true"></i>Вменяемый, современный формат (не HDF5)</li>
+            <li><i class="fa fa-tags monofa" aria-hidden="true"></i>Версионирование</li>
+            <li><i class="fa fa-refresh monofa" aria-hidden="true"></i>Воспроизводимость</li>
+            <li><i class="fa fa-handshake-o monofa" aria-hidden="true"></i>Поддержка разных ЯП</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Modelforge</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Автозагрузка моделей из интернета</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>"Магазин моделей"</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Вменяемый, современный формат - <a href="https://github.com/spacetelescope/asdf">ASDF</a></li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Версионирование</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Воспроизводимость</li>
+            <li><i class="fa fa-close monofa" aria-hidden="true"></i>Поддержка разных ЯП</li>
+        </ul>
+        <a href="https://github.com/src-d/modelforge">GitHub</a>
+    </section>
+
 	<section class="slide">
         <h2>Конец</h2>
 		<p>Контакты:</p>
-        <ul class="no-bullets">
-            <li><i class="fa fa-envelope"></i> <a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
-            <li><i class="fa fa-twitter"></i> <a href="https://twitter.com/tmarkhor">tmarkhor</a></li>
-            <li><i class="fa fa-github"></i> <a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
-            <li><i class="fa fa-rss"></i> <a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
+            <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/tmarkhor">tmarkhor</a></li>
+            <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
+            <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
+            <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
         </ul>
-        #MLonCode
         <div class="vista" id="qrcode"></div>
         <style>
             #qrcode {
