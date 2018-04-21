@@ -15,8 +15,8 @@
     <meta property="og:url" content="http://vmarkovtsev.github.io/codelab-2018-moscow" />
     <meta property="og:title" content="Tensorflow + Go" />
     <meta property="og:description" content="This presentation shows the codelab plan and goes through the main concepts." />
-    <meta property="og:image" content="https://vmarkovtsev.github.io/codelab-2018-moscow/pictures/cover.jpg" />
-    <meta property="twitter:image" content="https://vmarkovtsev.github.io/codelab-2018-moscow/pictures/cover.jpg" />
+    <meta property="og:image" content="https://vmarkovtsev.github.io/codelab-2018-moscow/pictures/cover.png" />
+    <meta property="twitter:image" content="https://vmarkovtsev.github.io/codelab-2018-moscow/pictures/cover.png" />
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
@@ -169,7 +169,7 @@
                 font-size:20px;
             }
 			#cover {
-				background: url("pictures/cover.jpg") black;
+				background: url("pictures/tensorflow_logo.svg") black;
 			}
 			#cover h2:before {
 				content: "";
@@ -190,7 +190,7 @@
             <li>Overview of Tensorflow internals</li>
             <li>Tensorflow Hub</li>
             <li>Show how to run Tensorflow models in Go</li>
-            <li>Mobilenetv2 101</li>
+            <li>MobileNetv2 101</li>
             <li>Bonus: better Tensorflow builds</li>
         </ul>
     </section>
@@ -263,7 +263,7 @@
 
     <section class="slide">
         <h2>Tensorflow binaries for Go</h2>
-        cgo! <a href="https://">Installation.</a>
+        cgo! <a href="https://www.tensorflow.org/install/install_go">Installation.</a>
         <ul>
            <li><pre class="inline"><code>libtensorflow</code></pre><span class="comment"> C API, ops, [core]</span></li>
            <li><pre class="inline"><code>libtensorflow_framework</code></pre><span class="comment"> core</span></li>
@@ -306,11 +306,12 @@
     <section class="slide">
         <h2>Imagenet</h2>
         <ul>
-            <li>Million labelled photos from Flickr</li>
+            <li>14.2mm labelled photos from Flickr</li>
             <li>1000 classes</li>
-            <li>Est. 2009, last rev. 2012</li>
+            <li>Est. 2009, last rev. 2011</li>
             <li>State-of-the-art: 86% accuracy</li>
             <li>Deep learning hype ignition</li>
+            <li><a href="http://www.image-net.org/">Link</a></li>
         </ul>
     </section>
 
@@ -321,7 +322,7 @@
     <section class="slide">
         <h2>Plan</h2>
         <ul>
-            <li>Load MobileNetv2</li>
+            <li>Load <a href="https://research.googleblog.com/2018/04/mobilenetv2-next-generation-of-on.html">MobileNetv2</a></li>
             <li>Read an image</li>
             <li>Classify it</li>
         </ul>
@@ -334,7 +335,7 @@
     <section class="slide">
         <h2>Plan</h2>
         <ul>
-            <li>Load BiDiSentiment</li>
+            <li>Load <a href="https://github.com/vmarkovtsev/bidisentiment">BiDiSentiment</a></li>
             <li>Classify text</li>
         </ul>
     </section>
