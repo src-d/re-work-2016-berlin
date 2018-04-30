@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Стэк для машинного обучения на исходном коде</title>
+	<title>Machine Learning on Source Code</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
@@ -10,21 +10,21 @@
     <meta name="twitter:label1" content="Number of slides" />
     <meta name="twitter:data1" content="31" />
     <meta name="twitter:label2" content="Where and when" />
-    <meta name="twitter:data2" content="Moscow, 24/04/2018" />
+    <meta name="twitter:data2" content="Vienna, 04/05/2018" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://vmarkovtsev.github.io/python-2018-moscow" />
-    <meta property="og:title" content="Стэк для машинного обучения на исходном коде" />
-    <meta property="og:description" content="Что такое машинное обучение на исходном коде? Какие есть инструменты?" />
-    <meta property="og:image" content="https://vmarkovtsev.github.io/python-2018-moscow/pictures/cover.jpg" />
-    <meta property="twitter:image" content="https://vmarkovtsev.github.io/python-2018-moscow/pictures/cover.jpg" />
+    <meta property="og:url" content="http://vmarkovtsev.github.io/pydays-2018-vienna" />
+    <meta property="og:title" content="Machine Learning on Source Code" />
+    <meta property="og:description" content="What is Machine Learning on Source Code? How does it relate to Python? What are the tools?" />
+    <meta property="og:image" content="https://vmarkovtsev.github.io/pydays-2018-vienna/pictures/cover.jpg" />
+    <meta property="twitter:image" content="https://vmarkovtsev.github.io/pydays-2018-vienna/pictures/cover.jpg" />
     <link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
 
 	<header class="caption">
 		<button type="button" id="fullscreen" title="Go fullscreen" onclick="fullscreen()"><i class="fa fa-arrows-alt"></i></button>
-		<h1>Стэк для машинного обучения на исходном коде</h1>
-		<p>Вадим Марковцев, <a href="https://sourced.tech">source{d}</a>.</p>
+		<h1>Machine Learning on Source Code</h1>
+		<p>Vadim Markovtsev, <a href="https://sourced.tech">source{d}</a>.</p>
 	</header>
 
 	<style>
@@ -170,8 +170,8 @@
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
-		<h2>Стэк для машинного обучения на исходном коде</h2>
-		<p><span class="white">Вадим Марковцев,</span> <a href="https://sourced.tech">source{d}</a></p>
+		<h2>Machine Learning on Source Code</h2>
+		<p><span class="white">Vadim Markovtsev,</span> <a href="https://sourced.tech">source{d}</a></p>
 
 		<style>
             #cover h2 {
@@ -236,17 +236,17 @@
     </section>
 
     <section class="slide">
-        <h2>Предпосылки</h2>
+        <h2>Origins</h2>
         <ul class="no-bullets fa-bullets">
             <li><i class="fa fa-inverse fa-github-alt monofa" aria-hidden="true"></i>GitHub</li>
-            <li><span class="monofa">🚀</span>Машинное обучение хайп не думать</li>
-            <li><span class="monofa">💰</span>Большие компании пишут кучу 💩 кода</li>
-            <li><span class="monofa">📜</span>Пишем код так же как в 2000-х</li>
+            <li><span class="monofa">🚀</span>Machine Learning hype</li>
+            <li><span class="monofa">💰</span>Big companies write piles of 💩 code</li>
+            <li><span class="monofa">📜</span>We write code as in 2000s</li>
         </ul>
     </section>
 
     <section class="slide">
-        <h2>Проекты, похожие на MariaDB/server?</h2>
+        <h2>Projects similar to MariaDB/server?</h2>
         <ul class="two-cols">
             <li><a href="https://github.com/twitter/mysql">twitter/mysql</a></li>
             <li><a href="https://github.com/Tokutek/mysql-5.5">Tokutek/mysql-5.5</a></li>
@@ -277,18 +277,18 @@
     </section>
 
     <section class="slide">
-        <h2>Обнаружим похожий код</h2>
+        <h2>Similar code detection</h2>
         <ul>
-            <li>По стилю</li>
-            <li>По структуре</li>
-            <li>По именам</li>
+            <li>By style</li>
+            <li>By structure</li>
+            <li>By identifiers</li>
         </ul>
         <div id="andthen">
-        <h2>И получим</h2>
+        <h2>provides us</h2>
         <ul class="no-bullets fa-bullets">
-            <li><span class="monofa">💪</span>Глобальный граф</li>
-            <li><i class="fa fa-balance-scale monofa" aria-hidden="true"></i>Лицензии</li>
-            <li><i class="fa fa-line-chart monofa" aria-hidden="true"></i>Рефакторинг</li>
+            <li><span class="monofa">💪</span>Global graph</li>
+            <li><i class="fa fa-balance-scale monofa" aria-hidden="true"></i>Licenses</li>
+            <li><i class="fa fa-line-chart monofa" aria-hidden="true"></i>Refactoring</li>
         </ul>
         </div>
         <style>
@@ -307,7 +307,7 @@
                 background-color: #1e1e1c;
             }
         </style>
-        <span class="white">Еще пример:</span> <a href="https://www.deepcode.ai/">DeepCode.ai</a>.
+        <span class="white">Another example:</span> <a href="https://www.deepcode.ai/">DeepCode.ai</a>.
     </section>
 
     <section class="slide">
@@ -341,18 +341,18 @@
 
     <section class="slide">
         <ul>
-            <li>Предсказание имен классов, функций, переменных</li>
-            <li>Предсказание типов</li>
-            <li>Какие комментарии бессмысленны?</li>
-            <li>Какие комментарии прикольные?</li>
+            <li>Prediction of class, function, variable names</li>
+            <li>Type inference</li>
+            <li>Which comments do not make sense?</li>
+            <li>Which comments are funny?</li>
         </ul>
     </section>
 
     <section class="slide">
-        <h2>Ваш код это место преступления</h2>
+        <h2>Your code is a crime scene</h2>
         <ul>
-            <li>Идея: майнить историю разработки</li>
-            <li><a href="https://pragprog.com/book/atcrime/your-code-as-a-crime-scene">Книга</a></li>
+            <li>Idea: mine the development history</li>
+            <li><a href="https://pragprog.com/book/atcrime/your-code-as-a-crime-scene">Book</a></li>
             <li><a href="https://codescene.io/">codescene.io</a></li>
         </ul>
     </section>
@@ -373,7 +373,7 @@
     </section>
 
     <section class="slide">
-        <h2 id="mloncode-stack-h">Стэк для MLonCode</h2>
+        <h2 id="mloncode-stack-h">Tools for MLonCode</h2>
         <figure>
             <img class="cover obj-cover" src="pictures/leverBigCorners.png" alt="MLonCode logo">
         </figure>
@@ -401,11 +401,11 @@
     </section>
 
     <section class="slide">
-        <h2>Откуда брать данные</h2>
+        <h2>Datasets</h2>
         <ul>
-            <li><a href="http://ghtorrent.org/">GHTorrent</a> - все кроме самих репозиториев, 70GB</li>
-            <li><a href="https://github.com/src-d/datasets/tree/master/PublicGitArchive">Public Git Archive</a> - репозитории, 3TB</li>
-            <li><a href="https://cloud.google.com/bigquery/public-data/github">GitHub в Google BigQuery</a></li>
+            <li><a href="http://ghtorrent.org/">GHTorrent</a> - everything except Git repositories, 70GB</li>
+            <li><a href="https://github.com/src-d/datasets/tree/master/PublicGitArchive">Public Git Archive</a> - only Git repositories, 3TB</li>
+            <li><a href="https://cloud.google.com/bigquery/public-data/github">GitHub in Google BigQuery</a></li>
             <li><a href="https://github.com/src-d/rovers">rovers</a> &amp; <a href="https://github.com/src-d/borges">borges</a> - DIY</li>
         </ul>
     </section>
@@ -413,10 +413,10 @@
     <section class="slide">
         <h2>PGA</h2>
         <ul>
-            <li>270к siva файлов</li>
-            <li>Индекс в CSV</li>
+            <li>270k of siva files</li>
+            <li>CSV index</li>
         </ul>
-        Подробно в <a href="https://arxiv.org/abs/1803.10144">статье</a>.<br>
+        Details in the <a href="https://arxiv.org/abs/1803.10144">paper</a>.<br>
         <img src="pictures/by-nc-sa.eu.svg">
         <div id="rooted" class="vista"></div>
         <style>
@@ -437,14 +437,14 @@
     </section>
 
     <section class="slide">
-        <h2>PGA индекс</h2>
+        <h2>PGA index</h2>
         <ul>
             <li>URL</li>
             <li>FILE_COUNT</li>
-            <li>LANGS (байты, строки, файлы)</li>
+            <li>LANGS (bytes, strings, files)</li>
             <li>COMMITS_[HEAD]_COUNT</li>
             <li>BRANCHES_COUNT</li>
-            <li>LINES_COUNT (пустые, комментарии, код)</li>
+            <li>LINES_COUNT (empty, comments, code)</li>
             <li>LICENSE</li>
         </ul>
     </section>
@@ -452,9 +452,9 @@
     <section class="slide">
         <h2>source{d} engine</h2>
         <ul>
-            <li>Чтение siva для Spark</li>
-            <li>Классификация и парсинг</li>
-            <li>Открытый код - лицензия Apache</li>
+            <li>siva loader in Spark</li>
+            <li>Classification, parsing</li>
+            <li>Apache license</li>
             <li><a href="https://github.com/src-d/engine">GitHub</a></li>
         </ul>
     </section>
@@ -472,12 +472,12 @@
     </section>
 
     <section class="slide">
-        <h2>Как парсить</h2>
+        <h2>How to parse</h2>
         <ul>
-            <li>Регулярки - <a href="http://pygments.org/">Pygments</a>,
+            <li>Regular expressions - <a href="http://pygments.org/">Pygments</a>,
                 <a href="https://highlightjs.org/">highlight.js</a></li>
-            <li><span class="box">Абстрактное синтаксическое дерево (AST)</span> - <a href="http://www.antlr.org/">ANTLR</a></li>
-            <li>Компиляция</li>
+            <li><span class="box">Abstract syntax tree (AST)</span> - <a href="http://www.antlr.org/">ANTLR</a></li>
+            <li>Compilation</li>
         </ul>
         <style>
             .box {
@@ -508,18 +508,22 @@
     <section class="slide">
         <h2><i class="fa fa-sitemap" aria-hidden="true"></i> Universal AST</h2>
         <ul>
-            <li>Более-менее одинаковая структура</li>
-            <li>Более-менее стандартные роли узлов</li>
-            <li>Прикидывается XML (XPath запросы)</li>
-            <li>4 варианта обхода</li>
+            <li>± uniform structure</li>
+            <li>± standard node types (roles)</li>
+            <li>Pretends to be XML - XPath queriable</li>
+            <li>4 traversal orders</li>
         </ul>
         <a href="http://dashboard.bblf.sh/">dashboard.bblf.sh</a>
     </section>
 
     <section class="slide">
-        <h2>Клиент для Питона</h2>
+        <h2>Python client</h2>
         <pre><code>pip3 install bblfsh</code>
 <code>python3 -m bblfsh -f /path/to/file</code>
+        </pre>
+        <pre><code><span class="hl-keyword">import</span> bblfsh</code>
+<code>client = bblfsh.BblfshClient(<span class="hl-string">"0.0.0.0:9432"</span>)</code>
+<code>client.parse(<span class="hl-string">"/file"</span>).uast</code>
         </pre>
         <a href="https://github.com/bblfsh/client-python">bblfsh/client-python</a>
         <img src="pictures/docker.png" id="docker">
@@ -534,7 +538,7 @@
     </section>
 
     <section class="slide">
-        <h2>Интеграция</h2>
+        <h2>Integration</h2>
         <pre><code>&gt;&gt;&gt; engine.repositories.references.head_ref \
     .commits.tree_entries.blobs \
     .classify_languages() \
@@ -562,7 +566,7 @@
     </section>
 
     <section class="slide vista vista-cover" id="powerful">
-        <h2>Мощь</h2>
+        <h2>Powerful</h2>
         <style>
             #powerful {
                 background-image: url("pictures/power.jpg");
@@ -578,7 +582,7 @@
         <ul>
             <li><a href="https://github.com/src-d/ml">GitHub</a></li>
             <li>Python 3.4+</li>
-            <li>Используется Tensorflow, humanize</li>
+            <li>Uses Tensorflow, humanize</li>
             <li>clint <img src="pictures/ireful1.gif" id="ireful"> tqdm</li>
         </ul>
         <style>
@@ -591,42 +595,42 @@
     </section>
 
     <section class="slide">
-        <h2>Хотелки</h2>
+        <h2>Requirements</h2>
         <ul class="no-bullets fa-bullets">
-            <li><i class="fa fa-globe monofa" aria-hidden="true"></i>Автозагрузка моделей из интернета</li>
-            <li><i class="fa fa-shopping-cart monofa" aria-hidden="true"></i>"Магазин моделей"</li>
-            <li><i class="fa fa-floppy-o monofa" aria-hidden="true"></i>Вменяемый, современный формат (не HDF5)</li>
-            <li><i class="fa fa-tags monofa" aria-hidden="true"></i>Версионирование</li>
-            <li><i class="fa fa-refresh monofa" aria-hidden="true"></i>Воспроизводимость</li>
-            <li><i class="fa fa-handshake-o monofa" aria-hidden="true"></i>Поддержка разных ЯП</li>
+            <li><i class="fa fa-globe monofa" aria-hidden="true"></i>Automatically fetch from the internet</li>
+            <li><i class="fa fa-shopping-cart monofa" aria-hidden="true"></i>"Model Store"</li>
+            <li><i class="fa fa-floppy-o monofa" aria-hidden="true"></i>Flexible, modern binary format (not HDF5)</li>
+            <li><i class="fa fa-tags monofa" aria-hidden="true"></i>Versioning</li>
+            <li><i class="fa fa-refresh monofa" aria-hidden="true"></i>Reproducability</li>
+            <li><i class="fa fa-handshake-o monofa" aria-hidden="true"></i>Support various programming languages</li>
         </ul>
     </section>
 
     <section class="slide">
         <h2>Modelforge</h2>
         <ul class="no-bullets fa-bullets">
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Автозагрузка моделей из интернета</li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>"Магазин моделей"</li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Вменяемый, современный формат - <a href="https://github.com/spacetelescope/asdf">ASDF</a></li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Версионирование</li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Воспроизводимость</li>
-            <li><i class="fa fa-close monofa" aria-hidden="true"></i>Поддержка разных ЯП</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Automatically fetch from the internet</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>"Model Store"</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Flexible, modern binary format - <a href="https://github.com/spacetelescope/asdf">ASDF</a></li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Versioning</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Reproducability</li>
+            <li><i class="fa fa-close monofa" aria-hidden="true"></i>Support various programming languages</li>
         </ul>
         <a href="https://github.com/src-d/modelforge">GitHub</a>
     </section>
 
     <section class="slide">
-        <h2>Итог</h2>
+        <h2>Summary</h2>
         <ul class="no-bullets fa-bullets">
-            <li><i class="fa fa-thumbs-up monofa" aria-hidden="true"></i>Машинное обучение на исходном коде - это интересно</li>
-            <li><i class="fa fa-database monofa" aria-hidden="true"></i>Есть данные</li>
-            <li><i class="fa fa-cutlery monofa" aria-hidden="true"></i>Есть инструменты</li>
+            <li><i class="fa fa-thumbs-up monofa" aria-hidden="true"></i>Machine Learning on Source Code is fun</li>
+            <li><i class="fa fa-database monofa" aria-hidden="true"></i>There is data</li>
+            <li><i class="fa fa-cutlery monofa" aria-hidden="true"></i>There are tools</li>
         </ul>
     </section>
 
 	<section class="slide">
-        <h2>Конец</h2>
-		<p>Контакты:</p>
+        <h2>Thank you</h2>
+		<p>Contacts:</p>
         <ul class="no-bullets fa-bullets">
             <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
             <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/tmarkhor">tmarkhor</a></li>
