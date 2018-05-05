@@ -8,15 +8,15 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@tmarkhor" />
     <meta name="twitter:label1" content="Number of slides" />
-    <meta name="twitter:data1" content="31" />
+    <meta name="twitter:data1" content="25" />
     <meta name="twitter:label2" content="Where and when" />
-    <meta name="twitter:data2" content="Vienna, 04/05/2018" />
+    <meta name="twitter:data2" content="Tirana, 20/05/2018" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://vmarkovtsev.github.io/pydays-2018-vienna" />
+    <meta property="og:url" content="http://vmarkovtsev.github.io/oscal-mloncode-2018-tirana" />
     <meta property="og:title" content="Machine Learning on Source Code" />
     <meta property="og:description" content="What is Machine Learning on Source Code? How does it relate to Python? What are the tools?" />
-    <meta property="og:image" content="https://vmarkovtsev.github.io/pydays-2018-vienna/pictures/cover.jpg" />
-    <meta property="twitter:image" content="https://vmarkovtsev.github.io/pydays-2018-vienna/pictures/cover.jpg" />
+    <meta property="og:image" content="https://vmarkovtsev.github.io/oscal-mloncode-2018-tirana/pictures/cover.jpg" />
+    <meta property="twitter:image" content="https://vmarkovtsev.github.io/oscal-mloncode-2018-tirana/pictures/cover.jpg" />
     <link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
@@ -167,11 +167,14 @@
         .white {
             color: white !important;
         }
+        .black {
+            color: #202020 !important;
+        }
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
         <h2>#MLonCode</h2>
-		<p><span class="white">Vadim Markovtsev,</span> <a href="https://sourced.tech">source{d}</a></p>
+		<p><span class="black">Vadim Markovtsev,</span> <a href="https://sourced.tech">source{d}</a></p>
 
 		<style>
             #cover h2 {
@@ -191,18 +194,8 @@
 				background: url("pictures/awesome-machine-learning-artwork.png") black;
                 background-position-x: 68% !important;
 			}
-			#cover h2:before {
-				content: "";
-				position: absolute;
-				z-index: -1;
-				left: 0;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				background: rgba(0, 0, 0, 0.6);
-			}
             #cover > h2 {
-                color: #bababa !important;
+                color: #202020 !important;
             }
         </style>
     </section>
@@ -262,6 +255,8 @@
             <li><a href="https://github.com/alibaba/AliSQL">alibaba/AliSQL</a></li>
             <li><a href="https://github.com/mysql/mysql-server">mysql/mysql-server</a></li>
         </ul>
+        <br>
+        <a style="float: right;" href="https://vmarkovtsev.github.com/techtalks-2017-moscow">Details</a>
     </section>
 
     <section class="slide vista" id="excodesearch">
@@ -441,19 +436,6 @@
     </section>
 
     <section class="slide">
-        <h2>PGA index</h2>
-        <ul>
-            <li>URL</li>
-            <li>FILE_COUNT</li>
-            <li>LANGS (bytes, strings, files)</li>
-            <li>COMMITS_[HEAD]_COUNT</li>
-            <li>BRANCHES_COUNT</li>
-            <li>LINES_COUNT (empty, comments, code)</li>
-            <li>LICENSE</li>
-        </ul>
-    </section>
-
-    <section class="slide">
         <h2>source{d} engine</h2>
         <ul>
             <li>siva loader in Spark</li>
@@ -461,34 +443,6 @@
             <li>Apache license</li>
             <li><a href="https://github.com/src-d/engine">GitHub</a></li>
         </ul>
-    </section>
-
-    <section class="slide">
-        <h2>source{d} engine</h2>
-        <pre><code>&gt;&gt;&gt; <span class="hl-keyword">from</span> sourced.engine <span class="hl-keyword">import</span> Engine
-&gt;&gt;&gt; engine = Engine(spark, <span class="hl-string">"/path/to/siva/files"</span>, <span class="hl-string">"siva"</span>)
-&gt;&gt;&gt; engine.repositories.references.head_ref \
-    .commits.tree_entries.blobs \
-    .classify_languages() \
-    .select(<span class="hl-string">"blob_id"</span>, <span class="hl-string">"path"</span>, <span class="hl-string">"lang"</span>) \
-    .show()
-</code></pre>
-    </section>
-
-    <section class="slide">
-        <h2>How to parse</h2>
-        <ul>
-            <li>Regular expressions - <a href="http://pygments.org/">Pygments</a>,
-                <a href="https://highlightjs.org/">highlight.js</a></li>
-            <li><span class="box">Abstract syntax tree (AST)</span> - <a href="http://www.antlr.org/">ANTLR</a></li>
-            <li>Compilation</li>
-        </ul>
-        <style>
-            .box {
-                border: 1px solid white;
-                padding: 0 0.2em 0.1em 0.2em;
-            }
-        </style>
     </section>
 
     <section class="slide">
@@ -521,28 +475,6 @@
     </section>
 
     <section class="slide">
-        <h2>Python client</h2>
-        <pre><code>pip3 install bblfsh</code>
-<code>python3 -m bblfsh -f /path/to/file</code>
-        </pre>
-        <pre><code><span class="hl-keyword">import</span> bblfsh</code>
-<code>client = bblfsh.BblfshClient(<span class="hl-string">"0.0.0.0:9432"</span>)</code>
-<code>client.parse(<span class="hl-string">"/file"</span>).uast</code>
-        </pre>
-        <a href="https://github.com/bblfsh/client-python">bblfsh/client-python</a>
-        <img src="pictures/docker.png" id="docker">
-        <style>
-            #docker {
-                position: absolute;
-                right: 50px;
-                bottom: 50px;
-                width: 300px;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>Integration</h2>
         <pre><code>&gt;&gt;&gt; engine.repositories.references.head_ref \
     .commits.tree_entries.blobs \
     .classify_languages() \
@@ -569,26 +501,15 @@
         </style>
     </section>
 
-    <section class="slide vista vista-cover" id="powerful">
-        <h2>Powerful</h2>
-        <style>
-            #powerful {
-                background-image: url("pictures/power.jpg");
-            }
-            #powerful h2 {
-                color: #000;
-            }
-        </style>
-    </section>
-
     <section class="slide">
-        <h2>sourced-ml</h2>
+        <h2>source{d} ml</h2>
         <ul>
-            <li><a href="https://github.com/src-d/ml">GitHub</a></li>
-            <li>Python 3.4+</li>
-            <li>Uses Tensorflow, humanize</li>
-            <li>clint <img src="pictures/ireful1.gif" id="ireful"> tqdm</li>
+            <li>Python</li>
+            <li>Powered by Tensorflow</li>
+            <li>Implements our papers</li>
+            <li>Runs on top of engine</li>
         </ul>
+        <a href="https://github.com/src-d/ml">GitHub</a>
         <style>
             #ireful {
                 vertical-align: middle;
@@ -596,18 +517,6 @@
                 display: inline;
             }
         </style>
-    </section>
-
-    <section class="slide">
-        <h2>Requirements</h2>
-        <ul class="no-bullets fa-bullets">
-            <li><i class="fa fa-globe monofa" aria-hidden="true"></i>Automatically fetch from the internet</li>
-            <li><i class="fa fa-shopping-cart monofa" aria-hidden="true"></i>"Model Store"</li>
-            <li><i class="fa fa-floppy-o monofa" aria-hidden="true"></i>Flexible, modern binary format (not HDF5)</li>
-            <li><i class="fa fa-tags monofa" aria-hidden="true"></i>Versioning</li>
-            <li><i class="fa fa-refresh monofa" aria-hidden="true"></i>Reproducability</li>
-            <li><i class="fa fa-handshake-o monofa" aria-hidden="true"></i>Support various programming languages</li>
-        </ul>
     </section>
 
     <section class="slide">
@@ -629,6 +538,7 @@
             <li><i class="fa fa-thumbs-up monofa" aria-hidden="true"></i>Machine Learning on Source Code is fun</li>
             <li><i class="fa fa-database monofa" aria-hidden="true"></i>There is data</li>
             <li><i class="fa fa-cutlery monofa" aria-hidden="true"></i>There are tools</li>
+            <li><i class="fa fa-users monofa" aria-hidden="true"></i>Community is forming</li>
         </ul>
     </section>
 
