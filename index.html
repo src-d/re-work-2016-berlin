@@ -8,15 +8,15 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@tmarkhor" />
     <meta name="twitter:label1" content="Number of slides" />
-    <meta name="twitter:data1" content="17" />
+    <meta name="twitter:data1" content="20" />
     <meta name="twitter:label2" content="Where and when" />
-    <meta name="twitter:data2" content="Moscow, 22/04/2018" />
+    <meta name="twitter:data2" content="Aalborg, 08/05/2018" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://vmarkovtsev.github.io/codelab-2018-moscow" />
+    <meta property="og:url" content="http://vmarkovtsev.github.io/codelab-2018-aalborg" />
     <meta property="og:title" content="Tensorflow + Go" />
-    <meta property="og:description" content="This presentation shows the codelab plan and goes through the main concepts." />
-    <meta property="og:image" content="https://vmarkovtsev.github.io/codelab-2018-moscow/pictures/cover.png" />
-    <meta property="twitter:image" content="https://vmarkovtsev.github.io/codelab-2018-moscow/pictures/cover.png" />
+    <meta property="og:description" content="This presentation shows the codelab plan and goes through the main concepts. ML workflow, Hub, Go." />
+    <meta property="og:image" content="https://vmarkovtsev.github.io/codelab-2018-aalborg/pictures/cover.png" />
+    <meta property="twitter:image" content="https://vmarkovtsev.github.io/codelab-2018-aalborg/pictures/cover.png" />
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
@@ -182,15 +182,34 @@
 				background: rgba(0, 0, 0, 0.7);
 			}
         </style>
-	</section>
+    </section>
+    
+    <section class="slide active" id="2">
+        <h2>Follow on your device</h2>
+        <!-- <img> with @media srcset does not work! -->
+        <div class="vista center" id="qrcode-full"></div>
+        <style>
+            #qrcode-full {
+                width: 350px;
+                height: 350px;
+                background-image: url("pictures/qrcode_black.svg");
+            }
+            @media not print {
+                #qrcode-full {
+                    background-image: url("pictures/qrcode_white.svg");
+                }
+            }
+        </style>
+    </section>
 
 	<section class="slide">
-        <h2>Intent</h2>
+        <h2>Codelab points</h2>
         <ul>
             <li>Overview of Tensorflow internals</li>
             <li>Tensorflow Hub</li>
-            <li>Show how to run Tensorflow models in Go</li>
+            <li>Running Tensorflow models in Go</li>
             <li>MobileNetv2 101</li>
+            <li>Recurrent Sentiment 101</li>
             <li>Bonus: better Tensorflow builds</li>
         </ul>
     </section>
@@ -237,16 +256,6 @@
     </section>
 
     <section class="slide">
-        <h2>Building Tensorflow</h2>
-        <ul>
-            <li>Bazel - Python</li>
-            <li>Bazel - dynamic, C API</li>
-            <li>autotools - static, no GPU, no C API</li>
-        </ul>
-        ~40 minutes on i7-7500U (2x2 threads) laptop.
-    </section>
-
-    <section class="slide">
         <h2>Tensorflow binaries</h2>
         <ul>
             <li><pre class="inline"><code>_pywrap_tensorflow_internal.so</code></pre><span class="comment"> Python API, ops</span></li>
@@ -287,7 +296,7 @@
         <ul>
             <li>GraphDef = graph + [variable values<span class="important">*</span>]</li>
             <li>Checkpoint = variable values</li>
-            <li>Summary (aka Tensorboard) = GraphDef + key-value</li>
+            <li>Summary (for Tensorboard) = GraphDef + key-value</li>
             <li>MetaGraph = GraphDef + tags + i/o + Checkpoint</li>
             <li>SavedModel = one or more MetaGraph-s</li>
             <li>ModuleDef (aka Hub) = special SavedModel</li>
@@ -316,11 +325,27 @@
     </section>
 
     <section class="slide">
+        <h2>Action plan</h2>
+        <ul>
+            <li>Study Tensorflow Hub</li>
+            <li>Inspect models</li>
+        </ul>
+    </section>
+
+    <section class="slide">
         <h2 class="shout shrink">Action</h2>
     </section>
 
     <section class="slide">
-        <h2>Plan</h2>
+        <h2>Links</h2>
+        <ul>
+            <li>hub2graph <a href="https://github.com/tensorflow/hub/pull/21"></a></li>
+            <li>model2tb <a href="https://github.com/src-d/tensorflow-codelab/blob/master/model2tb"></a></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Action plan</h2>
         <ul>
             <li>Load <a href="https://research.googleblog.com/2018/04/mobilenetv2-next-generation-of-on.html">MobileNetv2</a></li>
             <li>Read an image</li>
@@ -333,7 +358,7 @@
     </section>
 
     <section class="slide">
-        <h2>Plan</h2>
+        <h2>Action plan</h2>
         <ul>
             <li>Load <a href="https://github.com/vmarkovtsev/bidisentiment">BiDiSentiment</a></li>
             <li>Classify text</li>
@@ -344,6 +369,16 @@
         <h2 class="shout shrink">Action</h2>
     </section>
 
+    <section class="slide">
+        <h2>Building Tensorflow</h2>
+        <ul>
+            <li>Bazel - Python</li>
+            <li>Bazel - dynamic, C API</li>
+            <li>autotools - static, no GPU, no C API</li>
+        </ul>
+        ~40 minutes on i7-7500U (2x2 threads) laptop.
+    </section>
+
 	<section class="slide">
         <h2>Thank you</h2>
         <p>My contacts:</p>
@@ -351,8 +386,6 @@
             <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
             <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/tmarkhor">tmarkhor</a></li>
             <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
-            <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
-            <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
         </ul>
         <div class="vista" id="qrcode"></div>
         <style>
