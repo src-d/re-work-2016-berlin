@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>???</title>
+	<title>Machine Learning on Source Code</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
@@ -10,21 +10,21 @@
     <meta name="twitter:label1" content="Number of slides" />
     <meta name="twitter:data1" content="???" />
     <meta name="twitter:label2" content="Where and when" />
-    <meta name="twitter:data2" content="???" />
+    <meta name="twitter:data2" content="May 31, 2018, Paris" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://vmarkovtsev.github.io/???" />
-    <meta property="og:title" content="???" />
-    <meta property="og:description" content="???" />
-    <meta property="og:image" content="https://vmarkovtsev.github.io/???/pictures/cover.jpg" />
-    <meta property="twitter:image" content="https://vmarkovtsev.github.io/???/pictures/cover.jpg" />
+    <meta property="og:url" content="http://vmarkovtsev.github.io/dotai-2018-paris" />
+    <meta property="og:title" content="Machine Learning on Source Code" />
+    <meta property="og:description" content="dotAI talk about #MLonCode. The main topic is source code identifier embeddings." />
+    <meta property="og:image" content="https://vmarkovtsev.github.io/dotai-2018-paris/pictures/cover.png" />
+    <meta property="twitter:image" content="https://vmarkovtsev.github.io/dotai-2018-paris/pictures/cover.png" />
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
 
 	<header class="caption">
 		<button type="button" id="fullscreen" title="Go fullscreen" onclick="fullscreen()"><i class="fa fa-arrows-alt"></i></button>
-		<h1>???</h1>
-		<p>Vadim Markovtsev, <a href="https://sourced.tech">source{d}</a>.</p>
+		<h1>Machine Learning on Source Code</h1>
+		<p>Vadim Markovtsev, dotAI 2018</p>
 	</header>
 
 	<style>
@@ -144,11 +144,15 @@
         .fa-bullets > li {
             margin-left: -2em;
         }
+        .black {
+            color: #202020 !important;
+        }
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
-		<h2>???</h2>
-		<p>Vadim Markovtsev, <a href="https://sourced.tech">source{d}</a></p>
+		<h2 class="black">#MLonCode</h2>
+        <p class="black">Vadim Markovtsev</p>
+        <p class="black">@vadimlearning</p>
 
 		<style>
             #cover h2 {
@@ -163,27 +167,77 @@
                 font-size:20px;
             }
 			#cover {
-				background: url("pictures/cover.jpg") black;
+				background: url("pictures/cover.png") black;
+                background-position-x: 68% !important;
 			}
-			#cover h2:before {
-				content: "";
-				position: absolute;
-				z-index: -1;
-				left: 0;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				background: rgba(0, 0, 0, 0.7);
-			}
+            #cover > h2 {
+                margin-bottom: 243px;
+            }
+            #cover > p {
+                font-size: 24px;
+                font-weight: bold;
+                margin: 0;
+            }
+            #cover > p:nth-of-type(1) {
+                transform: rotate(-4deg) translateX(30px);
+            }
+            #cover > p:nth-of-type(2) {
+                transform: rotate(-4deg) translateX(30px);
+            }
         </style>
-	</section>
+    </section>
+
+    <section class="slide">
+        <h2>Origins</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-inverse fa-github-alt monofa" aria-hidden="true"></i>GitHub phenomenon</li>
+            <li><span class="monofa">💰</span>Big companies have big 💩 code</li>
+            <li><span class="monofa">📜</span>We write code as in 2000</li>
+            <li><span class="monofa">🚀</span>Machine Learning progress</li>
+        </ul>
+    </section>
+
+    <section class="slide vista vista-cover" id="dragons">
+        <div></div>
+        <h2>Machine Learning on Source Code</h2>
+        <style>
+            @font-face {
+              font-family: CartaMarinaBold;
+              src: url("Carta Marina Bold.woff2") format("woff2")
+            }
+            #dragons {
+                background: url("pictures/here_be_dragons.jpg") #000;
+            }
+            #dragons h2 {
+                position: absolute;
+                left: 507px;
+                top: 92px;
+                width: 280px;
+                text-align: center;
+                color: #000;
+                font-family: CartaMarinaBold;
+            }
+            #dragons div {
+                position: absolute;
+                left: 527px;
+                width: 240px;
+                height: 240px;
+                top: 72px;
+                background: radial-gradient(circle at center, #bababa 0, rgba(186, 186, 186, 0) 75%)
+            }
+        </style>
+    </section>
+    
+    <section class="slide">
+
+    </section>
 
 	<section class="slide">
         <h2>Thank you</h2>
         <p>My contacts:</p>
         <ul class="no-bullets fa-bullets">
             <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
-            <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/tmarkhor">tmarkhor</a></li>
+            <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
             <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
             <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
             <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
