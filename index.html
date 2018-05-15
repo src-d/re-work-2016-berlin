@@ -17,7 +17,8 @@
     <meta property="og:description" content="dotAI talk about #MLonCode. The main topic is source code identifier embeddings." />
     <meta property="og:image" content="https://vmarkovtsev.github.io/dotai-2018-paris/pictures/cover.png" />
     <meta property="twitter:image" content="https://vmarkovtsev.github.io/dotai-2018-paris/pictures/cover.png" />
-	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+    <link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+    
 </head>
 <body class="shower list">
 
@@ -229,12 +230,142 @@
     </section>
     
     <section class="slide">
+<pre><code><span class="hl-keyword">class</span> <span class="box">???</span>:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, dbname, user, password, host, port):</code>
+<code>        <span class="hl-comment"># ...</span></code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">query</span>(<span class="hl-reserved">self</span>, sql):</code>
+<code>        <span class="hl-comment"># ...</span></code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">close</span>(<span class="hl-reserved">self</span>):</code>
+<code>        <span class="hl-comment"># ...</span></code>
+</pre>
+        <style>
+            .hl-keyword {
+                color: #cc8242;
+                font-weight: bold;
+            }
+            .hl-def {
+                color: #ffc66d;
+            }
+            .hl-reserved {
+                color: #94558D;
+            }
+            .hl-string {
+                color: #6a8759;
+            }
+            .hl-comment {
+                color: #707070;
+            }
+            .box {
+                border: 1px solid white;
+                padding: 0.05em 0.1em;
+            }
+        </style>
+    </section>
 
+    <section class="slide">
+        <pre><code><span class="hl-keyword">class</span> <span class="box">Database</span>:</code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, dbname, user, password, host, port):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">query</span>(<span class="hl-reserved">self</span>, sql):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">close</span>(<span class="hl-reserved">self</span>):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <!-- metasyntactic -->
+        <pre><code><span class="hl-keyword">class</span> Foo:</code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">bar</span>(<span class="hl-reserved">self</span>, qux):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">baz</span>(<span class="hl-reserved">self</span>, waldo):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">do</span>(<span class="hl-reserved">self</span>, really):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Identifier embeddings</h2>
+    </section>
+
+    <section class="slide">
+        <div class="math-center">
+            <p class="skip">
+\(
+\begin{split}
+V_1 \Leftrightarrow & \,\texttt{"foo"} \\
+\\
+V_2 \Leftrightarrow & \,\texttt{"bar"} \\
+\\
+V_3 \Leftrightarrow & \,\texttt{"integrate"}
+\end{split}
+\)
+            </p><p class="skip">
+\(
+\left\lVert V_1 - V_2 \right\rVert < \left\lVert V_1 - V_3 \right\rVert
+\)
+            </p><p>
+\(
+\left\lVert V_i - V_j \right\rVert = - V_i \cdot V_j
+\)
+            </p>
+        </div>
+        <div class="math-label" id="scalar-product">Scalar product</div>
+        <div class="math-label" id="norm">Norm</div>
+        <style>
+            .math-center {
+                display: table;
+                margin-left: auto;
+                margin-right: auto;
+            } 
+            p.skip {
+                margin-bottom: 50px;
+            }
+            @font-face {
+              font-family: "Over the Rainbow";
+              src: url("Over the Rainbow.ttf") format("ttf")
+            }
+            .math-label {
+                position: absolute;
+                font-family: "Over the Rainbow";
+                font-size: 32px;
+                color: #fff01f;
+            }
+            #scalar-product {
+                bottom: 120px;
+                right: 230px;
+            }
+            #norm {
+                left: 300px;
+                bottom: 280px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">How to estimate \(V_i \cdot V_j\) ?</h2>
+        <style>
+        .shout > span {
+            font-weight: inherit !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+        }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 id="pmi">Pointwise Mutual Information</h2>
+$$ V_i \cdot V_j = \log\frac{C_{ij} \sum C}{\sum_{k = 1}^N C_{ik}\sum_{k = 1}^N C_{jk}} $$
+<style>
+    #pmi {
+        margin-bottom: 150px;
+    }
+</style>
     </section>
 
 	<section class="slide">
         <h2>Thank you</h2>
-        <p>My contacts:</p>
         <ul class="no-bullets fa-bullets">
             <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
             <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
@@ -263,7 +394,8 @@
 	<div class="progress"></div>
 
 	<script src="node_modules/shower-core/shower.min.js"></script>
-	<script async src="https://use.fontawesome.com/72adc0539b.js"></script>
+    <script async src="https://use.fontawesome.com/72adc0539b.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML"></script>
 	<script>
     function fullscreen() {
         if (!document.fullscreenElement && !document.mozFullScreenElement &&
