@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>???</title>
+	<title>Public Git Archive</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
@@ -10,20 +10,20 @@
     <meta name="twitter:label1" content="Number of slides" />
     <meta name="twitter:data1" content="???" />
     <meta name="twitter:label2" content="Where and when" />
-    <meta name="twitter:data2" content="???" />
+    <meta name="twitter:data2" content="Gothenburg, Sweden, 29/05/2018" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://vmarkovtsev.github.io/???" />
-    <meta property="og:title" content="???" />
-    <meta property="og:description" content="???" />
-    <meta property="og:image" content="https://vmarkovtsev.github.io/???/pictures/cover.jpg" />
-    <meta property="twitter:image" content="https://vmarkovtsev.github.io/???/pictures/cover.jpg" />
+    <meta property="og:url" content="http://vmarkovtsev.github.com/msr-2018-gothenburg" />
+    <meta property="og:title" content="Public Git Archive" />
+    <meta property="og:description" content="Presentation of the paper 'Public Git Archive: A Big Code Dataset for All' on Mining Software Repositories conference 2018."/>
+    <meta property="og:image" content="https://vmarkovtsev.github.com/msr-2018-gothenburg/pictures/media-cover.png" />
+    <meta property="twitter:image" content="https://vmarkovtsev.github.com/msr-2018-gothenburg/pictures/media-cover.png" />
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
 
 	<header class="caption">
 		<button type="button" id="fullscreen" title="Go fullscreen" onclick="fullscreen()"><i class="fa fa-arrows-alt"></i></button>
-		<h1>???</h1>
+		<h1>Public Git Archive</h1>
 		<p>Vadim Markovtsev, <a href="https://sourced.tech">source{d}</a>.</p>
 	</header>
 
@@ -131,6 +131,7 @@
 		}
 		.slide a {
 			background: none;
+            color: white;
 		}
 		.slide a:hover {
 			background: linear-gradient(to top,currentColor .09em,transparent .09em) repeat-x;
@@ -165,23 +166,23 @@
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
-		<h2>???</h2>
-		<p>Vadim Markovtsev<br><a href="https://sourced.tech">source{d}</a></p>
-
+		<h2>Public Git Archive</h2>
+		<p>Vadim Markovtsev, Waren Long<br><a href="https://sourced.tech">sourced.tech</a></p>
 		<style>
             #cover h2 {
-                margin:30px 0 0;
-                text-align:center;
-                font-size:70px;
+                margin: 30px 0 0;
+                text-align: center;
+                font-size: 70px;
+                color: white;
             }
             #cover p {
-                margin: 40px 0 0;
-                text-align:center;
-                font-style:italic;
-                font-size:20px;
+                margin: 240px 0 0;
+                text-align: center;
+                font-style: italic;
+                font-size: 20px;
             }
 			#cover {
-				background: url("pictures/cover.jpg") black;
+				background: url("pictures/pga.svg") black;
 			}
 			#cover h2:before {
 				content: "";
@@ -191,28 +192,75 @@
 				top: 0;
 				right: 0;
 				bottom: 0;
-				background: rgba(0, 0, 0, 0.7);
+				background: rgba(0, 0, 0, 0.5);
 			}
         </style>
-	</section>
+    </section>
+    
+    <section class="slide">
+        <h2>PGA in a nutshell</h2>
+        <ul>
+            <li><span class="bold">182,014</span> GitHub top-starred repos</li>
+            <li><span class="bold">3 TB</span> on disk</li>
+            <li><span class="bold">54,5 million</span> files in HEAD</li>
+            <li><span class="bold">15,9 billion</span> lines of code in HEAD</li>
+            <li><span class="bold">455</span> programming languages</li>
+            <li><span class="bold">289</span> licenses</li>
+        </ul>
+        <style>
+            .bold {
+                font-weight: bold;
+            }
+        </style>
+    </section>
 
-	<section class="slide">
+    <section class="slide">
+
+    </section>
+
+	<section class="slide" id="contacts">
         <h2>Thank you</h2>
-        <p>My contacts:</p>
+        <div>
+            <ul class="no-bullets fa-bullets">
+                <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
+                <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
+                <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
+            </ul>
+            <ul class="no-bullets fa-bullets">
+                <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://waren@sourced.tech">waren@sourced.tech</a></li>
+                <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/warenlg">warenlg</a></li>
+                <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/warenlg">warenlg</a></li>
+            </ul>
+        </div>
         <ul class="no-bullets fa-bullets">
-            <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
-            <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
-            <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
             <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
             <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
         </ul>
         <div class="vista" id="qrcode"></div>
+        <a id="qrcode-link" href="http://bit.ly/2x34csF">bit.ly/2x34csF</a>
         <style>
+            #contacts > div:first-of-type {
+                display: flex;
+                flex-direction: row;
+            }
+            #contacts ul {
+                margin-right: 80px;
+            }
+            #contacts .monofa {
+                margin-right: 0;
+            }
+            #contacts > div > ul:first-of-type {
+                margin-left: 0.5em;
+            }
+            #contacts > ul:last-of-type {
+                margin-top: 100px;
+                margin-left: 0.5em;
+            }
             #qrcode {
-                width: 350px;
-                height: 350px;
+                width: 300px;
+                height: 300px;
                 position: absolute;
-                left: 550px;
+                left: 650px;
                 top: 150px;
                 background-image: url("pictures/qrcode_black.svg");
             }
@@ -220,6 +268,12 @@
                 #qrcode {
                     background-image: url("pictures/qrcode_white.svg");
                 }
+            }
+            #qrcode-link {
+                position: absolute;
+                left: 690px;
+                top: 450px;
+                font-size: 150%;
             }
         </style>
     </section>
