@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Machine Learning on Open Source Code</title>
+	<title>Machine Learning on Source Code</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
@@ -10,20 +10,20 @@
     <meta name="twitter:label1" content="Number of slides" />
     <meta name="twitter:data1" content="28" />
     <meta name="twitter:label2" content="Where and when" />
-    <meta name="twitter:data2" content="Tirana, Albania - 19/05/2018" />
+    <meta name="twitter:data2" content="New York, USA - 19/06/2018" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://vmarkovtsev.github.io/oscal-mloncode-2018-tirana" />
-    <meta property="og:title" content="Machine Learning on Open Source Code" />
-    <meta property="og:description" content="What is Machine Learning on Open Source Code? How does it relate to Python? What are the tools?" />
-    <meta property="og:image" content="https://vmarkovtsev.github.io/oscal-mloncode-2018-tirana/pictures/awesome-machine-learning-artwork.png" />
-    <meta property="twitter:image" content="https://vmarkovtsev.github.io/oscal-mloncode-2018-tirana/pictures/awesome-machine-learning-artwork.png" />
+    <meta property="og:url" content="http://vmarkovtsev.github.io/devweek-2018-new-york" />
+    <meta property="og:title" content="Machine Learning on Source Code" />
+    <meta property="og:description" content="What is Machine Learning on Source Code? Are there cool applications? What are the tools?" />
+    <meta property="og:image" content="https://vmarkovtsev.github.io/devweek-2018-new-york/pictures/cover.png" />
+    <meta property="twitter:image" content="https://vmarkovtsev.github.io/devweek-2018-new-york/pictures/cover.png" />
     <link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
 
 	<header class="caption">
 		<button type="button" id="fullscreen" title="Go fullscreen" onclick="fullscreen()"><i class="fa fa-arrows-alt"></i></button>
-		<h1>Machine Learning on Open Source Code</h1>
+		<h1>Machine Learning on Source Code</h1>
 		<p>Vadim Markovtsev, <a href="https://sourced.tech">source{d}</a>.</p>
 	</header>
 
@@ -170,14 +170,30 @@
         .black {
             color: #202020 !important;
         }
+        .part {
+            background: radial-gradient(circle at center, #d2c098 0, black 130%);
+        }
+        .part > h2 {
+            font-family: "CartaMarinaBold";
+            color: black;
+        }
+        @font-face {
+            font-family: "ShareTechMono";
+            src: url("fonts/ShareTechMono-Regular.ttf") format("ttf");
+            src: url("fonts/ShareTechMono-Regular.woff2") format("woff2");
+        }
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
-        <h2 class="black">#MLonCode</h2>
+        <h2 class="black title">#MLonCode</h2>
         <p class="black">Vadim Markovtsev</p>
         <p class="black">@vadimlearning</p>
 
         <style>
+            .title {
+                font-family: ShareTechMono !important;
+                font-size: 350% !important;
+            }
             #cover h2 {
                 margin:30px 0 0;
                 text-align:center;
@@ -190,11 +206,11 @@
                 font-size:20px;
             }
             #cover {
-                background: url("pictures/awesome-machine-learning-artwork.png") black;
+                background: url("pictures/cover.png") black;
                 background-position-x: 68% !important;
             }
             #cover > h2 {
-                margin-bottom: 243px;
+                margin-bottom: 202px;
             }
             #cover > p {
                 font-size: 24px;
@@ -209,22 +225,6 @@
             }
         </style>
     </section>
-
-    <section class="slide vista">
-        <video width="820" controls>
-            <source src="pictures/duplex.mp4" type="video/mp4">
-        </video>
-        <style>
-            video {
-                position: relative;
-                top: -50px;
-            }
-            video::-webkit-media-controls-panel {
-                -webkit-transform: translateZ(0);
-            }
-        </style>
-    </section>
-
     <section class="slide vista" id="ml">
         <h2 class="shout small-shout">🚀 Machine Learning</h2>
         <style>
@@ -269,18 +269,18 @@
         </style>
     </section>
     
-    <section class="slide vista vista-cover" id="dragons">
+    <section class="slide vista vista-cover dragons">
         <div></div>
         <h2>Machine Learning on Source Code</h2>
         <style>
             @font-face {
               font-family: CartaMarinaBold;
-              src: url("Carta Marina Bold.woff2") format("woff2")
+              src: url("fonts/Carta Marina Bold.woff2") format("woff2")
             }
-            #dragons {
+            .dragons {
                 background: url("pictures/here_be_dragons.jpg") #000;
             }
-            #dragons h2 {
+            .dragons h2 {
                 position: absolute;
                 left: 507px;
                 top: 92px;
@@ -289,7 +289,7 @@
                 color: #000;
                 font-family: CartaMarinaBold;
             }
-            #dragons div {
+            .dragons div {
                 position: absolute;
                 left: 527px;
                 width: 240px;
@@ -298,6 +298,20 @@
                 background: radial-gradient(circle at center, #bababa 0, rgba(186, 186, 186, 0) 75%)
             }
         </style>
+    </section>
+
+    <section class="slide vista vista-cover dragons" id="dragons-mloncode">
+        <div></div>
+        <h2>MLonCode</h2>
+        <style>
+            #dragons-mloncode h2 {
+                top: 167px;
+            }
+        </style>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Examples</h2>
     </section>
 
     <section class="slide">
@@ -413,6 +427,16 @@
             <li><a href="https://pragprog.com/book/atcrime/your-code-as-a-crime-scene">Book</a></li>
             <li><a href="https://codescene.io/">codescene.io</a></li>
         </ul>
+        <img src="pictures/atcrime.jpg" id="atcrime">
+        <style>
+            #atcrime {
+                position: absolute;
+                right: 100px;
+                bottom: 100px;
+                width: 300px;
+                object-fit: contain;
+            }
+        </style>
     </section>
 
     <section class="slide vista" id="hercules">
@@ -463,7 +487,7 @@
         <ul>
             <li><a href="http://ghtorrent.org/">GHTorrent</a> - everything except Git repositories, 70GB</li>
             <li><a href="https://github.com/src-d/datasets/tree/master/PublicGitArchive">Public Git Archive</a> - only Git repositories, 3TB</li>
-            <li><a href="https://cloud.google.com/bigquery/public-data/github">GitHub in Google BigQuery</a></li>
+            <li><a href="https://cloud.google.com/bigquery/public-data/github">GitHub Data in Google BigQuery</a></li>
             <li><a href="https://github.com/src-d/rovers">rovers</a> &amp; <a href="https://github.com/src-d/borges">borges</a> - DIY</li>
         </ul>
     </section>
@@ -504,6 +528,18 @@
         </ul>
     </section>
 
+    <section class="slide">
+        <h2>source{d} engine</h2>
+        <pre><code>&gt;&gt;&gt; <span class="hl-keyword">from</span> sourced.engine <span class="hl-keyword">import</span> Engine
+&gt;&gt;&gt; engine = Engine(spark, <span class="hl-string">"/path/to/siva/files"</span>, <span class="hl-string">"siva"</span>)
+&gt;&gt;&gt; engine.repositories.references.head_ref \
+    .commits.tree_entries.blobs \
+    .classify_languages() \
+    .select(<span class="hl-string">"blob_id"</span>, <span class="hl-string">"path"</span>, <span class="hl-string">"lang"</span>) \
+    .show()
+</code></pre>
+    </section>
+
     <section class="slide vista" id="ast">
         <h2>AST</h2>
         <style>
@@ -518,6 +554,22 @@
             #ast > h2 {
                 position: absolute;
                 bottom: 50px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>How to parse</h2>
+        <ul>
+            <li>Regular expressions - <a href="http://pygments.org/">Pygments</a>,
+                <a href="https://highlightjs.org/">highlight.js</a></li>
+            <li><span class="box">Abstract syntax tree (AST)</span> - <a href="http://www.antlr.org/">ANTLR</a></li>
+            <li>Compilation</li>
+        </ul>
+        <style>
+            .box {
+                border: 1px solid white;
+                padding: 0 0.2em 0.1em 0.2em;
             }
         </style>
     </section>
@@ -578,13 +630,29 @@
         </style>
     </section>
 
+    <section class="slide vista vista-cover" id="powerful">
+        <h2>Powerful</h2>
+        <style>
+            #powerful {
+                background-image: url("pictures/power.jpg");
+            }
+            #powerful h2 {
+                color: #000;
+            }
+        </style>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Machine Learning</h2>
+    </section>
+
     <section class="slide">
         <h2>source{d} ml</h2>
         <ul>
             <li>Python</li>
             <li>Powered by Tensorflow</li>
             <li>Implements our papers</li>
-            <li>Runs on top of engine</li>
+            <li>Runs on top of source{d} engine</li>
         </ul>
         <a href="https://github.com/src-d/ml">GitHub</a>
         <style>
@@ -621,7 +689,6 @@
 
 	<section class="slide">
         <h2>Thank you</h2>
-		<p>Contacts:</p>
         <ul class="no-bullets fa-bullets">
             <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
             <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
@@ -630,6 +697,7 @@
             <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
         </ul>
         <div class="vista" id="qrcode"></div>
+        <a id="qrcode-link" href="http://bit.ly/2JOBSj3">bit.ly/2JOBSj3</a>
         <style>
             #qrcode {
                 width: 350px;
@@ -643,6 +711,12 @@
                 #qrcode {
                     background-image: url("pictures/qrcode_white.svg");
                 }
+            }
+            #qrcode-link {
+                position: absolute;
+                left: 615px;
+                top: 500px;
+                font-size: 150%;
             }
         </style>
     </section>
