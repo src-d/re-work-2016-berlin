@@ -8,15 +8,15 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@vadimlearning" />
     <meta name="twitter:label1" content="Number of slides" />
-    <meta name="twitter:data1" content="27" />
+    <meta name="twitter:data1" content="29" />
     <meta name="twitter:label2" content="Where and when" />
-    <meta name="twitter:data2" content="Tirana, Albania, May 20, 2018" />
+    <meta name="twitter:data2" content="Mallorca, Spain, July 4th, 2018" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://vmarkovtsev.github.io/oscal-oml-2018-tirana" />
+    <meta property="og:url" content="http://vmarkovtsev.github.io/pydata-2018-mallorca" />
     <meta property="og:title" content="State of Open Source Machine Learning" />
     <meta property="og:description" content="What can be learnt from 64 open source machine learning projects?" />
-    <meta property="og:image" content="https://vmarkovtsev.github.io/oscal-oml-2018-tirana/pictures/cover.jpg" />
-    <meta property="twitter:image" content="https://vmarkovtsev.github.io/oscal-oml-2018-tirana/pictures/cover.jpg" />
+    <meta property="og:image" content="https://vmarkovtsev.github.io/pydata-2018-mallorca/pictures/cover.jpg" />
+    <meta property="twitter:image" content="https://vmarkovtsev.github.io/pydata-2018-mallorca/pictures/cover.jpg" />
     <link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
@@ -130,14 +130,16 @@
 			line-height: 400px !important;
 		}
 		.slide a {
-			background: none;
-		}
+            background: none;
+            color: white !important;
+            font-weight: bold;
+        }
 		.slide a:hover {
 			background: linear-gradient(to top,currentColor .09em,transparent .09em) repeat-x;
 		}
         .monofa {
             width: 1.5em;
-            margin-right: 0.5em;
+            margin-right: 0.1em;
             display: inline-block;
             text-align: center;
         }
@@ -445,6 +447,26 @@
         <a href="https://help.github.com/articles/setting-guidelines-for-repository-contributors/">Reference.</a>
     </section>
 
+    <section class="slide iframe">
+        <script src="http://gist-it.appspot.com/http://github.com/src-d/guide/blob/master/engineering/documents/CONTRIBUTING.md"></script>
+        <style>
+            .iframe {
+                padding: 0;
+            }
+            .iframe > iframe {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+            }
+            .gist-data {
+                font-size: 60% !important;
+                line-height: 1.1;
+            }
+        </style>
+    </section>
+
     <section class="slide">
         <h2>Contribution guidelines</h2>
         <img src="pictures/contribs.svg" class="stretch">
@@ -455,6 +477,10 @@
         <p>Document which specifies the communication norms. It improves
             the diversity and helps to maintain a welcoming environment.</p>
         <a href="https://www.contributor-covenant.org/">Example.</a>
+    </section>
+
+    <section class="slide iframe">
+        <iframe src="https://www.contributor-covenant.org/version/1/4/code-of-conduct"></iframe>
     </section>
 
     <section class="slide">
@@ -501,12 +527,10 @@
             <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
             <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
             <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
-            <li>
-                <i class="fa fa-medium monofa" aria-hidden="true"></i>
-                <a href="https://medium.com/sourced">sourced</a>
-            </li>
+            <li><i class="fa fa-medium monofa" aria-hidden="true"></i><a href="https://medium.com/sourced">sourced</a></li>
         </ul>
         <div class="vista" id="qrcode"></div>
+        <a href="http://bit.ly/2u8h9wK" id="bitly">bit.ly/2u8h9wK</a>
         <style>
             #qrcode {
                 width: 350px;
@@ -520,6 +544,12 @@
                 #qrcode {
                     background-image: url("pictures/qrcode_white.svg");
                 }
+            }
+            #bitly {
+                position: absolute;
+                bottom: 90px;
+                right: 195px;
+                font-size: 120%;
             }
         </style>
     </section>
