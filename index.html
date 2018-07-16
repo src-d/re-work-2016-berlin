@@ -137,12 +137,17 @@
 		.slide a {
 			background: none;
 		}
+        @media not print {
+           .slide a {
+               color: white;
+           } 
+        }
 		.slide a:hover {
 			background: linear-gradient(to top,currentColor .09em,transparent .09em) repeat-x;
 		}
         .monofa {
             width: 1.5em;
-            margin-right: 0.5em;
+            margin-right: 0.1em;
             display: inline-block;
             text-align: center;
         }
@@ -165,7 +170,7 @@
             color: black;
         }
         .part {
-            background: radial-gradient(circle at center, #fff01f 0, black 130%)
+            background: radial-gradient(circle at center, #ffffff 0, black 130%)
         }
     </style>
 
@@ -199,11 +204,14 @@
 				background: rgba(0, 0, 0, 0.7);
 			}
         </style>
-	</section>
+    </section>
+    
+    <section class="slide part">
+        <h2 class="shout">Summary</h2>
+    </section>
 
 	<section class="slide">
         <h2>Thank you</h2>
-        <p>My contacts:</p>
         <ul class="no-bullets fa-bullets">
             <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
             <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
@@ -212,6 +220,7 @@
             <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
         </ul>
         <div class="vista" id="qrcode"></div>
+        <a href="http://bit.ly/???????" id="bitly">bit.ly/???????</a>
         <style>
             #qrcode {
                 width: 350px;
@@ -225,6 +234,12 @@
                 #qrcode {
                     background-image: url("pictures/qrcode_white.svg");
                 }
+            }
+            #bitly {
+                position: absolute;
+                bottom: 90px;
+                right: 195px;
+                font-size: 120%;
             }
         </style>
     </section>
