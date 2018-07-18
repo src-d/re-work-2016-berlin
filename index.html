@@ -254,14 +254,6 @@
         </ul>
     </section>
 
-    <section class="slide">
-        <h2>Novelty</h2>
-        <ul>
-            <li>No prior research</li>
-            <li>Huge dataset - 49.2 million distinct identifiers</li>
-        </ul>
-    </section>
-
     <section class="slide part">
         <h2 class="shout">Dataset</h2>
     </section>
@@ -430,10 +422,34 @@
 
     <section class="slide">
         <h2>Gradient boosting on decision trees</h2>
+        <img src="pictures/foobarbaz_black.png" class="full-img show-black">
+        <img src="pictures/foobarbaz_white.png" class="full-img show-white">
     </section>
 
     <section class="slide">
-        <h2>character-level Convolutional Neural Network</h2>
+        <h2>Gradient boosting on decision trees</h2>
+        <ul>
+            <li>XGBoost</li>
+            <li>Window length is 10</li>
+            <li>Tree depth is 30</li>
+            <li>Number of trees is 50</li>
+            <li>80% negative samples</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Character-level Convolutional Neural Network</h2>
+        <ul>
+            <li>One-hot encoding</li>
+            <li>3 stacked 1D Inception layers (ReLU)</li>
+            <li>Time-distributed fully-connected layer with binary outputs (sigmoid)</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Character-level Convolutional Neural Network</h2>
+        <img src="pictures/cnn_black.png" class="full-img show-black">
+        <img src="pictures/cnn_white.png" class="full-img show-white">
     </section>
 
     <section class="slide part">
@@ -495,6 +511,8 @@
         <style>
             .full-img {
                 height: 400px;
+                max-width: 800px;
+                object-fit: contain;
                 display: table;
                 margin-left: auto;
                 margin-right: auto;
