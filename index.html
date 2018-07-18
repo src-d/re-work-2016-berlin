@@ -8,7 +8,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@vadimlearning" />
     <meta name="twitter:label1" content="Number of slides" />
-    <meta name="twitter:data1" content="???" />
+    <meta name="twitter:data1" content="35" />
     <meta name="twitter:label2" content="Where and when" />
     <meta name="twitter:data2" content="July 19th, Oxford, Great Britain" />
     <meta property="og:type" content="article" />
@@ -17,7 +17,7 @@
     <meta property="og:description" content="Presentation of the paper 'Splitting source code identifiers using Bidirectional LSTM Recurrent Neural Network' for Machine Learning for Programming workshop at Federated Logic Conference 2018." />
     <meta property="og:image" content="https://vmarkovtsev.github.io/ml4p-2018-oxford/pictures/cover.jpg" />
     <meta property="twitter:image" content="https://vmarkovtsev.github.io/ml4p-2018-oxford/pictures/cover.jpg" />
-	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
 
@@ -388,8 +388,9 @@
         <ul>
             <li>Use the maximum likelihood to estimate the probabilities $$P(\underline{\mbox{ }}|foo) = \frac{count(foo\underline{\mbox{ }})}{count(foo*)}$$</li>
             <li>The char-level LM makes the <i>Markov assumption</i></li>
-            <li>2 models are trained independently for forward and backward direction</li>
-            <li>Depth is set to 11 and the implementation based on <a href="https://github.com/vmarkovtsev/CharStatModel">CharStatModel</a></li>
+            <li>2 models are trained independently in both directions, (AND, OR) combined</li>
+            <li>Depth is set to 11</li>
+            <li>Implementation based on <a href="https://github.com/vmarkovtsev/CharStatModel">CharStatModel</a></li>
         </ul>
 
     </section>
@@ -402,7 +403,7 @@
             <li>Training :</li>
             <ul>
                 <li>Wikipedia corpus</li>
-                <li>source{d} dataset of identifiers</li>
+                <li>Our dataset</li>
             </ul>
             <br>
             <li>Assuming <a href="https://en.wikipedia.org/wiki/Zipf%27s_law">Zipf's law</a> prior or posterior</li>
@@ -659,8 +660,8 @@
 
 	<div class="progress"></div>
 
+    <script src="node_modules/shower-core/shower.min.js"></script>
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
-	<script src="shower/shower.min.js"></script>
 	<script async src="https://use.fontawesome.com/72adc0539b.js"></script>
 	<script>
     function fullscreen() {
