@@ -222,26 +222,35 @@ MYURL
             <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
             <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
         </ul>
-        <div class="vista" id="qrcode"></div>
+        <img class="qrcode" id="qrcode-black" src="pictures/qrcode_black.svg">
+        <img class="qrcode" id="qrcode-white" src="pictures/qrcode_white.svg">
         <a href="http://bit.ly/???????" id="bitly">bit.ly/???????</a>
         <style>
-            #qrcode {
-                width: 350px;
-                height: 350px;
+            .qrcode {
+                width: 380px;
+                height: 380px;
                 position: absolute;
-                left: 550px;
-                top: 150px;
-                background-image: url("pictures/qrcode_black.svg");
+                right: 81px;
+                top: 81px;
+            }
+            #qrcode-black {
+                display: block;
+            }
+            #qrcode-white {
+                display: none;
             }
             @media not print {
-                #qrcode {
-                    background-image: url("pictures/qrcode_white.svg");
+                #qrcode-black {
+                    display: none;
+                }
+                #qrcode-white {
+                    display: block;
                 }
             }
             #bitly {
                 position: absolute;
-                bottom: 90px;
-                right: 195px;
+                bottom: 70px;
+                right: 188px;
                 font-size: 120%;
             }
         </style>
