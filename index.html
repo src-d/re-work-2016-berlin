@@ -55,6 +55,9 @@
                 color: #bababa;
             }
         }
+        header.caption {
+            padding-right: 134px;
+        }
         #fullscreen {
             float: right;
             height: 48px;
@@ -65,7 +68,8 @@
             border: none;
             color: #3c3d40;
             position: fixed;
-            right: 20px;
+            right: 42px;
+            top: 48px;
         }
         #fullscreen:hover {
             color: #bababa;
@@ -152,7 +156,7 @@
             text-align: center;
         }
         .fa-bullets > li {
-            margin-left: -1.5em;
+            margin-left: -1.6em;
         }
         .black {
             color: #202020 !important;
@@ -171,6 +175,12 @@
         }
         .part {
             background: radial-gradient(circle at center, #ffffff 0, black 130%)
+        }
+        table {
+            margin-top: -30px;
+        }
+        .slide th:first-child, .slide td:first-child {
+            padding-left: 100px;
         }
     </style>
 
@@ -201,11 +211,136 @@
 				top: 0;
 				right: 0;
 				bottom: 0;
-				background: rgba(0, 0, 0, 0.7);
+				background: rgba(0, 0, 0, 0.75);
 			}
         </style>
     </section>
+
+    <section class="slide">
+        <h2>Huge codebases</h2>
+        <table>
+        <tbody>
+            <tr>
+                <th scope="col"></th>
+                <th>LoC, 10⁶</th>
+            </tr>
+            <tr>
+                <td><span style="color: #ffffff">Chrome</span></td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td><span style="color: #ffd0d0">Windows 10</span></td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td><span style="color: #ffb0b0">Facebook</span></td>
+                <td>70</td>
+            </tr>
+            <tr>
+                <td><span style="color: #ff9090">Eclipse Foundation</span></td>
+                <td>160</td>
+            </tr>
+            <tr>
+                <td><span style="color: #ff8080">Apache Foundation</span></td>
+                <td>190</td>
+            </tr>
+            <tr>
+                <td><span style="color: #ff5050">Google</span></td>
+                <td>2,000</td>
+            </tr>
+            <tr>
+                <td><span style="color: #ff3030">GitHub</span></td>
+                <td>>56,000</td>
+            </tr>
+        </tbody>
+        </table>
+    </section>
+
+    <section class="slide">
+        <h2>Problems</h2>
+        <ul>
+            <li>Discover repositories</li>
+            <li>Gather them together → dataset</li>
+            <li>Run simple analysis</li>
+            <li>Run advanced analysis (e.g., ML-driven)</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>source{d} solutions</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-times monofa" aria-hidden="true"></i>Discover repositories</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Gather them together → dataset</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Run simple analysis</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Run advanced analysis (e.g., ML-driven)</li>
+        </ul>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Engine</h2>
+    </section>
     
+    <section class="slide">
+        <h2>Features</h2>
+        <ul>
+            <li>Does scalable code retrieval</li>
+            <li>Interface for language-agnostic code and Git analysis</li>
+            <li>... with SQL syntax</li>
+            <li>Provides APIs</li>
+            <li>Open source</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Engine is easy</h2>
+       <pre>
+           <code>srcd init /path/to/git/repos</code>
+           <code>srcd web sql</code>
+       </pre>
+    </section>
+
+    <section class="slide vista" id="gitbase-web">
+    <style>
+        #gitbase-web {
+            background-image: url("pictures/gitbase-web.png");
+        }
+    </style>
+    </section>
+
+    <section class="slide">
+        <h2>How to parse</h2>
+        <ul>
+            <li>Regular expressions - <a href="http://pygments.org/">Pygments</a>,
+                <a href="https://highlightjs.org/">highlight.js</a></li>
+            <li><span class="box">Abstract syntax tree (AST)</span> - <a href="http://www.antlr.org/">ANTLR</a></li>
+            <li>Compilation</li>
+        </ul>
+        <style>
+            .box {
+                border: 1px solid white;
+                padding: 0 0.2em 0.1em 0.2em;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>  </h2>
+        <a href="https://doc.bblf.sh"><img class="center" src="pictures/bblfsh-logo.png"></a>
+        <div class="vista center" id="bblfsh-arch"></div>
+        <style>
+            #bblfsh-arch {
+                width: 600px;
+                height: 100px;
+                background-image: url("pictures/bblfsh-arch-black.png");
+            }
+            @media not print {
+                #bblfsh-arch {
+                    background-image: url("pictures/bblfsh-arch-white.png");
+                }
+            }
+        </style>
+    </section>
+
     <section class="slide part">
         <h2 class="shout">Summary</h2>
     </section>
