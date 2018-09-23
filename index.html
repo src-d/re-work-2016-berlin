@@ -182,6 +182,30 @@
         .slide th:first-child, .slide td:first-child {
             padding-left: 100px;
         }
+        mark.important {
+            background-color: #dd0000;
+            color: white;
+            font-weight: bold;
+            margin: 0 -0.1em;
+            padding: 0.1em 0.3em 0.3em 0.3em;
+        }
+        img.black {
+            display: block;
+        }
+        img.white {
+            display: none;
+        }
+        @media not print {
+            img.black {
+                display: none;
+            }
+            img.white {
+                display: block;
+            }
+        }
+        .emoji {
+            font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, serif, LastResort;
+        }
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
@@ -277,34 +301,130 @@
     </section>
 
     <section class="slide part">
+        <h2 class="shout">borges</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Features</h2>
+        <ul>
+            <li>Does scalable code retrieval</li>
+            <li>Can work with HDFS</li>
+            <li><a href="https://github.com/src-d/borges">Open source</a></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>siva</h2>
+        <ul>
+            <li>Archive format similar to TAR</li>
+            <li>Low-cost append</li>
+            <li>Constant-time random file access</li>
+            <li>Effective <code>git push</code> inside</li>
+        </ul>
+        <img class="siva black" src="pictures/siva-black.png">
+        <img class="siva white" src="pictures/siva-white.png">
+        <style>
+            .siva {
+                height: 180px;
+                margin-top: -20px;
+                margin-left: auto;
+                margin-right: auto;
+                object-fit: contain;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Challenges</h2>
+        <ul>
+            <li>Git packfiles require efficient <code>seek()</code></li>
+            <li>HDFS does <mark class="important">not</mark> provide efficient <code>seek()</code></li>
+            <li>Git repositories are <mark class="important">unbalanced</mark></li>
+            <li>Metadata must be stored separately</li>
+        </ul>
+    </section>
+
+    <section class="slide part">
         <h2 class="shout">Engine</h2>
     </section>
     
     <section class="slide">
         <h2>Features</h2>
         <ul>
-            <li>Does scalable code retrieval</li>
-            <li>Interface for language-agnostic code and Git analysis</li>
+            <li>Language-agnostic code and Git analysis</li>
             <li>... with SQL syntax</li>
+            <li>... with GUI</li>
             <li>Provides APIs</li>
-            <li>Open source</li>
+            <li><a href="https://github.com/src-d/engine">Open source</a></li>
         </ul>
+        <img src="pictures/work-in-progress.png" id="wip">
+        <style>
+            #wip {
+                position: absolute;
+                right: 100px;
+                bottom: 100px;
+                width: 300px;
+                transform: rotate(-20deg);
+            }
+        </style>
     </section>
 
     <section class="slide">
-        <h2>Engine is easy</h2>
+        <h2>Easy to try</h2>
        <pre>
-           <code>srcd init /path/to/git/repos</code>
-           <code>srcd web sql</code>
+           <code>$ srcd init /path/to/git/repos</code>
+           <code>$ srcd web sql</code>
        </pre>
     </section>
 
     <section class="slide vista" id="gitbase-web">
-    <style>
-        #gitbase-web {
-            background-image: url("pictures/gitbase-web.png");
-        }
-    </style>
+        <style>
+            #gitbase-web {
+                background-image: url("pictures/gitbase-web.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide" >
+        <h2>Top 10 repositories by commit count</h2>
+        <code>$ srcd sql "</code>
+        <pre id="gitbase-sql">
+<code><span class="hl-keyword">SELECT</span> repository_id<span style='color:#d2cd86; '></span>,</span> commit_count <span class="hl-keyword">FROM</span> (</code>
+<code>    <span class="hl-keyword">SELECT</span> r.repository_id, <span class="hl-reserved">COUNT</span>(*) <span class="hl-keyword">AS</span> commit_count</code>
+<code>    <span class="hl-keyword">FROM</span> ref_commits <span class="hl-keyword">AS</span> r</code>
+<code>    <span class="hl-keyword">WHERE</span> r.ref_name = <span class="hl-string">'HEAD'</span></code>
+<code>    <span class="hl-keyword">GROUP</span> <span class="hl-keyword">BY</span> r.repository_id</code>
+<code>) <span class="hl-keyword">ORDER</span> <span class="hl-keyword">BY</span> commit_count <span class="hl-keyword">DESC</span> <span class="hl-keyword">LIMIT</span> 10"</code>
+        </pre>
+        <style>
+            #gitbase-sql {
+                margin-top: 0;
+            }
+            .hl-keyword {
+                color: #cc8242;
+                font-weight: bold;
+            }
+            .hl-def {
+                color: #ffc66d;
+            }
+            .hl-reserved {
+                color: #94558D;
+            }
+            .hl-string {
+                color: #6a8759;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Examples</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Any Git statistics</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>cloc</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Get specific files</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>REGEXP over file contents at each revision</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Query code</li>
+        </ul>
     </section>
 
     <section class="slide">
@@ -326,23 +446,235 @@
     <section class="slide">
         <h2>  </h2>
         <a href="https://doc.bblf.sh"><img class="center" src="pictures/bblfsh-logo.png"></a>
-        <div class="vista center" id="bblfsh-arch"></div>
+        <img class="vista center black bblfsh-arch" src="pictures/bblfsh-arch-black.png">
+        <img class="vista center white bblfsh-arch" src="pictures/bblfsh-arch-white.png">
         <style>
-            #bblfsh-arch {
+            .bblfsh-arch {
                 width: 600px;
                 height: 100px;
-                background-image: url("pictures/bblfsh-arch-black.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide visited">
+        <h2><i class="fa fa-sitemap" aria-hidden="true"></i> Universal AST</h2>
+        <ul>
+            <li>± uniform structure across languages</li>
+            <li>± standard node types (roles)</li>
+            <li>XPath queries</li>
+            <li>4 traversal orders</li>
+        </ul>
+        <pre>
+            <code>$ srcd web parse</code>
+        </pre>
+    </section>
+
+    <section class="slide vista" id="bblfsh-web">
+        <style>
+            #bblfsh-web {
+                background-image: url("pictures/bblfsh-web.gif");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Challenges</h2>
+        Cool, hardcore tech details about indices and caches from Antonio
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Hercules</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Features</h2>
+        <ul>
+            <li>Advanced Git analysis CLI</li>
+            <li>Integrated with the ecosystem</li>
+            <li><a href="https://github.com/src-d/hercules">Open source</a></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Line burndown</h2>
+        <p><code>git blame foo.py</code></p>
+        <div id="obj" class="blame">
+            <div><span><span class="f2014">●</span>2014</span>
+                <pre><code class="b2014">class Foo:</code>
+<code class="b2014">  def bar(self):</code>
+<code class="b2014">    print("!")</code></pre>
+            </div>
+            <div><span><span class="f2015">●</span>2015</span><pre><code class="b2014">class Foo:</code>
+<code class="b2014">  def bar(self):</code>
+<code class="b2015">    print("?")</code>
+<code class="b2015"> </code>
+<code class="b2015">  def baz(self):</code>
+<code class="b2014">    print("!")</code></pre></div>
+            <div><span><span class="f2016">●</span>2016</span><pre><code class="b2016">class FooBarBaz:</code>
+<code class="b2014">  def bar(self):</code>
+<code class="b2016">    """..."""</code>
+<code class="b2016">    print("yo")</code>
+<code class="b2015"> </code>
+<code class="b2015">  def baz(self):</code>
+<code class="b2014">    print("!")</code></pre></div>
+        </div>
+        <style>
+            #obj code:not(:only-child)::before {
+                opacity: 1;
+            }
+            #obj pre {
+                margin: 0;
+            }
+            #obj {
+                display: flex;
+                height: 400px;
+            }
+            #obj > div {
+                flex-grow: 1;
+                flex-basis: 0;
+                height: 100%;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            #obj > div:first-child {
+                padding-left: 0;
+            }
+            #obj > div:last-child {
+                padding-right: 8px;
+            }
+            #obj > div > span {
+                text-align: center;
+                width: 100%;
+                display: block;
+            }
+            .blame code {
+                font-size: 0.8em !important;
+                margin-left: 2.5em !important;
+                margin-top: -1px !important;
+                width: auto !important;
+                color: black !important;
+                padding-left: 1px !important;
+            }
+            .blame code:before {
+                color: #585a5e !important;
+                width: calc(2.5em + 1px) !important;
+                margin-left: -2.5em !important;
+                padding-left: 0.5em !important;
+            }
+            .b2014, .b2014:before {
+                background: #CB8C1D !important;
+            }
+            .b2015, .b2015:before {
+                background: #F1684E !important;
+            }
+            .b2016, .b2016:before {
+                background: #4EB1BA !important;
+            }
+            .f2014 {
+                color: #CB8C1D;
+            }
+            .f2015 {
+                color: #F1684E;
+            }
+            .f2016 {
+                color: #4EB1BA;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Line burndown</h2>
+        <img class="vista obj-plot black" src="pictures/objective_black.svg">
+        <img class="vista obj-plot white" src="pictures/objective_white.svg">
+        <style>
+            .obj-plot {
+                width: 100%;
+                height: 400px;
+                margin-top: -25px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="linux">
+        <h2>Linux</h2>
+        <style>
+            #linux > h2 {
+                position: relative;
+                left: 200px;
+            }
+            #linux {
+                background-image: url("pictures/linux_black.png");
             }
             @media not print {
-                #bblfsh-arch {
-                    background-image: url("pictures/bblfsh-arch-white.png");
+                #linux {
+                    background-image: url("pictures/linux_white.png");
                 }
             }
         </style>
     </section>
 
+    <section class="slide">
+        <h2>Reproduce</h2>
+        <pre>
+            <code>hercules --burndown --first-parent --pb \
+    git://github.com/torvalds/linux | \
+    labours.py -m project</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Line overwrite matrix</h2>
+        <img class="vista matrix-plot black" src="pictures/matrix_black.png">
+        <img class="vista matrix-plot white" src="pictures/matrix_white.png">
+        <style>
+            .matrix-plot {
+                width: 100%;
+                height: 500px;
+                position: relative;
+                top: -120px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Reproduce</h2>
+        <pre>
+            <code>hercules --burndown --burndown-people --pb \
+    git://github.com/tensorflow/tensorflow | \
+    labours.py -m churn_matrix</code>
+        </pre>
+    </section>
+
+    <section class="slide vista" id="couples">
+        <style>
+            #couples {
+                background-image: url("pictures/couples.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Reproduce</h2>
+        <pre>
+            <code>hercules --couples --pb \
+    git://github.com/tensorflow/tensorflow | \
+    labours.py -m couples</code>
+        </pre>
+        It is also possible to embed developers, functions and classes.
+    </section>
+
     <section class="slide part">
         <h2 class="shout">Summary</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Summary</h2>
+        <ul>
+            <li>borges + Engine = <span class="emoji">💪</span> code/Git analysis platform</li>
+            <li>Hercules gains <span class="emoji">👍</span> insights from Git</li>
+            <li>All of those are open source and easy to <span class="emoji">👐</span></li>
+            <li><span class="emoji">👀</span> the live demo later today!</li>
+        </ul>
     </section>
 
 	<section class="slide">
@@ -353,8 +685,8 @@
             <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
             <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
         </ul>
-        <img class="qrcode" id="qrcode-black" src="pictures/qrcode_black.svg">
-        <img class="qrcode" id="qrcode-white" src="pictures/qrcode_white.svg">
+        <img class="qrcode black" src="pictures/qrcode_black.svg">
+        <img class="qrcode white" src="pictures/qrcode_white.svg">
         <a href="http://bit.ly/2QMOY0Q" id="bitly">bit.ly/2QMOY0Q</a>
         <style>
             .qrcode {
@@ -363,20 +695,6 @@
                 position: absolute;
                 right: 81px;
                 top: 81px;
-            }
-            #qrcode-black {
-                display: block;
-            }
-            #qrcode-white {
-                display: none;
-            }
-            @media not print {
-                #qrcode-black {
-                    display: none;
-                }
-                #qrcode-white {
-                    display: block;
-                }
             }
             #bitly {
                 position: absolute;
