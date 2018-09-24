@@ -257,6 +257,30 @@ MYURL
                 right: 188px;
                 font-size: 120%;
             }
+            mark.important {
+                background-color: #dd0000;
+                color: white;
+                font-weight: bold;
+                margin: 0 -0.1em;
+                padding: 0.1em 0.3em 0.3em 0.3em;
+            }
+            img.black {
+                display: block;
+            }
+            img.white {
+                display: none;
+            }
+            @media not print {
+                img.black {
+                    display: none;
+                }
+                img.white {
+                    display: block;
+                }
+            }
+            .emoji {
+                font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, serif, LastResort;
+            }
         </style>
     </section>
 
