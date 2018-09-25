@@ -545,9 +545,9 @@
 <code>        <span class="hl-reserved">LANGUAGE</span>(files.file_path, files.blob_content),</code>
 <code>        <span class="hl-string">'//*[@roleFunction and @roleDeclaration]'</span>), <span class="hl-string">'token'</span>)</code>
 <code>    ) <span class="hl-keyword">as</span> functions</code>
-<code><span class="hl-keyword">FROM</span> files <span class="hl-keyword">NATURAL</span> <span class="hl-keyword">JOIN</span> refs</code>
-<code><span class="hl-keyword">WHERE</span> <span class="hl-reserved">LANGUAGE</span>(files.file_path, files.blob_content) = <span class="hl-string">'Go'</span></code>
-<code>      <span class="hl-keyword">AND</span> refs.ref_name <span style='color:#d2cd86; '>=</span> <span class="hl-string">'HEAD'</span></code>
+<code><span class="hl-keyword">FROM</span> files <span class="hl-keyword">NATURAL JOIN</span> ref_commits <span class="hl-keyword">AS</span> rc</code>
+<code><span class="hl-keyword">WHERE</span> rc.ref_name <span style='color:#d2cd86; '>=</span> <span class="hl-string">'HEAD'</span> <span class="hl-keyword">AND</span> rc.history_index = <span class="hl-string">0</span></code>
+<code>      <span class="hl-keyword">AND</span> <span class="hl-reserved">LANGUAGE</span>(files.file_path, files.blob_content) = <span class="hl-string">'Go'</span></code>
 </pre>
         <style>
             #func-num {
