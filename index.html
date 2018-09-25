@@ -447,12 +447,10 @@
     <section class="slide" >
         <h2>Top 10 repositories by commit count</h2>
         <pre id="gitbase-sql">
-<code><span class="hl-keyword">SELECT</span> repository_id<span style='color:#d2cd86; '></span>,</span> commit_count <span class="hl-keyword">FROM</span> (</code>
-<code>    <span class="hl-keyword">SELECT</span> r.repository_id, <span class="hl-reserved">COUNT</span>(*) <span class="hl-keyword">AS</span> commit_count</code>
-<code>    <span class="hl-keyword">FROM</span> ref_commits <span class="hl-keyword">AS</span> r</code>
-<code>    <span class="hl-keyword">WHERE</span> r.ref_name = <span class="hl-string">'HEAD'</span></code>
-<code>    <span class="hl-keyword">GROUP</span> <span class="hl-keyword">BY</span> r.repository_id</code>
-<code>) <span class="hl-keyword">AS</span> q</code>
+<code><span class="hl-keyword">SELECT</span> r.repository_id, <span class="hl-reserved">COUNT</span>(*) <span class="hl-keyword">AS</span> commit_count</code>
+<code><span class="hl-keyword">FROM</span> ref_commits <span class="hl-keyword">AS</span> r</code>
+<code><span class="hl-keyword">WHERE</span> r.ref_name = <span class="hl-string">'HEAD'</span></code>
+<code><span class="hl-keyword">GROUP</span> <span class="hl-keyword">BY</span> r.repository_id</code>
 <code><span class="hl-keyword">ORDER</span> <span class="hl-keyword">BY</span> commit_count <span class="hl-keyword">DESC</span> <span class="hl-keyword">LIMIT</span> 10</code>
         </pre>
         <style>
