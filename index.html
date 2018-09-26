@@ -178,6 +178,30 @@ MYURL
         .part {
             background: radial-gradient(circle at center, #ffffff 0, black 130%)
         }
+        mark.important {
+            background-color: #dd0000;
+            color: white;
+            font-weight: bold;
+            margin: 0 -0.1em;
+            padding: 0.1em 0.3em 0.3em 0.3em;
+        }
+        img.black {
+            display: block;
+        }
+        img.white {
+            display: none;
+        }
+        @media not print {
+            img.black {
+                display: none;
+            }
+            img.white {
+                display: block;
+            }
+        }
+        .emoji {
+            font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, serif, LastResort;
+        }
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
@@ -225,8 +249,8 @@ MYURL
             <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
             <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
         </ul>
-        <img class="qrcode" id="qrcode-black" src="pictures/qrcode_black.svg">
-        <img class="qrcode" id="qrcode-white" src="pictures/qrcode_white.svg">
+        <img class="qrcode black" src="pictures/qrcode_black.svg">
+        <img class="qrcode white" src="pictures/qrcode_white.svg">
         <a href="http://bit.ly/???????" id="bitly">bit.ly/???????</a>
         <style>
             .qrcode {
@@ -236,49 +260,11 @@ MYURL
                 right: 81px;
                 top: 81px;
             }
-            #qrcode-black {
-                display: block;
-            }
-            #qrcode-white {
-                display: none;
-            }
-            @media not print {
-                #qrcode-black {
-                    display: none;
-                }
-                #qrcode-white {
-                    display: block;
-                }
-            }
             #bitly {
                 position: absolute;
                 bottom: 70px;
                 right: 188px;
                 font-size: 120%;
-            }
-            mark.important {
-                background-color: #dd0000;
-                color: white;
-                font-weight: bold;
-                margin: 0 -0.1em;
-                padding: 0.1em 0.3em 0.3em 0.3em;
-            }
-            img.black {
-                display: block;
-            }
-            img.white {
-                display: none;
-            }
-            @media not print {
-                img.black {
-                    display: none;
-                }
-                img.white {
-                    display: block;
-                }
-            }
-            .emoji {
-                font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, serif, LastResort;
             }
         </style>
     </section>
