@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-MYTITLE
-MYDESCRIPTION
-MYURL
 <head>
-	<title>MYTITLE</title>
+	<title>Machine Learning on Git: Hercules and his Labours</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
@@ -13,14 +10,74 @@ MYURL
     <meta name="twitter:label1" content="Number of slides" />
     <meta name="twitter:data1" content="???" />
     <meta name="twitter:label2" content="Where and when" />
-    <meta name="twitter:data2" content="???" />
+    <meta name="twitter:data2" content="Minsk, Belarus - September 28, 2018" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://vmarkovtsev.github.io/MYURL" />
-    <meta property="og:title" content="MYTITLE" />
-    <meta property="og:description" content="MYDESCRIPTION" />
-    <meta property="og:image" content="https://vmarkovtsev.github.io/MYURL/pictures/cover.jpg" />
-    <meta property="twitter:image" content="https://vmarkovtsev.github.io/MYURL/pictures/cover.jpg" />
-	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/styles.css">
+    <meta property="og:url" content="http://vmarkovtsev.github.io/gowayfest-2018-minsk" />
+    <meta property="og:title" content="Machine Learning on Git: Hercules and his Labours" />
+    <meta property="og:description" content="The dream of software managers is to have an in-depth overview of what is happening in the project. I have developed Hercules, an open source library and CLI in Go to analyze the development history and help to make the dream come true. It ships with a few algorithms to estimate the architecture quality, the logical parts of the codebase, relationships between developers and their ownership of the project. There will be insights into how Git works. I will also share my experience of developing a Go command line application from scratch." />
+    <meta property="og:image" content="https://vmarkovtsev.github.io/gowayfest-2018-minsk/pictures/cover.jpg" />
+    <meta property="twitter:image" content="https://vmarkovtsev.github.io/gowayfest-2018-minsk/pictures/cover.jpg" />
+    <style>
+        /* PT Sans */
+
+        @font-face {
+            font-family: 'PT Sans';
+            src:
+                local('PT Sans'),
+                local('PTSans-Regular'),
+                url('shower/themes/ribbon/fonts/pt-sans-regular.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'PT Sans';
+            font-weight: bold;
+            src:
+                local('PT Sans Bold'),
+                local('PTSans-Bold'),
+                url('shower/themes/ribbon/fonts/pt-sans-bold.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'PT Sans';
+            font-style: italic;
+            src:
+                local('PT Sans Italic'),
+                local('PTSans-Italic'),
+                url('shower/themes/ribbon/fonts/pt-sans-italic.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'PT Sans';
+            font-style: italic;
+            font-weight: bold;
+            src:
+                local('PT Sans Bold Italic'),
+                local('PTSans-BoldItalic'),
+                url('shower/themes/ribbon/fonts/pt-sans-bold-italic.woff2') format('woff2');
+        }
+
+        /* PT Narrow */
+
+        @font-face {
+            font-family: 'PT Sans Narrow';
+            font-weight: bold;
+            src:
+                local('PT Sans Narrow Bold'),
+                local('PTSans-NarrowBold'),
+                url('shower/themes/ribbon/fonts/pt-sans-narrow-bold.woff2') format('woff2');
+        }
+
+        /* PT Mono */
+
+        @font-face {
+            font-family: 'PT Mono';
+            src:
+                local('PT Mono'),
+                local('PTMono-Regular'),
+                url('shower/themes/ribbon/fonts/pt-mono-regular.woff2') format('woff2');
+        }
+    </style>
+    <link rel="stylesheet" href="node_modules/shower-ribbon/styles/styles.css">
     <style>
         .shower {
             --slide-ratio: calc(16 / 9);
@@ -31,7 +88,7 @@ MYURL
 
 	<header class="caption">
 		<button type="button" id="fullscreen" title="Go fullscreen" onclick="fullscreen()"><i class="fa fa-arrows-alt"></i></button>
-		<h1>MYTITLE</h1>
+		<h1>Machine Learning on Git: Hercules and his Labours</h1>
 		<p>Vadim Markovtsev, <a href="https://sourced.tech">source{d}</a>.</p>
 	</header>
 
@@ -178,10 +235,34 @@ MYURL
         .part {
             background: radial-gradient(circle at center, #ffffff 0, black 130%)
         }
+        mark.important {
+            background-color: #dd0000;
+            color: white;
+            font-weight: bold;
+            margin: 0 -0.1em;
+            padding: 0.1em 0.3em 0.3em 0.3em;
+        }
+        img.black {
+            display: block;
+        }
+        img.white {
+            display: none;
+        }
+        @media not print {
+            img.black {
+                display: none;
+            }
+            img.white {
+                display: block;
+            }
+        }
+        .emoji {
+            font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, serif, LastResort;
+        }
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
-		<h2>MYTITLE</h2>
+		<h2>Machine Learning on Git: Hercules and his Labours</h2>
 		<p>Vadim Markovtsev<br><a href="https://sourced.tech">source{d}</a></p>
 
 		<style>
@@ -207,9 +288,538 @@ MYURL
 				top: 0;
 				right: 0;
 				bottom: 0;
-				background: rgba(0, 0, 0, 0.7);
+				background: rgba(0, 0, 0, 0.5);
 			}
+            @media not print {
+                #cover h2 {
+                    color: white;
+                }
+            }
         </style>
+    </section>
+
+    <section class="slide vista github-shot" id="github-contributors">
+        <style>
+            .github-shot {
+                background-color: white;
+            }
+            #github-contributors {
+                background-image: url("pictures/github_contributors.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista github-shot" id="github-churn">
+        <style>
+            #github-churn {
+                background-image: url("pictures/github_churn.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">We can do better</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Line burndown</h2>
+        <p><code>git blame foo.py</code></p>
+        <div id="obj" class="blame">
+            <div><span><span class="f2014">●</span>2014</span>
+                <pre><code class="b2014">func foo() {</code>
+<code class="b2014">  println("bar")</code>
+<code class="b2014">}</code></pre>
+            </div>
+            <div><span><span class="f2015">●</span>2015</span><pre><code class="b2014">func foo() {</code>
+<code class="b2014">  println("bar")</code>
+<code class="b2014">}</code>
+<code class="b2015">func qux() {</code>
+<code class="b2015">  println("baz")</code>
+<code class="b2015">}</code></pre></div>
+            <div><span><span class="f2016">●</span>2016</span><pre><code class="b2014">func foo() {</code>
+<code class="b2016">  println("waldo")</code>
+<code class="b2014">}</code>
+<code class="b2016">const X = 10</code>
+<code class="b2016">func spam() {</code>
+<code class="b2015">  println("baz")</code>
+<code class="b2015">}</code></pre></div>
+        </div>
+        <style>
+            .blame code:not(:only-child)::before {
+                opacity: 1 !important;
+            }
+            .blame pre {
+                margin: 0;
+            }
+            #obj {
+                display: flex;
+                height: 400px;
+            }
+            #obj > div {
+                flex-grow: 1;
+                flex-basis: 0;
+                height: 100%;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            #obj > div:first-child {
+                padding-left: 0;
+            }
+            #obj > div:last-child {
+                padding-right: 8px;
+            }
+            #obj > div > span {
+                text-align: center;
+                width: 100%;
+                display: block;
+            }
+            .blame code {
+                font-size: 0.8em !important;
+                margin-left: 2.5em !important;
+                margin-top: -1px !important;
+                width: auto !important;
+                color: black !important;
+                padding-left: 1px !important;
+            }
+            .blame code:before {
+                color: #585a5e !important;
+                width: calc(2em + 1px) !important;
+                margin-left: -2.5em !important;
+                padding-left: 0.5em !important;
+            }
+            .b2014, .b2014:before {
+                background: #CB8C1D !important;
+            }
+            .b2015, .b2015:before {
+                background: #F1684E !important;
+            }
+            .b2016, .b2016:before {
+                background: #4EB1BA !important;
+            }
+            .f2014 {
+                color: #CB8C1D;
+            }
+            .f2015 {
+                color: #F1684E;
+            }
+            .f2016 {
+                color: #4EB1BA;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Line burndown</h2>
+        <img class="vista obj-plot black" src="pictures/objective_black.svg">
+        <img class="vista obj-plot white" src="pictures/objective_white.svg">
+        <style>
+            .obj-plot {
+                width: 100%;
+                height: 400px;
+                margin-top: -25px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="linux">
+        <h2>Linux</h2>
+        <style>
+            #linux > h2 {
+                position: relative;
+                left: 200px;
+            }
+            #linux {
+                background-image: url("pictures/linux_black.png");
+            }
+            @media not print {
+                #linux {
+                    background-image: url("pictures/linux_white.png");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Story</h2>
+        <ul>
+            <li><a href="https://erikbern.com/2016/12/05/the-half-life-of-code.html">"git-of-theseus"</a>
+                by Erik Bernhardsson</li>
+            <li>I decided to build the similar tool using
+                <a href="https://github.com/src-d/go-git">go-git</a></li>
+            <li>This project was named Hercules</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Problems</h2>
+        <ul>
+            <li>Correctness</li>
+            <li>Performance</li>
+            <li>Abstraction</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Diff route</h2>
+        <a href="https://drive.google.com/file/d/0B-w8jGUJto0iaWRjcFZUZy15NVU">"How to blame"</a> by Alberto Cortes.
+        <ol>
+            <li>Trace the commits chain backwards starting from HEAD.
+                <pre><code class="inline-no-offset">&lt;root&gt; D 🠔 E 🠔 F 🠔 G 🠔 H 🠔 I <span class="success">HEAD</span></code></pre>
+            </li>
+            <li>Diff starting from the root along the path from (1).
+                <pre><code class="inline-no-offset"><span class="success">&lt;root&gt;</span> D 🠖 E 🠖 F 🠖 G 🠖 H 🠖 I HEAD</code></pre>
+            </li>
+        </ol>
+    </section>
+
+    <section class="slide">
+        <h2>Diff route</h2>
+        <p>Where are my branches?</p>
+        <pre>
+            <code class="inline">      A---B---C</code>
+<code class="inline">     /         \</code>
+<code class="inline">D---E---F---G---H---I HEAD</code>
+<code class="inline">     ----------> time</code>
+<code class="inline"> way <----------</code>
+        </pre>
+        <p><span class="important">Git branches are pointers, and the history is lost.</span>
+            <span class="success">Merges are ordered.</span></p>
+    </section>
+
+    <section class="slide">
+        <h2>Diff route</h2>
+        <p>Which way to go?</p>
+        <pre>
+            <code class="inline">      A---B---C topic</code>
+<code class="inline">     /         \</code>
+<code class="inline">D---E---F---G---H---I master</code>
+<code class="inline">     ----------> time</code>
+<code class="inline"> way <----------</code>
+        </pre>
+        <p class="important">Blaming using both branches is hard and sometimes even impossible.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Diff route</h2>
+        <p>There can be "octopus" merges.</p>
+        <pre>
+            <code class="inline">      A---B---C topic1</code>
+<code class="inline">     /         \</code>
+<code class="inline">D---E---F---G---H---I master</code>
+<code class="inline">         \     /</code>
+<code class="inline">          J---K topic2</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Diff route</h2>
+        <p>There can be multiple roots.</p>
+        <pre>
+            <code class="inline">      A---B---C subproject1</code>
+<code class="inline">               \</code>
+<code class="inline">D---E---F---G---H---I master</code>
+<code class="inline">               /</code>
+<code class="inline">          J---K subproject2</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Diff route</h2>
+        <img class="black center forks_merges" src="pictures/forks_merges2_black.png">
+        <img class="white center forks_merges" src="pictures/forks_merges2_white.png">
+        <style>
+            .forks_merges {
+                height: 380px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Diff route: --first-parent</h2>
+        <img class="black center forks_merges" src="pictures/forks_merges1_black.png">
+        <img class="white center forks_merges" src="pictures/forks_merges1_white.png">
+    </section>
+
+    <section class="slide">
+        <h2>Tree difference</h2>
+        <p class="important">We need to compare file trees.</p>
+        <ul>
+            <li>Insert</li>
+            <li>Remove</li>
+            <li>Modify</li>
+            <li>Rename</li>
+        </ul>
+        <a href="https://blog.sourced.tech/post/difftree/">"Comparing Git Trees in Go" by A. Cortes.</a>
+    </section>
+
+    <section class="slide">
+        <h2>Tree difference</h2>
+        <div id="treediff">
+            <div>
+                <img class="black" src="pictures/treediff_inserted_black.png">
+                <img class="black" src="pictures/treediff_deleted_black.png">
+                <img class="white" src="pictures/treediff_inserted_white.png">
+                <img class="white" src="pictures/treediff_deleted_white.png">
+            </div>
+            <div>
+                <img class="black" src="pictures/treediff_renamed_black.png">
+                <img class="black" src="pictures/treediff_modified_black.png">
+                <img class="white" src="pictures/treediff_renamed_white.png">
+                <img class="white" src="pictures/treediff_modified_white.png">
+            </div>
+        </div>
+        <style>
+            #treediff {
+                display: flex;
+                flex-direction: row;
+            }
+            #treediff > div {
+                flex-grow: 1;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+            #treediff img {
+                width: 400px;
+                object-fit: contain;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><i class="fa fa-sitemap" aria-hidden="true"></i> Merkle Tree</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Git ≈ AI on Bitcoin in the cloud!!!</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Fuzzy renames</h2>
+        <code>git log <span class="important">-M=50%</span></code>
+    </section>
+
+    <section class="slide">
+        <h2>Fuzzy renames</h2>
+        <p>For each inserted file:</p>
+        <ol>
+            <li>Sort deleted files by size</li>
+            <li>Take window, size depends on M</li>
+            <li>byte-level diff to window</li>
+            <li>Greedy choice of the nearest if fits M</li>
+            <li>+ Same file name hacks</li>
+            <li>+ <a href="https://github.com/git/git/blob/master/diffcore-rename.c">Other crazy hacks in CGit</a></li>
+        </ol>
+    </section>
+
+    <section class="slide">
+        <h2>Performance</h2>
+        <p>Diff algorithms:</p>
+        <ul>
+            <li><a href="http://www.xmailserver.org/diff2.pdf">Myers</a> - most popular</li>
+            <li>Patience - heuristics for better readability</li>
+            <li>Histogram - used in <a href="http://download.eclipse.org/jgit/docs/jgit-2.0.0.201206130900-r/apidocs/org/eclipse/jgit/diff/HistogramDiff.html">jgit</a></li>
+        </ul>
+        <p class="success">Myers algorithm is enough for our analytics.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Performance</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Caching objects in go-git</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i><code>git log</code></li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Memory consumption</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Performance</h2>
+        <code>git checkout &lt;commit&gt; && git blame &lt;file&gt;</code>
+        <p>takes O(n) steps where n is the number of commits before
+            <code>&lt;commit&gt;</code>.</p>
+        <p>Thus naïve burndown takes O(n<sup>2</sup>).</p>
+        <p class="success">We can reduce it to O(n) using the incremental algorithm!</p>
+    </section>
+
+    <section class="slide">
+        <h2>Performance</h2>
+        <p class="important">Incremental blame is not possible using libgit2 and cgit API.</p>
+        <img src="pictures/deeper.jpg" class="center" id="deeper">
+        <style>
+            #deeper {
+                height: 320px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Performance</h2>
+        <p>How to store the line intervals?</p>
+        <div class="diff-show blame">
+            <pre><code class="b2014">func foo() {</code>
+<code class="b2016">  println("waldo")</code>
+<code class="b2014">}</code>
+<code class="b2016">const X = 10</code>
+<code class="b2016">func spam() {</code>
+<code class="b2015">  println("baz")</code>
+<code class="b2015">}</code></pre>
+            <div class="vista" id="ll"></div>
+        </div>
+        <style>
+            .diff-show {
+                display: flex;
+                align-items: center;
+            }
+            .diff-show > pre {
+                width: 300px;
+                margin-bottom: 0;
+                margin-right: 50px;
+            }
+            .diff-show > div {
+                flex-grow: 1;
+                flex-basis: 0;
+            }
+            #ll {
+                height: 100px;
+                background-image: url("pictures/linked_list_black.svg");
+            }
+            @media not print {
+                #ll {
+                    background-image: url("pictures/linked_list_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Performance</h2>
+        <p>How to store the line intervals?</p>
+        <div class="diff-show blame">
+            <pre><code class="b2014">func foo() {</code>
+<code class="b2016">  println("waldo")</code>
+<code class="b2014">}</code>
+<code class="b2016">const X = 10</code>
+<code class="b2016">func spam() {</code>
+<code class="b2015">  println("baz")</code>
+<code class="b2015">}</code></pre>
+            <div class="vista" id="tree"></div>
+        </div>
+        <style>
+            #tree {
+                height: 250px;
+                background-image: url("pictures/tree_black.svg");
+            }
+            @media not print {
+                #tree {
+                    background-image: url("pictures/tree_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Performance</h2>
+        <p>How to store the line intervals?</p>
+        <ul>
+            <li>Linked list
+                <ul>
+                    <li class="important">O(file size) edit's location</li>
+                    <li class="success">O(1) update</li>
+                </ul>
+            </li>
+            <li>Balanced binary tree
+                <ul>
+                    <li class="success">O(log (file size)) edit's location</li>
+                    <li class="important">O(file size) update</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Performance</h2>
+        <figure>
+            <img src="pictures/spark.png" class="center spark">
+            <figcaption class="white">
+                <a href="https://github.com/apache/spark/commit/7026ee23e0a684e13f9d7dfbb8f85e810106d022#diff-916ca56b663f178f302c265b7ef38499">apache/spark@7026ee23</a>
+            </figcaption>
+        </figure>
+        <style>
+            .spark {
+                height: 380px;
+            }
+            .spark + figcaption {
+                position: absolute;
+                bottom: 50px;
+                right: 200px;
+                font-size: 12px;
+                -webkit-transform-origin: 0 100%;
+                transform-origin: 0 100%;
+                -webkit-transform: translateX(100%) rotate(-90deg);
+                transform: translateX(100%) rotate(-90deg);
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Performance</h2>
+        <figure>
+            <img src="pictures/spark.png" class="center spark">
+            <figcaption class="white">
+                <a href="https://github.com/apache/spark/commit/7026ee23e0a684e13f9d7dfbb8f85e810106d022#diff-916ca56b663f178f302c265b7ef38499">apache/spark@7026ee23</a>
+            </figcaption>
+        </figure>
+        <h3 id="complexity">O(1) update complexity</h3>
+        <style>
+            #complexity {
+                display: table;
+                position: relative;
+                color: black;
+                margin-left: auto;
+                margin-right: auto;
+                top: -290px;
+                font-size: 200% !important;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Performance</h2>
+        <pre><code>FileDiff          0.503959
+TreeDiff          0.457430
+Burndown          0.033033
+RenameAnalysis    0.003440
+BlobCache         0.002025
+DaysSinceStart    0.000064
+IdentityDetector  0.000051</code></pre>
+    </section>
+
+    <section class="slide">
+        <h2>Performance</h2>
+        <pre id="pprof"><code>flat%   sum%   cum%
+8.82%  8.82% 17.13%  runtime.scanobject
+6.05% 14.86% 26.95%  runtime.mallocgc
+5.79% 20.65%  5.79%  runtime.heapBitsSetType
+5.54% 26.20%  5.54%  runtime.heapBitsForObject
+4.53% 30.73%  4.53%  runtime.memclrNoHeapPointers
+2.77% 33.50%  2.77%  runtime.memmove
+2.27% 35.77%  2.27%  runtime.greyobject
+2.27% 38.04%  2.27%  runtime.nextFreeFast
+2.02% 40.05%  2.02%  runtime.indexbytebody
+2.02% 42.07%  3.78%  runtime.mapaccess2_faststr</code></pre>
+        <style>
+            #pprof > code {
+                line-height: 1.3;
+            }
+        </style>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Showcase</h2>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Go</h2>
     </section>
     
     <section class="slide part">
@@ -223,62 +833,28 @@ MYURL
             <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
             <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
             <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
-            <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
         </ul>
-        <img class="qrcode" id="qrcode-black" src="pictures/qrcode_black.svg">
-        <img class="qrcode" id="qrcode-white" src="pictures/qrcode_white.svg">
-        <a href="http://bit.ly/???????" id="bitly">bit.ly/???????</a>
+        <div id="qrcode-container">
+            <img class="qrcode black" src="pictures/qrcode_black.svg">
+            <img class="qrcode white" src="pictures/qrcode_white.svg">
+            <a href="http://bit.ly/2ORay2O" id="bitly">bit.ly/2ORay2O</a>
+        </div>
         <style>
-            .qrcode {
+            #qrcode-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
                 width: 380px;
-                height: 380px;
                 position: absolute;
                 right: 81px;
                 top: 81px;
             }
-            #qrcode-black {
-                display: block;
-            }
-            #qrcode-white {
-                display: none;
-            }
-            @media not print {
-                #qrcode-black {
-                    display: none;
-                }
-                #qrcode-white {
-                    display: block;
-                }
+            .qrcode {
+                height: 380px;
             }
             #bitly {
-                position: absolute;
-                bottom: 70px;
-                right: 188px;
-                font-size: 120%;
-            }
-            mark.important {
-                background-color: #dd0000;
-                color: white;
-                font-weight: bold;
-                margin: 0 -0.1em;
-                padding: 0.1em 0.3em 0.3em 0.3em;
-            }
-            img.black {
                 display: block;
-            }
-            img.white {
-                display: none;
-            }
-            @media not print {
-                img.black {
-                    display: none;
-                }
-                img.white {
-                    display: block;
-                }
-            }
-            .emoji {
-                font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, serif, LastResort;
+                font-size: 120%;
             }
         </style>
     </section>
