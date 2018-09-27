@@ -541,6 +541,26 @@
     </section>
 
     <section class="slide">
+        <h2>How to blame?</h2>
+        <code>git checkout &lt;commit&gt; && git blame &lt;file&gt;</code>
+        <p>takes O(n) steps where n is the number of commits before
+            <code>&lt;commit&gt;</code>.</p>
+        <p>Thus naïve burndown takes O(n<sup>2</sup>).</p>
+        <p class="success">We can reduce it to O(n) using the incremental algorithm!</p>
+    </section>
+
+    <section class="slide">
+        <h2>How to blame?</h2>
+        <p class="important">Incremental blame is not possible using libgit2 and cgit API.</p>
+        <img src="pictures/deeper.jpg" class="center" id="deeper">
+        <style>
+            #deeper {
+                height: 320px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
         <h2>Tree difference</h2>
         <p class="important">We need to compare file trees.</p>
         <ul>
@@ -613,8 +633,7 @@
     </section>
 
     <section class="slide">
-        <h2>Performance</h2>
-        <p>Diff algorithms:</p>
+        <h2>Diff</h2>
         <ul>
             <li><a href="http://www.xmailserver.org/diff2.pdf">Myers</a> - most popular</li>
             <li>Patience - heuristics for better readability</li>
@@ -624,37 +643,7 @@
     </section>
 
     <section class="slide">
-        <h2>Performance</h2>
-        <ul class="no-bullets fa-bullets">
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Caching objects in go-git</li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i><code>git log</code></li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Memory consumption</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Performance</h2>
-        <code>git checkout &lt;commit&gt; && git blame &lt;file&gt;</code>
-        <p>takes O(n) steps where n is the number of commits before
-            <code>&lt;commit&gt;</code>.</p>
-        <p>Thus naïve burndown takes O(n<sup>2</sup>).</p>
-        <p class="success">We can reduce it to O(n) using the incremental algorithm!</p>
-    </section>
-
-    <section class="slide">
-        <h2>Performance</h2>
-        <p class="important">Incremental blame is not possible using libgit2 and cgit API.</p>
-        <img src="pictures/deeper.jpg" class="center" id="deeper">
-        <style>
-            #deeper {
-                height: 320px;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>Performance</h2>
-        <p>How to store the line intervals?</p>
+        <h2>Line intervals</h2>
         <div class="diff-show blame">
             <pre><code class="b2014">func foo() {</code>
 <code class="b2016">  println("waldo")</code>
@@ -692,8 +681,7 @@
     </section>
 
     <section class="slide">
-        <h2>Performance</h2>
-        <p>How to store the line intervals?</p>
+        <h2>Line intervals</h2>
         <div class="diff-show blame">
             <pre><code class="b2014">func foo() {</code>
 <code class="b2016">  println("waldo")</code>
@@ -718,8 +706,7 @@
     </section>
 
     <section class="slide">
-        <h2>Performance</h2>
-        <p>How to store the line intervals?</p>
+        <h2>Line intervals</h2>
         <ul>
             <li>Linked list
                 <ul>
@@ -737,7 +724,7 @@
     </section>
 
     <section class="slide">
-        <h2>Performance</h2>
+        <h2>Line intervals</h2>
         <figure>
             <img src="pictures/spark.png" class="center spark">
             <figcaption class="white">
@@ -762,7 +749,7 @@
     </section>
 
     <section class="slide">
-        <h2>Performance</h2>
+        <h2>Line intervals</h2>
         <figure>
             <img src="pictures/spark.png" class="center spark">
             <figcaption class="white">
@@ -784,7 +771,16 @@
     </section>
 
     <section class="slide">
-        <h2>Performance</h2>
+        <h2>Low level performance</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Caching objects in go-git</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i><code>git log</code></li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Memory consumption</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Profile</h2>
         <pre><code>FileDiff          0.503959
 TreeDiff          0.457430
 Burndown          0.033033
@@ -795,7 +791,7 @@ IdentityDetector  0.000051</code></pre>
     </section>
 
     <section class="slide">
-        <h2>Performance</h2>
+        <h2>Profile</h2>
         <pre id="pprof"><code>flat%   sum%   cum%
 8.82%  8.82% 17.13%  runtime.scanobject
 6.05% 14.86% 26.95%  runtime.mallocgc
