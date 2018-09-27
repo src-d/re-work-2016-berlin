@@ -817,6 +817,145 @@ IdentityDetector  0.000051</code></pre>
     <section class="slide part">
         <h2 class="shout">Go</h2>
     </section>
+
+    <section class="slide">
+        <h2 class="shout">Flat vs nested project structure</h2>
+    </section>
+
+    <section class="slide vista" id="flat-git">
+        <style>
+            #flat-git {
+                background: white;
+                background-image: url("pictures/flat_git.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>internal</code> package</h2>
+        <style>
+            .slide h2 code {
+                background: none !important;
+            }
+        </style>
+    </section>
+
+    <section class="slide snippet">
+        <script src="https://gist.github.com/vmarkovtsev/b13f892aa9f63c41303ccf17f3280120.js"></script>
+        <style>
+            .snippet {
+                padding: 0;
+            }
+            .snippet, .gist .blob-wrapper {
+                background: white;
+            }
+            .gist, .gist-file, .gist-data {
+                height: 100%;
+                border: none !important;
+            }
+            .gist td {
+                background: none !important;
+                font-size: 125% !important;
+            }
+            @media not print {
+                .snippet, .gist .blob-wrapper, .gist table, .gist-data tbody  {
+                    background: black !important;
+                }
+
+                /* Line Numbers */
+                .gist-data tbody td:nth-of-type(1) {
+                    color: #a0a0a0 !important;
+                }
+
+                /* Code */
+                .gist-data tbody td:nth-of-type(2){
+                    color: #FFFFFF !important;
+                }
+
+                /* Comments */
+                .pl-c {
+                    color: #a0a0a0 !important;
+                }
+
+                /* Function */
+                .pl-k, tbody tr:first-child .blob-code, tbody tr:last-child .blob-code {
+                    color: #CC7832 !important;
+                    font-weight: bold;
+                }
+
+                /* Function Name */
+                .pl-en {
+                    color: #EDCA7D !important;
+                }
+
+                .pl-en ~ .pl-v {
+                    color: white !important;
+                }
+
+                /* Function Method */
+                .pl-c1 {
+                    color: #FFFFFF !important;
+                }
+                /* "'s around Strings */
+                .pl-pds {
+                    color: #74A568 !important;
+                }
+
+                /* Strings */
+                .pl-s {
+                    color: #74A568 !important;
+                }
+
+                .pl-smi {
+                    color: #507874 !important;
+                }
+
+                .pl-v {
+                    color: #A48BB9 !important;
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Pointer from <code>interface</code></h2>
+    </section>
+
+    <section class="slide" id="hack">
+        <pre><code><span class="pl-k">func</span> getPtr(ip *<span class="pl-k">interface</span>{}) unsafe.<span class="pl-smi">Pointer</span> {</code>
+<code>    <span class="pl-k">return</span> unsafe.<span class="pl-smi">Pointer</span>(<span class="pl-smi">intptr</span>(unsafe.<span class="pl-smi">Pointer</span>(ip)) +</code>
+<code>        unsafe.Sizeof(ip))</code>
+<code>}</code>
+<code>iface := <span class="pl-k">interface</span>{}(111);</code>
+<code>ptr := (**<span class="pl-smi">int</span>)(getPtr(&iface));</code>
+<code>i := 7;</code>
+<code>*ptr = &amp;i;</code>
+<code>println(iface.(<span class="pl-smi">int</span>)) <span class="pl-c">// 7</span></code>
+<code>i = 8;</code>
+<code>println(iface.(<span class="pl-smi">int</span>))  <span class="pl-c">// 8</span></code>
+        </pre>
+        <style>
+            #hack {
+                font-size: 85%;
+                padding-top: 20px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Nested variable redefinition</h2>
+    </section>
+
+    <section class="slide">
+        <pre><code><span class="pl-k">var</span> err error</code>
+<code><span class="pl-k">if</span> <span class="pl-smi">true</span> {</code>
+<code>    ret, err <mark class="important">:=</mark> call()  <span class="pl-c">// error</span></code>
+<code>}</code>
+<code>if err != nil {</code>
+<code>    <span class="pl-c">// nope</span></code>
+<code>}</code>
+        </pre>
+    </section>
     
     <section class="slide part">
         <h2 class="shout">Summary</h2>
