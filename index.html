@@ -280,6 +280,14 @@
 			#cover {
 				background: url("pictures/cover.jpg") black;
 			}
+            @media print {
+                #cover {
+                    background: white;
+                }
+                #cover h2:before {
+                    display: none;
+                }
+            }
 			#cover h2:before {
 				content: "";
 				position: absolute;
@@ -814,8 +822,65 @@ IdentityDetector  0.000051</code></pre>
         <h2 class="shout">Showcase</h2>
     </section>
 
-    <section class="slide part">
-        <h2 class="shout">Go</h2>
+    <section class="slide vista" id="ownership">
+        <h2>Ownership</h2>
+        <style>
+            #ownership {
+                background-image: url("pictures/ownership_black.png");
+            }
+            @media not print {
+                #ownership {
+                    background-image: url("pictures/ownership_white.png");
+                }
+            }
+            #ownership h2 {
+                text-align: center;
+                background: transparent;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="churn_matrix">
+        <h2>Overwrites</h2>
+        <style>
+            #churn_matrix {
+                background-image: url("pictures/churn_matrix_black.png");
+            }
+            @media not print {
+                #churn_matrix {
+                    background-image: url("pictures/churn_matrix_white.png");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Couples</h2>
+        <p>More common commits ⇒ closer in 3D</p>
+        <ol>
+            <li>Build the temporal matrix (size NxN)</li>
+            <li>Apply <a href="https://github.com/src-d/tensorflow-swivel">Swivel</a> (size Nx100)</li>
+            <li>Apply <a href="https://distill.pub/2016/misread-tsne/">t-SNE</a> (size Nx3)</li>
+            <li>ML implementation: Tensorflow and Tensorboard</li>
+        </ol>
+        <p class="success">Works with files, developers, classes, functions, ...</p>
+    </section>
+
+    <section class="slide vista" id="couples">
+        <style>
+            #couples {
+                background-image: url(pictures/couples.png);
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="cobra">
+        <h2>spf13/cobra</h2>
+        <style>
+            #cobra {
+                background-image: url("pictures/bill_gates.jpg");
+            }
+        </style>
     </section>
 
     <section class="slide">
@@ -961,6 +1026,16 @@ IdentityDetector  0.000051</code></pre>
         <h2 class="shout">Summary</h2>
     </section>
 
+    <section class="slide">
+            <h2>Summary</h2>
+            <ul>
+                <li>Git is a complex thing</li>
+                <li>Algorithms dominate over the language</li>
+                <li>Hercules does funny analysis over Git history</li>
+                <li>Go has some quirks but that's fine</li>
+            </ul>
+        </section>
+
 	<section class="slide">
         <h2>Thank you</h2>
         <ul class="no-bullets fa-bullets">
@@ -968,6 +1043,7 @@ IdentityDetector  0.000051</code></pre>
             <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
             <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
             <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
+            <li><i class="fa fa-thumbs-o-up monofa" aria-hidden="true"></i><a href="https://github.com/src-d/hercules">github.com/src-d/hercules</a></li>
         </ul>
         <div id="qrcode-container">
             <img class="qrcode black" src="pictures/qrcode_black.svg">
