@@ -492,47 +492,54 @@
     </section>
 
     <section class="slide">
-        <h2>Mobilenet v2</h2>
-        <button id="load-tfjs" onclick="load_tfjs()">Load tfjs</button>
-        <button id="load-model" style="display: none" onclick="load_model()">Load model</button>
+        <h2>Mobilenet</h2>
+        <button id="load-mobilenet-tfjs" onclick="load_mobilenet_tfjs()">Load tfjs</button>
+        <button id="load-mobilenet-model" style="display: none" onclick="load_mobilenet_model()">Load model</button>
         <button id="file-button" style="display: none" onclick="document.getElementById('file').click();">Classify image</button>
         <input type="file" id="file" name="file" style="display: none" onchange="load_img(this)"/>
         <div id="img-container">
             <img style="display: none" width=224 height=224 id="file-img" onload="predict(this)">
             <ol id="predictions"></ol>
         </div>
-        <div id="status"></div>
+        <div class="status" id="mobilenet-status"></div>
 
         <script src="imagenet_classes.js"></script>
         <script>
+            const MOBILENET_ALPHA = "0.50";  // https://github.com/fchollet/deep-learning-models/blob/master/mobilenet.py#L29
             const MOBILENET_MODEL_PATH =
-                "https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json";
-            const IMAGE_SIZE = 224;
+                `https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_${MOBILENET_ALPHA}_224/model.json`;
 
-            function report_status(message, t0) {
+            function report_mobilenet_status(message, t0) {
                 const t1 = performance.now();
-                document.getElementById("status").textContent = message + " (" + ((t1 - t0)|0) + "ms)";
+                document.getElementById("mobilenet-status").textContent = message + " (" + ((t1 - t0)|0) + "ms)";
             }
 
-            function load_tfjs() {
+            function load_mobilenet_tfjs() {
                 const t0 = performance.now();
-                const script = document.createElement("script");
-                script.onload = () => {
-                    report_status("Loaded tfjs", t0);
-                    document.getElementById("load-tfjs").style = "display: none";
-                    document.getElementById("load-model").style = "display: inline-block";
-                };
-                script.src = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs";
-                document.body.appendChild(script);
+                function onload() {
+                    report_mobilenet_status("Loaded tfjs", t0);
+                    document.getElementById("load-mobilenet-tfjs").style = "display: none";
+                    document.getElementById("load-mobilenet-model").style = "display: inline-block";
+                }
+                if (typeof tf === 'undefined') {
+                    const script = document.createElement("script");
+                    script.onload = onload;
+                    script.src = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs";
+                    document.body.appendChild(script);
+                } else {
+                    onload();
+                }
             }
 
-            async function load_model() {
+            async function load_mobilenet_model() {
                 const t0 = performance.now();
                 mobilenet = await tf.loadModel(MOBILENET_MODEL_PATH);
-                mobilenet.predict(tf.zeros([1, IMAGE_SIZE, IMAGE_SIZE, 3])).dispose();
-                report_status("Loaded model", t0);
+                tf.tidy(() => {
+                    return mobilenet.predict(tf.zeros([1].concat(mobilenet.input.shape.slice(1))));
+                }).dispose();
+                report_mobilenet_status("Loaded model", t0);
                 document.getElementById("file-button").style = "";
-                document.getElementById("load-model").style = "display: none";
+                document.getElementById("load-mobilenet-model").style = "display: none";
             }
 
             async function load_img(input) {
@@ -549,9 +556,10 @@
                     const data = tf.fromPixels(img).toFloat();
                     const offset = tf.scalar(127.5);
                     const normalized = data.sub(offset).div(offset);
-                    const batched = normalized.reshape([1, IMAGE_SIZE, IMAGE_SIZE, 3]);
+                    const batched = normalized.reshape([1].concat(mobilenet.input.shape.slice(1)));
                     return mobilenet.predict(batched);
                 }).data();
+                // the rest of the code shows the classes
                 const valuesAndIndices = [];
                 for (let i = 0; i < logits.length; i++) {
                   valuesAndIndices.push({value: logits[i], index: i});
@@ -566,7 +574,7 @@
                     li.textContent = IMAGENET_CLASSES[valuesAndIndices[i].index] + " " + valuesAndIndices[i].value;
                     predictionsList.appendChild(li);
                 }
-                report_status("Classified", img.t0);
+                report_mobilenet_status("Classified", img.t0);
             }
         </script>
 
@@ -583,7 +591,7 @@
             #file-img {
                 margin-right: 50px;
             }
-            #status {
+            .status {
                 position: absolute;
                 left: 100px;
                 bottom: 50px;
@@ -594,13 +602,105 @@
         </style>
     </section>
 
+    <section class="slide part">
+        <h2 class="shout">Live demo 2</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Progressive GAN</h2>
+        <button id="load-progan-tfjs" onclick="load_progan_tfjs()">Load tfjs</button>
+        <button id="load-progan-model" style="display: none" onclick="load_progan_model()">Load model</button>
+        <button id="generate" style="display: none" onclick="generate()">Generate</button>
+        <img id="progan-canvas" style="display: none">
+        <div class="status" id="progan-status"></div>
+        <script>
+            const PROGAN_MODEL_PATH = "progan/tensorflowjs_model.pb";
+            const PROGAN_WEIGHTS_PATH = "progan/weights_manifest.json";
+
+            function report_progan_status(message, t0) {
+                const t1 = performance.now();
+                document.getElementById("progan-status").textContent = message + " (" + ((t1 - t0)|0) + "ms)";
+            }
+
+            function load_progan_tfjs() {
+                const t0 = performance.now();
+                function onload() {
+                    report_progan_status("Loaded tfjs", t0);
+                    document.getElementById("load-progan-tfjs").style = "display: none";
+                    document.getElementById("load-progan-model").style = "";
+                }
+                if (typeof tf === 'undefined') {
+                    const script = document.createElement("script");
+                    script.onload = onload;
+                    script.src = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs";
+                    document.body.appendChild(script);
+                } else {
+                    onload();
+                }
+            }
+
+            async function load_progan_model() {
+                const t0 = performance.now();
+                progan = await tf.loadFrozenModel(PROGAN_MODEL_PATH, PROGAN_WEIGHTS_PATH);
+                tf.tidy(() => {
+                    return progan.predict(tf.randomNormal([1, progan.inputs[0].shape[1]]));
+                }).dispose();
+                //mobilenet.predict(tf.zeros([1].concat(mobilenet.input.shape.slice(1)))).dispose();
+                report_progan_status("Loaded model", t0);
+                document.getElementById("generate").style = "";
+                document.getElementById("load-progan-model").style = "display: none";
+            }
+
+            async function generate() {
+                const t0 = performance.now();
+                const pixelsTensor = tf.tidy(() => {
+                    const rawPixels = progan.predict(tf.randomNormal([1, progan.inputs[0].shape[1]]));
+                    return tf.mul(rawPixels, tf.scalar(255)).asType('int32');
+                });
+                const width = pixelsTensor.shape[1], height = pixelsTensor.shape[2];
+                const pixels = await pixelsTensor.data();
+                pixelsTensor.dispose();
+                // the rest of the code visualizes the image
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = width;
+                canvas.height = height;
+                var imgdata = ctx.createImageData(width, height);
+                const buffer = new Uint8ClampedArray(width * height * 4);
+                for (let y = 0; y < height; y++) {
+                    for (let x = 0; x < width; x++) {
+                        const posBuffer = (y * width + x) * 4;
+                        const posPixels = (y * width + x) * 3;
+                        buffer[posBuffer  ] = pixels[posPixels];
+                        buffer[posBuffer+1] = pixels[posPixels+1];
+                        buffer[posBuffer+2] = pixels[posPixels+2];
+                        buffer[posBuffer+3] = 255;  // set alpha channel
+                    }
+                }
+                imgdata.data.set(buffer);
+                ctx.putImageData(imgdata, 0, 0);
+                const img = document.getElementById("progan-canvas");
+                img.src = canvas.toDataURL();
+                img.style = "";
+                report_progan_status("Generated", t0);
+            }
+        </script>
+        <style>
+            #progan-canvas {
+                width: 128;
+                height: 128;
+                margin-top: 50px;
+            }
+        </style>
+    </section>
+
     <section class="slide">
         <h2>Examples</h2>
         <a href="https://github.com/tensorflow/tfjs-examples">github.com/tensorflow/tfjs-examples</a>
     </section>
 
     <section class="slide part">
-        <h2 class="shout">Live demo 2</h2>
+        <h2 class="shout">Live demo 3</h2>
     </section>
 
     <section class="slide">
