@@ -10,13 +10,13 @@
     <meta name="twitter:label1" content="Number of slides" />
     <meta name="twitter:data1" content="33" />
     <meta name="twitter:label2" content="Where and when" />
-    <meta name="twitter:data2" content="Madrid - November 7th, 2018" />
+    <meta name="twitter:data2" content="Aalborg - December 10th, 2018" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://vmarkovtsev.github.io/tfjs-2018-madrid" />
+    <meta property="og:url" content="http://vmarkovtsev.github.io/tfjs-2018-aalborg" />
     <meta property="og:title" content="TensorFlow.js" />
     <meta property="og:description" content="TensorFlow.js enables training and applying ML models in a web browser or in node.js. How does it work? What are the current limitations? Examples?" />
-    <meta property="og:image" content="https://vmarkovtsev.github.io/tfjs-2018-madrid/pictures/cover.png" />
-    <meta property="twitter:image" content="https://vmarkovtsev.github.io/tfjs-2018-madrid/pictures/cover.png" />
+    <meta property="og:image" content="https://vmarkovtsev.github.io/tfjs-2018-aalborg/pictures/cover.png" />
+    <meta property="twitter:image" content="https://vmarkovtsev.github.io/tfjs-2018-aalborg/pictures/cover.png" />
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/styles.css">
     <style>
         .shower {
@@ -422,7 +422,7 @@
         <ul>
             <li>There are various JS engines</li>
             <li>There are various GC implementations</li>
-            <li>We allocate memory like <span class="emoji">🐺</span> wolves</li>
+            <li>We allocate memory like hungry <span class="emoji">🐺</span></li>
         </ul>
     </section>
 
@@ -484,6 +484,7 @@
             <li><code>tf.layers</code> - do not confuse with Python's</li>
             <li>No CuDNN</li>
             <li><a href="https://github.com/tensorflow/tfjs/issues/709">Tensors may leak</a></li>
+            <li>Advanced parameters not supported</li>
         </ul>
     </section>
 
@@ -537,9 +538,9 @@
                 tf.tidy(() => {
                     return mobilenet.predict(tf.zeros([1].concat(mobilenet.input.shape.slice(1))));
                 }).dispose();
-                report_mobilenet_status("Loaded model", t0);
                 document.getElementById("file-button").style = "";
                 document.getElementById("load-mobilenet-model").style = "display: none";
+                report_mobilenet_status("Loaded model", t0);
             }
 
             async function load_img(input) {
@@ -646,9 +647,9 @@
                     return progan.predict(tf.randomNormal([1, progan.inputs[0].shape[1]]));
                 }).dispose();
                 //mobilenet.predict(tf.zeros([1].concat(mobilenet.input.shape.slice(1)))).dispose();
-                report_progan_status("Loaded model", t0);
                 document.getElementById("generate").style = "";
                 document.getElementById("load-progan-model").style = "display: none";
+                report_progan_status("Loaded model", t0);
             }
 
             async function generate() {
@@ -744,7 +745,7 @@
         <div id="qrcode-container">
             <img class="qrcode black" src="pictures/qrcode_black.svg">
             <img class="qrcode white" src="pictures/qrcode_white.svg">
-            <a href="http://bit.ly/2PNGI2G" id="bitly">bit.ly/2PNGI2G</a>
+            <a href="http://bit.ly/2OwCKXP" id="bitly">bit.ly/2OwCKXP</a>
         </div>
         <style>
             #qrcode-container {
