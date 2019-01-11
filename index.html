@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-MYTITLE
-MYDESCRIPTION
-MYURL
 <head>
-	<title>MYTITLE</title>
+	<title>Assisted Code Review with source{d} Lookout</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
@@ -15,15 +12,18 @@ MYURL
     <meta name="twitter:label2" content="Where and when" />
     <meta name="twitter:data2" content="???" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://vmarkovtsev.github.io/MYURL" />
-    <meta property="og:title" content="MYTITLE" />
-    <meta property="og:description" content="MYDESCRIPTION" />
-    <meta property="og:image" content="https://vmarkovtsev.github.io/MYURL/pictures/cover.jpg" />
-    <meta property="twitter:image" content="https://vmarkovtsev.github.io/MYURL/pictures/cover.jpg" />
-	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/styles.css">
+    <meta property="og:url" content="https://vmarkovtsev.github.io/mloncode-meetup-2019-webinar" />
+    <meta property="og:title" content="Assisted Code Review with source{d} Lookout" />
+    <meta property="og:description" content="Ensuring that a codebase is consistent in style is both hard and costly, yet it is extremely important for maintainability and to reduce technical debt. This problem is one of the many pain points we are currently tackling with source{d} Lookout, our brand new assisted code review framework. The purpose of source{d} Lookout is to bring assisted code review to anyone in an easy-to-setup, easy-to-use, easy-to-extend fashion. To achieve that, source{d} Lookout watches Github repos and triggers a set of analyzers when new code is sent for review. The purpose of source{d} Lookout is to bring assisted code review to anyone in an easy-to-setup, easy-to-use, easy-to-extend fashion. To achieve that, source{d} Lookout watches Github repos and triggers a set of analyzers when new code is sent for review or pushed." />
+    <meta property="og:image" content="https://vmarkovtsev.github.io/mloncode-meetup-2019-webinar/pictures/cover.jpg" />
+    <meta property="twitter:image" content="https://vmarkovtsev.github.io/mloncode-meetup-2019-webinar/pictures/cover.jpg" />
+    <link rel="stylesheet" href="node_modules/shower-ribbon/styles/styles.css">
+    <link rel="stylesheet" href="fonts/Raleway/font.css">
+    <link rel="stylesheet" href="fonts/Source_Sans_Pro/font.css">
     <style>
         .shower {
             --slide-ratio: calc(16 / 9);
+            font-family: 'Source Sans Pro', sans-serif;
         }
     </style>
 </head>
@@ -31,7 +31,7 @@ MYURL
 
 	<header class="caption">
 		<button type="button" id="fullscreen" title="Go fullscreen" onclick="fullscreen()"><i class="fa fa-arrows-alt"></i></button>
-		<h1>MYTITLE</h1>
+		<h1>Assisted Code Review with source{d} Lookout</h1>
 		<p>Vadim Markovtsev, <a href="https://sourced.tech">source{d}</a>.</p>
 	</header>
 
@@ -48,6 +48,9 @@ MYURL
             /* fix buggy Chrome offsets */
             margin-left: -1px !important;
             margin-top: -1px !important;
+        }
+        .slide h2 {
+            font-family: 'Raleway', sans-serif;
         }
         @media not print {
             .slide {
@@ -142,7 +145,8 @@ MYURL
 			line-height: 400px !important;
 		}
 		.slide a {
-			background: none;
+            background: none;
+            font-family: 'Source Sans Pro', sans-serif;
 		}
         @media not print {
            .slide a {
@@ -173,10 +177,10 @@ MYURL
             width: 50%;
         }
         .part > h2 {
-            color: black;
+            color: white;
         }
         .part {
-            background: radial-gradient(circle at center, #ffffff 0, black 130%)
+            background: radial-gradient(circle at center, #8719cb 0, #400d9a 130%)
         }
         mark.important {
             background-color: #dd0000;
@@ -205,54 +209,90 @@ MYURL
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
-		<h2>MYTITLE</h2>
-		<p>Vadim Markovtsev<br><a href="https://sourced.tech">source{d}</a></p>
-
+		<h2>Assisted Code Review with source{d} Lookout</h2>
+        <p>Vadim Markovtsev</p>
+        <div id="cover-logo">
+            <img src="pictures/sourced_primary_black_back.svg">
+            <p>Machine Learning for</p>
+            <p>Large Scale Code Analysis</p>
+        </div>
 		<style>
+            #cover {
+				background: linear-gradient(90deg, rgba(135,25,203,1) 0%, rgba(64,13,154,1) 100%);
+			}
             #cover h2 {
-                margin:30px 0 0;
-                text-align:center;
-                font-size:70px;
+                margin: 30px 0 0;
+                text-align: center;
+                font-size: 42pt;
+                color: white;
             }
-            #cover p {
-                margin: 40px 0 0;
-                text-align:center;
-                font-style:italic;
-                font-size:20px;
+            #cover > p {
+                margin: 40px 0 120px 0;
+                text-align: center;
+                font-size: 24pt;
+                font-weight: 600;
+                letter-spacing: -0.01em;
             }
-			#cover {
-				background: url("pictures/cover.jpg") black;
-			}
-			#cover h2:before {
-				content: "";
-				position: absolute;
-				z-index: -1;
-				left: 0;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				background: rgba(0, 0, 0, 0.7);
-			}
+            #cover-logo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            #cover-logo > img {
+                width: 236px;
+                margin-bottom: 12px;
+            }
+            #cover-logo > p {
+                font-family: 'Raleway', sans-serif;
+                font-size: 14pt;
+                font-weight: bold;
+                margin: 0;
+            }
         </style>
+    </section>
+
+    <section class="slide">
+        <h2>Plan</h2>
+        <ol>
+            <li>Origins</li>
+            <li>What is Lookout?</li>
+            <li>SDK</li>
+            <li>From scratch: typo detection</li>
+        </ol>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Origins</h2>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">What is Lookout?</h2>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">SDK</h2>
     </section>
     
     <section class="slide part">
-        <h2 class="shout">Summary</h2>
+        <h2 class="shout">Codelab</h2>
     </section>
 
 	<section class="slide">
         <h2>Thank you</h2>
         <ul class="no-bullets fa-bullets">
-            <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
-            <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
-            <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
+            <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/src-d/lookout">src-d/lookout</a></li>
+            <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/src-d/lookout">src-d/lookout-sdk-ml</a></li>
             <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
-            <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
+            <li><i class="fa fa-medium monofa" aria-hidden="true"></i><a href="https://medium.com/sourcedtech">medium.com/sourcedtech</a></li>
+            <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="https://go.sourced.tech/newsletter">go.sourced.tech/newsletter</a></li>
+            <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/sourcedtech">sourcedtech</a></li>
+            <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
         </ul>
         <div id="qrcode-container">
             <img class="qrcode black" src="pictures/qrcode_black.svg">
             <img class="qrcode white" src="pictures/qrcode_white.svg">
-            <a href="http://bit.ly/???????" id="bitly">bit.ly/???????</a>
+            <a href="http://bit.ly/2H8U5ra" id="bitly">bit.ly/2H8U5ra</a>
         </div>
         <style>
             #qrcode-container {
