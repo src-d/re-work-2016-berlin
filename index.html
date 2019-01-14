@@ -122,6 +122,9 @@
         i.fa {
             font-style: normal;
         }
+        ul>li::before {
+            color: white !important;
+        }
         ul.no-bullets > li::before {
             display: none;
             text-indent: 0;
@@ -266,8 +269,246 @@
         <h2 class="shout">Origins</h2>
     </section>
 
+    <style>
+        .ghq {
+            position: relative;
+            top: -81px;
+            left: -100px;
+            width: calc(100% + 200px);
+            height: calc(100% + 81px);
+            object-fit: cover;
+        }
+    </style>
+
+    <section class="slide">
+        <img src="pictures/ghq_quotes.png" class="ghq">
+    </section>
+
+    <section class="slide">
+        <img src="pictures/ghq_indent.png" class="ghq">
+    </section>
+
+    <section class="slide">
+        <img src="pictures/ghq_list_compr.png" class="ghq">
+    </section>
+
+    <section class="slide">
+        <img src="pictures/ghq_split.png" class="ghq">
+    </section>
+
+    <section class="slide">
+        <img src="pictures/ghq_rename.png" class="ghq">
+    </section>
+
+    <section class="slide">
+        <img src="pictures/ghq_comment.png" class="ghq">
+    </section>
+
+    <section class="slide">
+        <img src="pictures/ghq_fix_a_typo.png" class="ghq">
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Many efforts target boring stuff</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Boring means automatable</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Automatable ≠ unattended 😔</h2>
+    </section>
+
+    <section class="slide">
+        <h2>When to help?</h2>
+        <ul>
+            <li>While you type = IDE</li>
+            <li>While you check = CI</li>
+            <li>While you review = PR</li>
+            <li>Periodically, asynchronously = cron</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>IDE</h2>
+        <ul>
+            <li class="pro">Instant feedback</li>
+            <li class="pro">Rich information</li>
+            <li class="pro">Rich UI</li>
+            <li class="con">Instant feedback</li>
+            <li class="con">Many different IDEs and languages</li>
+        </ul>
+        <style>
+            .pro, .con {
+                list-style: none;
+            }
+            .pro::before, .con::before {
+                opacity: 1 !important;
+            }
+            .pro::before {
+                content: "+" !important;
+            }
+            .con::before {
+                content: "–" !important;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>CI</h2>
+        <ul>
+            <li class="pro">Part of the workflow</li>
+            <li class="pro">More time to run</li>
+            <li class="con">No UI</li>
+            <li class="con">Must not be wrong</li>
+            <li class="con">Longer feedback loop</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>PR reviews</h2>
+        <ul>
+            <li class="pro">Part of the workflow</li>
+            <li class="pro">More time to run</li>
+            <li class="pro">UI</li>
+            <li class="con"><em>Should</em> not be wrong</li>
+            <li class="con">Longer feedback loop</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>cron</h2>
+        <ul>
+            <li class="pro">Plenty of time to run</li>
+            <li class="con">Outside of the workflow</li>
+            <li class="con">No UI</li>
+            <li class="con">Longest feedback loop</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Comparison</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <th scope="col"></th>
+                    <th align="center">∈ workflow</th>
+                    <th align="center">UI</th>
+                    <th align="center">Feedback</th>
+                    <th align="center">Rich info</th>
+                    <th>FP requirements</th>
+                </tr>
+                <tr>
+                    <th scope="row">IDE</th>
+                    <td align="center">✓</td>
+                    <td align="center">✓✓</td>
+                    <td align="center">instant</td>
+                    <td align="center">✓</td>
+                    <td>low</td>
+                </tr>
+                <tr>
+                    <th scope="row">CI</th>
+                    <td align="center">✓</td>
+                    <td align="center">✗</td>
+                    <td align="center">minutes</td>
+                    <td align="center">✗</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th scope="row">PR</th>
+                    <td align="center">✓</td>
+                    <td align="center">✓</td>
+                    <td align="center">minutes</td>
+                    <td align="center">✗</td>
+                    <td>lowest</td>
+                </tr>
+                <tr>
+                    <th scope="row">cron</th>
+                    <td align="center">✗</td>
+                    <td align="center">✗</td>
+                    <td align="center">hours</td>
+                    <td align="center">✗</td>
+                    <td>low</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <style>
+            th[align=center] {
+                text-align: center !important;
+            }
+    
+            table td,
+            table th {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>When to help?</h2>
+        <ul>
+            <li>While you type = IDE</li>
+            <li>While you check = CI</li>
+            <li class="li-selected">While you review = PR</li>
+            <li>Periodically, asynchronously</li>
+        </ul>
+        <style>
+            .li-selected {
+                list-style: none;
+            }
+            .li-selected::before {
+                content: "→" !important;
+                color: white !important;
+                opacity: 1 !important;
+            }
+            .li-selected::after {
+                content: "←";
+                color: white;
+                margin-left: 0.5em;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <iframe class="fullscreen-iframe" src="https://www.codacy.com/blog/20-of-code-review-comments-are-about-style-and-best-practices/"></iframe>
+        <style>
+            .fullscreen-iframe {
+                position: relative;
+                top: -81px;
+                left: -100px;
+                width: calc(100% + 200px);
+                height: calc(100% + 81px);
+                border: 0;
+            }
+        </style>
+    </section>
+
     <section class="slide part">
         <h2 class="shout">What is Lookout?</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Goals</h2>
+        <ul>
+            <li>Assisted code review platform</li>
+            <li>Tight git/GitHub integration</li>
+            <li>Analyzed language agnostic</li>
+            <li>Implementation language agnostic</li>
+            <li>Batteries included</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Architecture</h2>
+        <img src="pictures/lookout_arch.svg" id="lookout-arch">
+        <style>
+            #lookout-arch {
+                width: 800px;
+            }
+        </style>
     </section>
 
     <section class="slide part">
