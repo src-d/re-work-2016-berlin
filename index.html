@@ -473,15 +473,16 @@
     </section>
 
     <section class="slide">
-        <iframe class="fullscreen-iframe" src="https://www.codacy.com/blog/20-of-code-review-comments-are-about-style-and-best-practices/"></iframe>
+        <iframe class="fullslide" src="https://www.codacy.com/blog/20-of-code-review-comments-are-about-style-and-best-practices/"></iframe>
         <style>
-            .fullscreen-iframe {
+            .fullslide {
                 position: relative;
                 top: -81px;
                 left: -100px;
                 width: calc(100% + 200px);
                 height: calc(100% + 81px);
                 border: 0;
+                object-fit: contain;
             }
         </style>
     </section>
@@ -503,10 +504,68 @@
 
     <section class="slide">
         <h2>Architecture</h2>
-        <img src="pictures/lookout_arch.svg" id="lookout-arch">
+        <img src="pictures/lookout_arch.svg" class="lookout-diagram">
         <style>
-            #lookout-arch {
+            .lookout-diagram {
                 width: 800px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_1.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_2.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_3.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_4.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_5.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_6.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <img src="pictures/magic.gif" class="fullslide">
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_7.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>PR event</h2>
+        <img src="pictures/lookout_comm_8.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>PR event</h2>
+        <img src="pictures/lookout_comm_9.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2 class="shout" id="docs-lookout">docs.sourced.tech/lookout</h2>
+        <style>
+            #docs-lookout {
+                font-size: 70px;
             }
         </style>
     </section>
@@ -514,9 +573,189 @@
     <section class="slide part">
         <h2 class="shout">SDK</h2>
     </section>
+
+    <section class="slide" id="sdk-diagram">
+        <img src="pictures/sdk.svg">
+        <style>
+            #sdk-diagram > img {
+                width: 800px;
+            }
+            #sdk-diagram {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding-bottom: 81px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>src-d/lookout-sdk</h2>
+        <ul>
+            <li>Single source of gRPC definitions</li>
+            <li>Low-level API: Go, Python</li>
+            <li>Low-level examples</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>src-d/lookout-sdk-ml</h2>
+        <ul>
+            <li>High-level Python API</li>
+            <li>Stateful analyzers</li>
+            <li>Integrated with source{d} ml ecosystem</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Rule of 👍</h2>
+        <img src="pictures/rule_thumb.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>High-level API</h2>
+        <pre><code><span style="color: #cc8242">class</span> MyAnalyzer(Analyzer):</code>
+<code>    <span style="color: #bbb429">@classmethod</span></code>
+<code>    <span style="color: #cc8242">def</span> <span style="color: #ffc66d">train</span>(<span style="color: #94558D;">cls</span>, <span style="color: #f92672">...</span>) <span style="color: #f92672">-&gt;</span> AnalyzerModel:</code>
+<code>        <span style="color: #808080"># ...</span></code>
+<code></code>
+<code>    <span style="color: #cc8242">def</span> <span style="color: #ffc66d">analyze</span>(<span style="color: #94558D;">self</span>, <span style="color: #f92672">...</span>) <span style="color: #f92672">-&gt;</span> [Comment]:</code>
+<code>        <span style="color: #808080"># do something with self.model</span></code></pre>
+    </section>
+
+    <section class="slide">
+        <h2>Train</h2>
+        <pre><code><span style="color: #bbb429">@with_uasts_and_contents</span></code>
+<code><span style="color: #cc8242">def</span> <span style="color: #ffc66d">train</span>(<span style="color: #94558D;">cls</span>,</code>
+<code>          ptr: ReferencePointer,</code>
+<code>          config: Dict[str, Any],</code>
+<code>          data_service: DataService,</code>
+<code>          files: Iterable[File]</code>
+<code>          ) <span style="color: #f92672">-&gt;</span> AnalyzerModel:</code></pre>
+    </section>
+
+    <section class="slide">
+        <h2>Analyze</h2>
+        <pre><code><span style="color: #bbb429">@with_changed_uasts_and_contents</span></code>
+<code><span style="color: #cc8242">def</span> <span style="color: #ffc66d">analyze</span>(<span style="color: #94558D;">self</span>,</code>
+<code>            ptr_from: ReferencePointer,</code>
+<code>            ptr_to: ReferencePointer,</code>
+<code>            data_service: DataService,</code>
+<code>            changes: Iterable[Change]</code>
+<code>            ) <span style="color: #f92672">-&gt;</span> [Comment]:</code>
+</pre>
+    </section>
+
+    <section class="slide">
+        <h2>Behind the scenes</h2>
+        <ul>
+            <li>gRPC servers and clients</li>
+            <li>Pooling and threading</li>
+            <li>Database of trained models</li>
+            <li>Caches</li>
+            <li>Logging</li>
+            <li>Metrics</li>
+        </ul>
+        <img src="pictures/jackie_chan.svg" id="jackie">
+        <style>
+            #jackie {
+                position: absolute;
+                right: 100px;
+                bottom: 81px;
+                width: 400px;
+                opacity: 0.7;
+            }
+        </style>
+    </section>
     
     <section class="slide part">
         <h2 class="shout">Codelab</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Objective</h2>
+        <pre><code><span style="color: #cc8242">class</span> Packfile:</code></pre>
+        <button class="review" onclick="review1()">Review</button>
+        <style>
+            .review {
+                color: white;
+                font-size: 25px;
+                font-family: Raleway, sans-serif;
+                background: rgba(135,25,203,1);
+            }
+        </style>
+
+        <link rel="stylesheet" type="text/css" href="clippy/clippy.css" media="all">
+        <script src="clippy/jquery-3.3.1.min.js"></script>
+        <script src="clippy/clippy.js"></script>
+        <script type="text/javascript">
+            clippy.load('Clippy', function (agent) {
+                clippyAgent = agent;
+            });
+            function review1() {
+                clippyAgent.show();
+                clippyAgent.moveTo(600, 400);
+                clippyAgent.speak("Did you mean: Backfile?");
+            }
+        </script>
+    </section>
+
+    <section class="slide">
+        <h2>Objective</h2>
+        <pre><code><span style="color: #cc8242">def</span> <span style="color: #ffc66d">read_packfile</span>(<span style="color: #f92672;">...</span>):</code>
+<code>    <span style="color: #808080"># ...</span></code>
+<code> </code>
+<code><span style="color: #cc8242">class</span> Packfile:</code></pre>
+        <button class="review" onclick="review2()">Review</button>
+        <script type="text/javascript">
+            function review2() {
+                clippyAgent.show();
+                clippyAgent.moveTo(600, 400);
+                clippyAgent.speak("Everything is correct, Vadim. You are the best coder in the world.");
+            }
+        </script>
+    </section>
+
+    <section class="slide">
+        <h2>Objective</h2>
+        <pre><code><span style="color: #cc8242">def</span> <span style="color: #ffc66d">read_packfile</span>(<span style="color: #f92672;">...</span>):</code>
+    <code>    <span style="color: #808080"># ...</span></code>
+    <code> </code>
+    <code><span style="color: #cc8242">class</span> Packfle:</code></pre>
+        <button class="review" onclick="review3()">Review</button>
+        <script type="text/javascript">
+            function review3() {
+                clippyAgent.show();
+                clippyAgent.moveTo(600, 400);
+                clippyAgent.speak("Did you mean: Packfile?");
+                setTimeout(() => clippyAgent.hide(), 10000);
+            }
+        </script>
+    </section>
+
+    <section class="slide">
+        <h2>Steps</h2>
+        <ol>
+            <li>Install lookout-sdk-ml and autocorrect</li>
+            <li>Write typos.py</li>
+            <li>Fork a repo, create a PR</li>
+            <li>Generate a new GitHub Personal Access Token</li>
+            <li>Run our analyzer</li>
+        </ol>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Summary</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Summary</h2>
+        <ul>
+            <li>source{d} decided to build products for assisted code review</li>
+            <li>Lookout is a great platform for assisted code review</li>
+            <li>Writing new analyzers is easy and fun</li>
+        </ul>
     </section>
 
 	<section class="slide">
