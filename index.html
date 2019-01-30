@@ -93,6 +93,9 @@
         .slide::after {
             display: none;
         }
+        .slide li::before {
+            opacity: 1 !important;
+        }
         .center {
             display: table;
             margin-left: auto;
@@ -255,14 +258,18 @@
         </style>
     </section>
 
-    <section class="slide">
+    <section class="slide vista" id="plan">
         <h2>Plan</h2>
-        <ol>
-            <li>Origins</li>
-            <li>What is Lookout?</li>
-            <li>SDK</li>
-            <li>From scratch: typo correction</li>
-        </ol>
+        Origins&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;Lookout&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;SDK&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;Demo&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;style-analyzer
+        <style>
+            #plan {
+                background-image: url("pictures/plan.png");
+            }
+            #plan span {
+                position: relative;
+                top: 2px;
+            }
+        </style>
     </section>
 
     <section class="slide part">
@@ -318,133 +325,6 @@
 
     <section class="slide">
         <h2 class="shout">Automatable ≠ unattended <span class="emoji">😔</span></h2>
-    </section>
-
-    <section class="slide">
-        <h2>When to help?</h2>
-        <ul>
-            <li>While you type = IDE</li>
-            <li>While you check = CI</li>
-            <li>While you review = PR</li>
-            <li>Periodically, asynchronously = cron</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>IDE</h2>
-        <ul>
-            <li class="pro">Instant feedback</li>
-            <li class="pro">Rich information</li>
-            <li class="pro">Rich UI</li>
-            <li class="con">Instant feedback</li>
-            <li class="con">Many different IDEs and languages</li>
-        </ul>
-        <style>
-            .pro, .con {
-                list-style: none;
-            }
-            .pro::before, .con::before {
-                opacity: 1 !important;
-            }
-            .pro::before {
-                content: "+" !important;
-            }
-            .con::before {
-                content: "–" !important;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>CI</h2>
-        <ul>
-            <li class="pro">Part of the workflow</li>
-            <li class="pro">More time to run</li>
-            <li class="con">No UI</li>
-            <li class="con">Must not be wrong</li>
-            <li class="con">Longer feedback loop</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>PR reviews</h2>
-        <ul>
-            <li class="pro">Part of the workflow</li>
-            <li class="pro">More time to run</li>
-            <li class="pro">UI</li>
-            <li class="con"><em>Should</em> not be wrong</li>
-            <li class="con">Longer feedback loop</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>cron</h2>
-        <ul>
-            <li class="pro">Plenty of time to run</li>
-            <li class="con">Outside of the workflow</li>
-            <li class="con">No UI</li>
-            <li class="con">Longest feedback loop</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Comparison</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <th scope="col"></th>
-                    <th align="center">∈ workflow</th>
-                    <th align="center">UI</th>
-                    <th align="center">Feedback</th>
-                    <th align="center">Rich info</th>
-                    <th>FP requirements</th>
-                </tr>
-                <tr>
-                    <th scope="row">IDE</th>
-                    <td align="center">✓</td>
-                    <td align="center">✓✓</td>
-                    <td align="center">instant</td>
-                    <td align="center">✓</td>
-                    <td>low</td>
-                </tr>
-                <tr>
-                    <th scope="row">CI</th>
-                    <td align="center">✓</td>
-                    <td align="center">✗</td>
-                    <td align="center">minutes</td>
-                    <td align="center">✗</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <th scope="row">PR</th>
-                    <td align="center">✓</td>
-                    <td align="center">✓</td>
-                    <td align="center">minutes</td>
-                    <td align="center">✗</td>
-                    <td>lowest</td>
-                </tr>
-                <tr>
-                    <th scope="row">cron</th>
-                    <td align="center">✗</td>
-                    <td align="center">✗</td>
-                    <td align="center">hours</td>
-                    <td align="center">✗</td>
-                    <td>low</td>
-                </tr>
-            </tbody>
-        </table>
-    
-        <style>
-            th[align=center] {
-                text-align: center !important;
-            }
-    
-            table td,
-            table th {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-        </style>
     </section>
 
     <section class="slide">
@@ -670,79 +550,16 @@
     </section>
     
     <section class="slide part">
-        <h2 class="shout">Hands on</h2>
+        <h2 class="shout">Demo</h2>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">style-analyzer</h2>
     </section>
 
     <section class="slide">
-        <h2>Objective</h2>
-        <pre><code><span style="color: #cc8242">class</span> Packfile:</code></pre>
-        <button class="review" onclick="review1()">Review</button>
-        <style>
-            .review {
-                color: white;
-                font-size: 25px;
-                font-family: Raleway, sans-serif;
-                background: rgba(135,25,203,1);
-            }
-        </style>
-
-        <link rel="stylesheet" type="text/css" href="clippy/clippy.css" media="all">
-        <script src="clippy/jquery-3.3.1.min.js"></script>
-        <script src="clippy/clippy.js"></script>
-        <script type="text/javascript">
-            clippy.load('Clippy', function (agent) {
-                clippyAgent = agent;
-            });
-            function review1() {
-                clippyAgent.show();
-                clippyAgent.moveTo(600, 400);
-                clippyAgent.speak("Did you mean: Backfile?");
-            }
-        </script>
-    </section>
-
-    <section class="slide">
-        <h2>Objective</h2>
-        <pre><code><span style="color: #cc8242">def</span> <span style="color: #ffc66d">read_packfile</span>(<span style="color: #f92672;">...</span>):</code>
-<code>    <span style="color: #808080"># ...</span></code>
-<code> </code>
-<code><span style="color: #cc8242">class</span> Packfile:</code></pre>
-        <button class="review" onclick="review2()">Review</button>
-        <script type="text/javascript">
-            function review2() {
-                clippyAgent.show();
-                clippyAgent.moveTo(600, 400);
-                clippyAgent.speak("Everything is correct, Vadim. You are the best coder in the world.");
-            }
-        </script>
-    </section>
-
-    <section class="slide">
-        <h2>Objective</h2>
-        <pre><code><span style="color: #cc8242">def</span> <span style="color: #ffc66d">read_packfile</span>(<span style="color: #f92672;">...</span>):</code>
-    <code>    <span style="color: #808080"># ...</span></code>
-    <code> </code>
-    <code><span style="color: #cc8242">class</span> Packfle:</code></pre>
-        <button class="review" onclick="review3()">Review</button>
-        <script type="text/javascript">
-            function review3() {
-                clippyAgent.show();
-                clippyAgent.moveTo(600, 400);
-                clippyAgent.speak("Did you mean: Packfile?");
-                setTimeout(() => clippyAgent.hide(), 10000);
-            }
-        </script>
-    </section>
-
-    <section class="slide">
-        <h2>Steps</h2>
-        <ol>
-            <li>Install lookout-sdk-ml and autocorrect</li>
-            <li>Write typos.py</li>
-            <li>Fork a repo, create a PR</li>
-            <li>Generate a new GitHub Personal Access Token</li>
-            <li>Run our analyzer</li>
-        </ol>
+        <h2>In the nutshell</h2>
+        Diagram of training steps.
     </section>
 
     <section class="slide part">
@@ -755,6 +572,7 @@
             <li>source{d} decided to build products for assisted code review</li>
             <li>Lookout is a great platform for assisted code review</li>
             <li>Writing new analyzers is easy and fun</li>
+            <li>#MLonCode is cool</li>
         </ul>
     </section>
 
@@ -763,8 +581,8 @@
         <ul class="no-bullets fa-bullets">
             <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/src-d/lookout">src-d/lookout</a></li>
             <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/src-d/lookout-sdk-ml">src-d/lookout-sdk-ml</a></li>
+            <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/src-d/style-analyzer">src-d/style-analyzer</a></li>
             <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
-            <li><i class="fa fa-medium monofa" aria-hidden="true"></i><a href="https://medium.com/sourcedtech">medium.com/sourcedtech</a></li>
             <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="https://go.sourced.tech/newsletter">go.sourced.tech/newsletter</a></li>
             <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/sourcedtech">sourcedtech</a></li>
             <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
