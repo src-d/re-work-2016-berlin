@@ -558,8 +558,83 @@
     </section>
 
     <section class="slide">
-        <h2>In the nutshell</h2>
-        Diagram of training steps.
+        <h2>Training</h2>
+        <ol>
+            <li>Parse to intermediate representation</li>
+            <li>Train Decision Tree Forest</li>
+            <li>Extract production rules</li>
+        </ol>
+    </section>
+
+    <section class="slide">
+        <h2>Virtual nodes</h2>
+        <img src="pictures/vnodes.svg" id="vnodes" class="diagram diagram-right">
+        <pre><code>a = b * 2</code></pre>
+        <style>
+            .diagram {
+                height: 350px;
+            }
+            .diagram-right {
+                float: right;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Machine Learning</h2>
+        <img src="pictures/features.svg" class="diagram center">
+    </section>
+
+    <section class="slide">
+        <h2>Rules</h2>
+        <img src="pictures/rules.svg" class="diagram diagram-right">
+        <ul>
+            <li><code>a&le;5 Λ b&le;1 Λ <span class="oline">c</span> ⇒ &alpha;</code></li>
+            <li><code>a&le;5 Λ 1&lt;b&lt;4 ⇒ &beta;</code></li>
+            <li><code>5&lt;a&lt;10 Λ <span class="oline">c</span> ⇒ &gamma;</code></li>
+            <li><code>a&gt;5 Λ c Λ b&gt;2 ⇒ &alpha;</code></li>
+        </ul>
+        <style>
+            .oline {
+                text-decoration: overline;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="rules-opt">
+        <h2>Rules optimization</h2>
+        <pre><code><span class="bad">a&gt;5</span> Λ c Λ b&gt;2 Λ <span class="oline">d</span> Λ <span class="bad">a&gt;10</span> ⇒ &alpha;</code><span class="opt-desc">(merge)</span><br>
+<code><span class="good">a&gt;10</span> Λ c Λ <span class="bad">b&gt;2</span> Λ <span class="oline">d</span> ⇒ &alpha;</code><span class="opt-desc">(redundant)</span><br>
+<code>a&gt;10 Λ c Λ <span class="oline bad">d</span> ⇒ &alpha;</code><span class="opt-desc">(feature exclusion)</span><br>
+<code>a&gt;10 Λ c ⇒ &alpha;</code></pre>
+        <style>
+            #rules-opt code {
+                display: inline-block;
+                width: auto;
+            }
+            .bad {
+                color: coral;
+            }
+            .good {
+                color: lightgreen;
+            }
+            .opt-desc {
+                float: right;
+                font-family: "Source Sans Pro", sans-serif;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Inference</h2>
+        <ol>
+            <li>Apply rules</li>
+            <li>Generate code</li>
+        </ol>
+    </section>
+
+    <section class="slide">
+        <h2>Evaluation</h2>
     </section>
 
     <section class="slide part">
