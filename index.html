@@ -586,6 +586,15 @@
     </section>
 
     <section class="slide">
+        <h2>Machine Learning</h2>
+        <ul>
+            <li>Feature selection (univariate, ANOVA F-criterion)</li>
+            <li>Hyperparameter optimization (Bayesian)</li>
+            <li>80% + 20% split</li>
+        </ul>
+    </section>
+
+    <section class="slide">
         <h2>Rules</h2>
         <img src="pictures/rules.svg" class="diagram diagram-right">
         <ul>
@@ -601,16 +610,21 @@
         </style>
     </section>
 
-    <section class="slide" id="rules-opt">
+    <section class="slide rules-opt">
         <h2>Rules optimization</h2>
         <pre><code><span class="bad">a&gt;5</span> Λ c Λ b&gt;2 Λ <span class="oline">d</span> Λ <span class="bad">a&gt;10</span> ⇒ &alpha;</code><span class="opt-desc">(merge)</span><br>
 <code><span class="good">a&gt;10</span> Λ c Λ <span class="bad">b&gt;2</span> Λ <span class="oline">d</span> ⇒ &alpha;</code><span class="opt-desc">(redundant)</span><br>
 <code>a&gt;10 Λ c Λ <span class="oline bad">d</span> ⇒ &alpha;</code><span class="opt-desc">(feature exclusion)</span><br>
 <code>a&gt;10 Λ c ⇒ &alpha;</code></pre>
+        <h4 class="rules-opt-result">Result</h4>
+        <ul>
+            <li>-40% ~ -60% less attributes</li>
+            <li>-30% ~ -50% less rules</li>
+        </ul>
         <style>
-            #rules-opt code {
-                display: inline-block;
-                width: auto;
+            .rules-opt code {
+                display: inline-block !important;
+                width: auto !important;
             }
             .bad {
                 color: coral;
@@ -622,14 +636,40 @@
                 float: right;
                 font-family: "Source Sans Pro", sans-serif;
             }
+            .rules-opt-result {
+                margin-bottom: 0;
+            }
         </style>
     </section>
+
+    <section class="slide rules-opt">
+            <h2>Rules optimization</h2>
+            <pre><code><span class="bad">a&gt;5</span> Λ c Λ b&gt;2 Λ <span class="oline">d</span> Λ <span class="bad">a&gt;10</span> ⇒ &alpha;</code><span class="opt-desc">(merge)</span><br>
+    <code><span class="good">a&gt;10</span> Λ c Λ <span class="bad">b&gt;2</span> Λ <span class="oline">d</span> ⇒ &alpha;</code><span class="opt-desc">(redundant)</span><br>
+    <code>a&gt;10 Λ c Λ <span class="oline bad">d</span> ⇒ &alpha;</code><span class="opt-desc">(feature exclusion)</span><br>
+    <code><span class="bad">a&gt;10 Λ c ⇒ &alpha;</span></code><span class="opt-desc">(confidence threshold)</span></pre>
+            <h4 class="rules-opt-result">Result</h4>
+            <ul>
+                <li>-40% ~ -50% less rules @93%</li>
+            </ul>
+        </section>
 
     <section class="slide">
         <h2>Inference</h2>
         <ol>
-            <li>Apply rules</li>
-            <li>Generate code</li>
+            <li>Apply rules
+                <ul>
+                    <li>Fixes to old code?</li>
+                    <li>AST breakage?</li>
+                    <li>Identification?</li>
+                </ul>
+            </li>
+            <li>Generate code
+                <ul>
+                    <li>Indentation?</li>
+                    <li>Multiple lines?</li>
+                </ul>
+            </li>
         </ol>
     </section>
 
