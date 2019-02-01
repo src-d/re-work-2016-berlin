@@ -537,9 +537,9 @@
             <li>Logging</li>
             <li>Metrics</li>
         </ul>
-        <img src="pictures/jackie_chan.svg" id="jackie">
+        <img src="pictures/jackie_chan.svg" class="jackie">
         <style>
-            #jackie {
+            .jackie {
                 position: absolute;
                 right: 100px;
                 bottom: 81px;
@@ -671,10 +671,73 @@
                 </ul>
             </li>
         </ol>
+        <img src="pictures/jackie_chan.svg" class="jackie">
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-smaller">Precision > Recall</h2>
+        <style>
+            .shout-smaller {
+                font-size: 110px !important;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-smaller">Prediction Rate (PredR)</h2>
     </section>
 
     <section class="slide">
         <h2>Evaluation</h2>
+        <div id="eval-legend">
+            <ul>
+                <li><span>⬛</span> Precision</li>
+                <li><span>⬛</span> PredR</li>
+            </ul>
+            ~95% weighted avg.
+        </div>
+        <img src="pictures/evaluation.svg">
+        <style>
+            #eval-legend {
+                float: right;
+                display: inline-block;
+            }
+            #eval-legend li::before {
+                content: "";
+            }
+            #eval-legend li:nth-child(1) > span {
+                color: coral;
+            }
+            #eval-legend li:nth-child(2) > span {
+                color: lightgreen;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">We don't test the real behavior</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Evaluation</h2>
+        <ul>
+            <li>170 handcrafted errors</li>
+            <li>2 projects</li>
+            <li>95% precision @50% PredR</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">We don't test the real behavior</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Evaluation improvements</h2>
+        <ul>
+            <li>Extend</li>
+            <li>Random mutations</li>
+            <li>Extract from commits</li>
+        </ul>
     </section>
 
     <section class="slide part">
@@ -684,10 +747,9 @@
     <section class="slide">
         <h2>Summary</h2>
         <ul>
-            <li>source{d} decided to build products for assisted code review</li>
-            <li>Lookout is a great platform for assisted code review</li>
-            <li>Writing new analyzers is easy and fun</li>
-            <li>#MLonCode is cool</li>
+            <li>Assisted code review + Lookout = ♥</li>
+            <li>style-analyzer is fun</li>
+            <li>#MLonCode is dope</li>
         </ul>
     </section>
 
