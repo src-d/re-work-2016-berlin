@@ -51,6 +51,7 @@
         }
         .slide h2 {
             font-family: 'Cerebri Sans', sans-serif;
+            margin-left: -4px;
         }
         @media not print {
             .slide {
@@ -235,9 +236,16 @@
                 font-size: 20px;
                 position: absolute;
             }
-			#cover {
-				background: url("pictures/cover.png") black;
-			}
+            @media not print {
+                #cover {
+                    background: url("pictures/cover.png") black;
+                }
+            }
+            @media print {
+                #cover {
+                    background: url("pictures/cover.png") white;
+                }
+            }
             #cover > p:nth-of-type(1) {
                 transform: rotate(-3.5deg);
                 left: 530px;
@@ -268,6 +276,215 @@
             }
         </style>
     </section>
+
+    <section class="slide part">
+        <h2 class="shout">Origins</h2>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Lookout</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Architecture</h2>
+        <img src="pictures/lookout_arch.svg" class="lookout-diagram">
+        <style>
+            .lookout-diagram {
+                width: 800px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_1.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_2.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_3.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_4.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_5.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_6.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <img src="pictures/magic.gif" class="fullslide">
+        <style>
+        .fullslide {
+            position: relative;
+            top: -81px;
+            left: -100px;
+            width: calc(100% + 200px);
+            height: calc(100% + 81px);
+            border: 0;
+            object-fit: contain;
+        }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Push event</h2>
+        <img src="pictures/lookout_comm_7.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>PR event</h2>
+        <img src="pictures/lookout_comm_8.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>PR event</h2>
+        <img src="pictures/lookout_comm_9.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2 class="shout" id="docs-lookout">docs.sourced.tech/lookout</h2>
+        <style>
+            #docs-lookout {
+                font-size: 70px;
+            }
+        </style>
+    </section>
+
+    <section class="slide part vista" id="lookout-img">
+        <style>
+            #lookout-img {
+                background: url("pictures/lookout.png") black;
+                background-origin: content-box;
+                padding: 50px;
+            }
+        </style>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">SDK</h2>
+    </section>
+
+    <section class="slide" id="sdk-diagram">
+        <img src="pictures/sdk.svg">
+        <style>
+            #sdk-diagram > img {
+                width: 800px;
+            }
+            #sdk-diagram {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding-bottom: 81px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>src-d/lookout-sdk</h2>
+        <ul>
+            <li>Single source of gRPC definitions</li>
+            <li>Low-level API: Go, Python</li>
+            <li>Low-level examples</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>src-d/lookout-sdk-ml</h2>
+        <ul>
+            <li>High-level Python API</li>
+            <li>Stateful analyzers</li>
+            <li>Integrated with source{d} ml ecosystem</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Rule of <span class="emoji">👍</span></h2>
+        <img src="pictures/rule_thumb.svg" class="lookout-diagram">
+    </section>
+
+    <section class="slide">
+        <h2>High-level API</h2>
+        <pre><code><span style="color: #cc8242">class</span> MyAnalyzer(Analyzer):</code>
+<code>    <span style="color: #bbb429">@classmethod</span></code>
+<code>    <span style="color: #cc8242">def</span> <span style="color: #ffc66d">train</span>(<span style="color: #94558D;">cls</span>, <span style="color: #f92672">...</span>) <span style="color: #f92672">-&gt;</span> AnalyzerModel:</code>
+<code>        <span style="color: #808080"># ...</span></code>
+<code></code>
+<code>    <span style="color: #cc8242">def</span> <span style="color: #ffc66d">analyze</span>(<span style="color: #94558D;">self</span>, <span style="color: #f92672">...</span>) <span style="color: #f92672">-&gt;</span> [Comment]:</code>
+<code>        <span style="color: #808080"># do something with self.model</span></code></pre>
+    </section>
+
+    <section class="slide">
+        <h2>Train</h2>
+        <pre><code><span style="color: #bbb429">@with_uasts_and_contents</span></code>
+<code><span style="color: #cc8242">def</span> <span style="color: #ffc66d">train</span>(<span style="color: #94558D;">cls</span>,</code>
+<code>          ptr: ReferencePointer,</code>
+<code>          config: Dict[str, Any],</code>
+<code>          data_service: DataService,</code>
+<code>          files: Iterable[File]</code>
+<code>          ) <span style="color: #f92672">-&gt;</span> AnalyzerModel:</code></pre>
+    </section>
+
+    <section class="slide">
+        <h2>Analyze</h2>
+        <pre><code><span style="color: #bbb429">@with_changed_uasts_and_contents</span></code>
+<code><span style="color: #cc8242">def</span> <span style="color: #ffc66d">analyze</span>(<span style="color: #94558D;">self</span>,</code>
+<code>            ptr_from: ReferencePointer,</code>
+<code>            ptr_to: ReferencePointer,</code>
+<code>            data_service: DataService,</code>
+<code>            changes: Iterable[Change]</code>
+<code>            ) <span style="color: #f92672">-&gt;</span> [Comment]:</code>
+</pre>
+    </section>
+
+    <section class="slide">
+        <h2>Behind the scenes</h2>
+        <ul id="behind-scenes">
+            <li>gRPC servers and clients</li>
+            <li>Pooling and threading</li>
+            <li>Database of trained models</li>
+            <li>Caches</li>
+            <li>Deferred training at first time</li>
+            <li>Retraining</li>
+            <li>Logging, metrics</li>
+        </ul>
+        <img src="pictures/jackie_chan.svg" class="jackie">
+        <style>
+            #behind-scenes > li:before {
+                content: "🤯";
+                font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, serif, LastResort;
+            }
+            .jackie {
+                position: absolute;
+                right: 100px;
+                bottom: 81px;
+                width: 400px;
+                opacity: 0.7;
+            }
+        </style>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Demo</h2>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">MLonCode</h2>
+    </section>
     
     <section class="slide part">
         <h2 class="shout">Summary</h2>
@@ -288,9 +505,6 @@
             <a href="http://bit.ly/2Iv8nBC" id="bitly">bit.ly/2Iv8nBC</a>
         </div>
         <style>
-            .thank-you {
-                margin-left: -4px;
-            }
             #qrcode-container {
                 display: flex;
                 flex-direction: column;
