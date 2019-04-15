@@ -311,6 +311,21 @@
     </section>
 
     <section class="slide">
+        <object data="pictures/review_comments.svg" type="image/svg+xml" class="fullslide-padding"></object>
+        <style>
+            .fullslide-padding {
+                width: 100%;
+                height: calc(100% - 50px);
+                object-fit: contain;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Σ≈4 million</h2>
+    </section>
+
+    <section class="slide">
         <h2 class="shout shout">Solution: automate what we can.</h2>
     </section>
 
@@ -326,9 +341,12 @@
             .title-middle {
                 vertical-align: sub;
             }
-            .fullwidth > img {
+            .fullwidth > img, img.fullwidth {
                 width: 100%;
                 object-fit: contain;
+                max-height: 380px;
+                margin-left: auto;
+                margin-right: auto;
             }
             .fullwidth > figcaption {
                 position: absolute;
@@ -543,7 +561,15 @@
     </section>
 
     <section class="slide">
-        <h2>code2vec</h2>
+        <h2>code2vec <a class="right" href="https://code2vec.org">code2vec.org</a></h2>
+        <img src="pictures/code2vec_white.png" class="white fullwidth">
+        <img src="pictures/code2vec_black.png" class="black fullwidth">
+        <style>
+            h2 > a.right {
+                float: right;
+                font-family: "Source Sans Pro", sans-serif;
+            }
+        </style>
     </section>
 
     <section class="slide">
