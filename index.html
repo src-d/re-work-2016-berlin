@@ -500,29 +500,6 @@
     </section>
 
     <section class="slide">
-        <h2>Train</h2>
-        <pre><code><span style="color: #bbb429">@with_uasts_and_contents</span></code>
-<code><span style="color: #cc8242">def</span> <span style="color: #ffc66d">train</span>(<span style="color: #94558D;">cls</span>,</code>
-<code>          ptr: ReferencePointer,</code>
-<code>          config: Dict[str, Any],</code>
-<code>          data_service: DataService,</code>
-<code>          files: Iterable[File]</code>
-<code>          ) <span style="color: #f92672">-&gt;</span> AnalyzerModel:</code></pre>
-    </section>
-
-    <section class="slide">
-        <h2>Analyze</h2>
-        <pre><code><span style="color: #bbb429">@with_changed_uasts_and_contents</span></code>
-<code><span style="color: #cc8242">def</span> <span style="color: #ffc66d">analyze</span>(<span style="color: #94558D;">self</span>,</code>
-<code>            ptr_from: ReferencePointer,</code>
-<code>            ptr_to: ReferencePointer,</code>
-<code>            data_service: DataService,</code>
-<code>            changes: Iterable[Change]</code>
-<code>            ) <span style="color: #f92672">-&gt;</span> [Comment]:</code>
-</pre>
-    </section>
-
-    <section class="slide">
         <h2>Behind the scenes</h2>
         <ul id="behind-scenes">
             <li>gRPC servers and clients</li>
@@ -550,11 +527,101 @@
     </section>
 
     <section class="slide part">
-        <h2 class="shout">Demo</h2>
+        <h2 class="shout">MLonCode</h2>
     </section>
 
-    <section class="slide part">
-        <h2 class="shout">MLonCode</h2>
+    <section class="slide">
+        <h2>Naturalness hypothesis</h2>
+    </section>
+
+    <section class="slide">
+        <h2>id2vec</h2>
+    </section>
+
+    <section class="slide">
+        <h2>GGNN Miltos</h2>
+    </section>
+
+    <section class="slide">
+        <h2>code2vec</h2>
+    </section>
+
+    <section class="slide">
+        <h2>de-dupe</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Automatic format repair</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Augmented token stream</h2>
+        <img src="pictures/vnodes.svg" id="vnodes" class="diagram diagram-right">
+        <pre><code>a = b * 2</code></pre>
+        <style>
+            .diagram {
+                height: 350px;
+            }
+            .diagram-right {
+                float: right;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Machine Learning</h2>
+        <img src="pictures/features.svg" class="diagram center">
+    </section>
+
+    <section class="slide">
+        <h2>Rules</h2>
+        <img src="pictures/rules.svg" class="diagram diagram-right">
+        <ul>
+            <li><code>a≤5 Λ b≤1 Λ <span class="oline">c</span> ⇒ α</code></li>
+            <li><code>a≤5 Λ 1&lt;b&lt;4 ⇒ β</code></li>
+            <li><code>5&lt;a&lt;10 Λ <span class="oline">c</span> ⇒ γ</code></li>
+            <li><code>a&gt;5 Λ c Λ b&gt;2 ⇒ α</code></li>
+        </ul>
+        <style>
+            .oline {
+                text-decoration: overline;
+            }
+        </style>
+    </section>
+
+    <section class="slide rules-opt">
+        <h2>Rules optimization</h2>
+        <pre><code><span class="bad">a&gt;5</span> Λ c Λ b&gt;2 Λ <span class="oline">d</span> Λ <span class="bad">a&gt;10</span> ⇒ α</code><span class="opt-desc">(merge)</span><br>
+<code><span class="good">a&gt;10</span> Λ c Λ <span class="bad">b&gt;2</span> Λ <span class="oline">d</span> ⇒ α</code><span class="opt-desc">(redundant)</span><br>
+<code>a&gt;10 Λ c Λ <span class="oline bad">d</span> ⇒ α</code><span class="opt-desc">(feature exclusion)</span><br>
+<code><span class="bad">a&gt;10 Λ c ⇒ α</span></code><span class="opt-desc">(confidence threshold)</span></pre>
+        <h4 class="rules-opt-result">Result</h4>
+        <ul>
+            <li>-40% ~ -50% less rules @93%</li>
+        </ul>
+        <style>
+            .rules-opt code {
+                display: inline-block !important;
+                width: auto !important;
+            }
+            .bad {
+                color: coral;
+            }
+            .good {
+                color: lightgreen;
+            }
+            .opt-desc {
+                float: right;
+                font-family: "Source Sans Pro", sans-serif;
+            }
+            .rules-opt-result {
+                margin-bottom: 0;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Typos correction</h2>
     </section>
     
     <section class="slide part">
