@@ -671,9 +671,60 @@
     <section class="slide">
         <h2 class="shout">Typos correction</h2>
     </section>
+
+    <section class="slide">
+        <h2>Idea #1</h2>
+        <h2 class="shout shout-small">We trust existing code.</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Idea #2</h2>
+        <h2 class="shout shout-small">Let's use the whole world's open source code.</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Idea #3</h2>
+        <h2 class="shout shout-small">Piece-wise invariance: FooBar&nbsp;=&nbsp;bar_foo</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Typo correction plan</h2>
+        <ol>
+            <li>Extract all identifiers in the open source world</li>
+            <li>Split token into parts with a <a href="https://arxiv.org/abs/1805.11651">char-biLSTM</a></li>
+            <li>Build the vocabulary</li>
+            <li>Train xgboost</li>
+        </ol>
+        <img src="pictures/iceberg.jpg" id="iceberg">
+        <style>
+            #iceberg {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                object-fit: cover;
+                -webkit-mask-image: linear-gradient(to right, transparent 0%, white 30%, white 100%);
+                mask-image: linear-gradient(to right, transparent 0%, white 30%, white 100%);
+            }
+            @media not print {
+                -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%, black 100%);
+                mask-image: linear-gradient(to right, transparent 0%, black 30%, black 100%);
+            }
+        </style>
+    </section>
     
     <section class="slide part">
         <h2 class="shout">Summary</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Summary</h2>
+        <ul>
+            <li>Assisted code review is fun</li>
+            <li>Assisted code review + Lookout = ♥</li>
+            <li>#MLonCode is dope</li>
+            <li>ML can make code reviews less boring</li>
+        </ul>
     </section>
 
 	<section class="slide">
