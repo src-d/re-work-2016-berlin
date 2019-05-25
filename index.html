@@ -513,37 +513,25 @@
         </style>
     </section>
 
-    <section class="slide rules-opt">
-        <h2>Rules optimization</h2>
-        <pre><code><span class="bad">a&gt;5</span> Λ c Λ b&gt;2 Λ <span class="oline">d</span> Λ <span class="bad">a&gt;10</span> ⇒ &alpha;</code><span class="opt-desc">(merge)</span><br>
-<code><span class="good">a&gt;10</span> Λ c Λ <span class="bad">b&gt;2</span> Λ <span class="oline">d</span> ⇒ &alpha;</code><span class="opt-desc">(redundant)</span><br>
-<code>a&gt;10 Λ c Λ <span class="oline bad">d</span> ⇒ &alpha;</code><span class="opt-desc">(feature exclusion)</span><br>
-<code>a&gt;10 Λ c ⇒ &alpha;</code></pre>
-        <h4 class="rules-opt-result">Result</h4>
-        <ul>
-            <li>-40% ~ -60% less attributes</li>
-            <li>-30% ~ -50% less rules</li>
-        </ul>
-        <style>
-            .rules-opt code {
-                display: inline-block !important;
-                width: auto !important;
-            }
-            .bad {
-                color: coral;
-            }
-            .good {
-                color: lightgreen;
-            }
-            .opt-desc {
-                float: right;
-                font-family: "Source Sans Pro", sans-serif;
-            }
-            .rules-opt-result {
-                margin-bottom: 0;
-            }
-        </style>
-    </section>
+    <style>
+        .rules-opt code {
+            display: inline-block !important;
+            width: auto !important;
+        }
+        .bad {
+            color: coral;
+        }
+        .good {
+            color: lightgreen;
+        }
+        .opt-desc {
+            float: right;
+            font-family: "Source Sans Pro", sans-serif;
+        }
+        .rules-opt-result {
+            margin-bottom: 0;
+        }
+    </style>
 
     <section class="slide rules-opt">
         <h2>Rules optimization</h2>
