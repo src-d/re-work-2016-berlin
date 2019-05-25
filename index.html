@@ -299,6 +299,10 @@
         </style>
     </section>
 
+    <section class="slide part">
+        <h2 class="shout">Problem</h2>
+    </section>
+
     <section class="slide">
         <h2>When to help?</h2>
         <div class="row">
@@ -439,6 +443,10 @@
         </style>
     </section>
 
+    <section class="slide part">
+        <h2 class="shout">Methodology</h2>
+    </section>
+
     <section class="slide">
         <h2>Labels predicted</h2>
         <p>We concatenate common classes together.</p>
@@ -452,10 +460,10 @@
         <p>No BPE or similar reduction is required.</p>
     </section>
 
-    <section class="slide" id="annotated-snippet">
+    <section class="slide" class="annotated-snippet">
         <h2>Annotated code snippet</h2>
         <pre><code><span style="color: green">&#8709</span>function<span style="color: green">&#9251</span>classesToArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8626</span></code>
-             <code><span style="color: green">&#8677</span>   if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>isArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: lightgreen">&#9251</span>)<span style="color: lightgreen">&#9251</span>{<span style="color: red">&#8709</span>return<span style="color: lightgreen">&#9251</span>value<span style="color: lightgreen">&#8709</span>;<span style="color: darkred">&#8709</span>}</code>
+             <code><span style="color: green">&#8677</span>   if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>isArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: darkred">&#8709</span>return<span style="color: green">&#9251</span>value<span style="color: green">&#8709</span>;<span style="color: darkred">&#8709</span>}</code>
              <code>    if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>typeof<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>===<span style="color: green">&#9251"</span>string<span style="color: green">"&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8626</span></code>
              <code><span style="color: green">&#8677</span>       return<span style="color: green">&#9251</span>value<span style="color: green">&#8709</span>.<span style="color: green">&#8709</span>match(<span style="color: green">&#9251</span>rnothtml<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>||<span style="color: green">&#9251</span>[]<span style="color: green">&#8709</span>;<span style="color: green">&#8626</span></code>
              <code><span style="color: green">&#8676</span>   }<span style="color: green">&#8626</span></code>
@@ -463,7 +471,7 @@
              <code><span style="color: green">&#8676</span>}<span style="color: green">&#8709</span></code>
         </pre>
         <style>        
-            #annotated-snippet pre {
+            .annotated-snippet pre {
                 color: #bababa;
             }
         </style>
@@ -561,6 +569,51 @@
         </style>
     </section>
 
+    <section class="slide" class="annotated-snippet">
+        <h2>Annotated code snippet</h2>
+        <pre><code><span style="color: green">&#8709</span>function<span style="color: green">&#9251</span>classesToArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8677</span>   if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>isArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: lightgreen">&#9251</span>)<span style="color: lightgreen">&#9251</span>{<span style="color: red">&#8709</span>return<span style="color: lightgreen">&#9251</span>value<span style="color: lightgreen">&#8709</span>;<span style="color: darkred">&#8709</span>}</code>
+             <code>    if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>typeof<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>===<span style="color: green">&#9251"</span>string<span style="color: green">"&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8677</span>       return<span style="color: green">&#9251</span>value<span style="color: green">&#8709</span>.<span style="color: green">&#8709</span>match(<span style="color: green">&#9251</span>rnothtml<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>||<span style="color: green">&#9251</span>[]<span style="color: green">&#8709</span>;<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8676</span>   }<span style="color: green">&#8626</span></code>
+             <code>    return<span style="color: green">&#9251</span>[]<span style="color: green">&#8709</span>;<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8676</span>}<span style="color: green">&#8709</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Rule example</h2>
+        <div id="rule-y">
+            <div>
+                y = &#8709<br>
+                ŷ = &#8626→+
+            </div>
+            <div>
+                Confidence: 0.975<br>
+                Support: 3230
+            </div>
+        </div>
+        <hr>
+        <ul class="no-bullets">
+            <li>-1.value = {</li>
+            <li>-3.value not in {else}</li>
+            <li>+1.internal_type not in {StringLiteral}</li>
+            <li>+2.roles not in {LITERAL, COMMENT}</li>
+            <li>ˆ1.roles in {IF, STATEMENT}</li>
+        </ul>
+        <style>
+            #rule-y {
+                display: flex; 
+            }
+            #rule-y > div {
+                flex: 1;
+            }
+            #rule-y ~ ul {
+                font-family: monospace;
+            }
+        </style>
+    </section>
+
     <section class="slide">
         <h2 class="shout shout-smaller">Precision > Recall</h2>
         <style>
@@ -605,6 +658,10 @@
                 width: 650px;
             }
         </style>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Evaluation</h2>
     </section>
 
     <section class="slide">
@@ -688,6 +745,10 @@
     </section>
 
     <section class="slide">
+        <h2 class="shout shout-small">Other evaluation is required</h2>
+    </section>
+
+    <section class="slide">
         <h2>Comparison to linters</h2>
         <table class="center">
             <tbody>
@@ -745,8 +806,15 @@
 
     <section class="slide part">
         <h2 class="shout">Summary</h2>
-        <ul>
+    </section>
 
+    <section class="slide">
+        <h2>Summary</h2>
+        <ul>
+            <li>style-analyzer infers code human-friendly formatting rules</li>
+            <li>Reaches 94% precision at 95% prediction rate</li>
+            <li>Is based on Lookout - assisted code review framework</li>
+            <li>May be useful for general mining</li>
         </ul>
     </section>
 
