@@ -558,7 +558,19 @@
     </section>
 
     <section class="slide">
-        <h2>Slide about multilevel community detection</h2>
+        <h2>Redundant attributes elimination</h2>
+        <ul>
+            <li>Trigger imbalance: &lt;5% activation rate</li>
+            <li>For each attribute comparison build the set of <span class="bold">false positives</span></li>
+            <li>Build graph by thresholding Jaccard similarity between each pair (0.98)</li>
+            <li>Run multilevel community detection</li>
+            <li>Leave only one representative (greedily)</li>
+        </ul>
+        <style>
+            .bold {
+                font-weight: bold;
+            }
+        </style>
     </section>
 
     <section class="slide">
