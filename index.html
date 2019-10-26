@@ -248,43 +248,42 @@
         }
     </style>
 
-	<section class="slide vista vista-cover" id="cover">
-		<h2>Code as Data<br>MLonCode</h2>
-        <p>Vadim Markovtsev<br>
-            <a href="https://twitter.com/vadimlearning">@vadimlearning</a><br>
-            <a id="sourced-cover" href="https://sourced.tech"><img src="pictures/sourced.svg"></a>
-        </p>
+    <section class="slide vista vista-cover" id="cover">
+        <h2 class="black title">#CodeAsData<br>#MLonCode</h2>
+        <p class="black">Vadim Markovtsev</p>
+        <p class="black"><a href="https://twitter.com/vadimlearning">@vadimlearning</a></p>
 
-		<style>
+        <style>
             .black {
                 color: #202020;
                 font-weight: bold;
             }
-            #cover h2 {
-                margin: 30px 0 0;
+            .black a {
+                color: #202020;
+            }
+            #cover > h2 {
+                margin: 0 0 186px 0;
                 text-align: center;
                 font-size: 70px;
-                color: white;
+                color: #202020;
             }
-            #cover p {
-                margin: 40px 0 0;
+            #cover > p {
+                margin: 0 0 0 54px;
                 text-align: center;
+                font-weight: bold;
                 font-size: 20px;
                 font-family: 'Cerebri Sans', sans-serif;
             }
 			#cover {
-				background: url("pictures/cover.jpg") black;
-			}
-			#cover h2:before {
-				content: "";
-				position: absolute;
-				z-index: -1;
-				left: 0;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				background: rgba(0, 0, 0, 0.5);
-			}
+                background: url("pictures/cover.png") black;
+                background-position-x: 68% !important;
+            }
+			#cover > p:nth-of-type(1) {
+                transform: rotate(-4deg) translateX(30px);
+            }
+            #cover > p:nth-of-type(2) {
+                transform: rotate(-4deg) translateX(30px);
+            }
             #sourced-cover > img {
                 width: 100px;
                 margin-top: 5px;
