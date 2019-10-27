@@ -390,7 +390,7 @@
 
     <section class="slide">
         <h2>Huge codebases</h2>
-        <table>
+        <table id="codebases">
             <tbody>
                 <tr>
                     <th scope="col"></th>
@@ -398,34 +398,55 @@
                 </tr>
                 <tr>
                     <td><span style="color: #ffffff">Chrome</span></td>
-                    <td>20</td>
+                    <td><div class="lines-indicator" style="width: 1px;"></div>20</td>
                 </tr>
                 <tr>
                     <td><span style="color: #ffd0d0">Windows 10</span></td>
-                    <td>50</td>
+                    <td><div class="lines-indicator" style="width: 1px;"></div>50</td>
                 </tr>
                 <tr>
                     <td><span style="color: #ffb0b0">Facebook</span></td>
-                    <td>70</td>
+                    <td><div class="lines-indicator" style="width: 1px;"></div>70</td>
                 </tr>
                 <tr>
                     <td><span style="color: #ff9090">Eclipse Foundation</span></td>
-                    <td>160</td>
+                    <td><div class="lines-indicator" style="width: 2px;"></div>160</td>
                 </tr>
                 <tr>
                     <td><span style="color: #ff8080">Apache Foundation</span></td>
-                    <td>190</td>
+                    <td><div class="lines-indicator" style="width: 3px;"></div>190</td>
                 </tr>
                 <tr>
                     <td><span style="color: #ff5050">Google</span></td>
-                    <td>2,000</td>
+                    <td><div class="lines-indicator" style="width: 25px;"></div>2,000</td>
                 </tr>
                 <tr>
                     <td><span style="color: #ff3030">GitHub</span></td>
-                    <td>&gt;56,000</td>
+                    <td><div class="lines-indicator-abs" style="width: 692px;"></div><span class="indicator-text-over">&gt;56,000</span></td>
                 </tr>
             </tbody>
         </table>
+        <style>
+        #codebases {
+            margin-top: -20px;
+        }
+        .lines-indicator {
+            height: 50px;
+            float: left;
+            margin-right: 10px;
+            background: lightgreen;
+        }
+        .lines-indicator-abs {
+            height: 50px;
+            position: absolute;
+            background: lightgreen;
+            z-index: -1;
+        }
+        .indicator-text-over {
+            color: #202020;
+            margin-left: 10px;
+        }
+        </style>
     </section>
 
     <section class="slide vista vista-cover" id="lake">
@@ -509,7 +530,45 @@
     </section>
 
     <section class="slide">
-        Dilemma: fast or universal
+        <h2>Flexible, interoperable, fast: choose any two</h2>
+        <table>
+            <tbody>
+                <th>
+                    <td align="center">Flexible</td>
+                    <td align="center">Interoperable</td>
+                    <td align="center">Fast</td>
+                </th>
+                <tr>
+                    <td>Gitbase</td>
+                    <td align="center"><span class="emoji">✔</span></td>
+                    <td align="center"><span class="emoji">✔</span></td>
+                    <td align="center"><span class="emoji">❌</span></td>
+                </tr>
+                <tr>
+                    <td>PostgreSQL</td>
+                    <td align="center"><span class="emoji">❌</span></td>
+                    <td align="center"><span class="emoji">✔</span></td>
+                    <td align="center"><span class="emoji">✔</span></td>
+                </tr>
+                <tr>
+                    <td>ClickHouse</td>
+                    <td align="center"><span class="emoji">✔</span></td>
+                    <td align="center"><span class="emoji">❌</span></td>
+                    <td align="center"><span class="emoji">✔</span></td>
+                </tr>
+                <tr>
+                    <td>* graph DB</td>
+                    <td align="center"><span class="emoji">✔</span></td>
+                    <td align="center"><span class="emoji">❌</span></td>
+                    <td align="center"><span class="emoji">?</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="slide">
+        <h2>Flattened AST</h2>
+        todo clickhouse query example
     </section>
 
     <section class="slide part">
