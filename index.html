@@ -296,7 +296,7 @@
 
     <section class="slide vista" id="plan">
         <h2>Plan</h2>
-        Intro&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;Couples&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;Lines&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;Time series&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;Tools
+        </span>&nbsp;&nbsp;Code as Data&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;MLonCode&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;Tools &amp; datasets
         <style>
             #plan {
                 background-image: url("pictures/plan.png");
@@ -309,7 +309,7 @@
     </section>
 
     <section class="slide part">
-        <h2 class="shout">Introduction</h2>
+        <h2 class="shout">Code as Data</h2>
     </section>
 
     <section class="slide">
@@ -327,12 +327,13 @@
             .diagram {
                 height: 350px;
             }
+    
             .diagram-right {
                 float: right;
             }
         </style>
     </section>
-
+    
     <section class="slide vista vista-cover" id="graphs-everywhere">
         <h2 class="meme">Graphs</h2>
         <h2 class="meme">graphs everywhere</h2>
@@ -340,9 +341,11 @@
             #graphs-everywhere {
                 background-image: url("pictures/xeverywhere.jpg");
             }
-            #graphs-everywhere > h2:nth-of-type(2) {
+    
+            #graphs-everywhere>h2:nth-of-type(2) {
                 top: 250px;
             }
+    
             .meme {
                 -webkit-transform: translateZ(0);
                 z-index: 100;
@@ -354,19 +357,19 @@
                 text-transform: uppercase;
                 color: white !important;
                 letter-spacing: 0px;
-                text-shadow:2px 2px 0 #000,
-                -2px -2px 0 #000,
-                2px -2px 0 #000,
-                -2px 2px 0 #000,
-                0px 2px 0 #000,
-                2px 0px 0 #000,
-                0px -2px 0 #000,
-                -2px 0px 0 #000,
-                2px 2px 5px #000;
+                text-shadow: 2px 2px 0 #000,
+                    -2px -2px 0 #000,
+                    2px -2px 0 #000,
+                    -2px 2px 0 #000,
+                    0px 2px 0 #000,
+                    2px 0px 0 #000,
+                    0px -2px 0 #000,
+                    -2px 0px 0 #000,
+                    2px 2px 5px #000;
             }
         </style>
     </section>
-
+    
     <section class="slide">
         <h2>So you have got graphs...</h2>
         <ul>
@@ -386,6 +389,112 @@
     </section>
 
     <section class="slide">
+        <h2>Huge codebases</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <th scope="col"></th>
+                    <th>LoC, 10⁶</th>
+                </tr>
+                <tr>
+                    <td><span style="color: #ffffff">Chrome</span></td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td><span style="color: #ffd0d0">Windows 10</span></td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td><span style="color: #ffb0b0">Facebook</span></td>
+                    <td>70</td>
+                </tr>
+                <tr>
+                    <td><span style="color: #ff9090">Eclipse Foundation</span></td>
+                    <td>160</td>
+                </tr>
+                <tr>
+                    <td><span style="color: #ff8080">Apache Foundation</span></td>
+                    <td>190</td>
+                </tr>
+                <tr>
+                    <td><span style="color: #ff5050">Google</span></td>
+                    <td>2,000</td>
+                </tr>
+                <tr>
+                    <td><span style="color: #ff3030">GitHub</span></td>
+                    <td>&gt;56,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="slide vista vista-cover" id="lake">
+        <h2 class="shout shout-small">Code Lake</h2>
+        <style>
+            #lake {
+                background-image: url("pictures/lake.jpg");
+            }
+    
+            #lake>h2 {
+                color: white;
+            }
+    
+            #lake:before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>github.com/src-d/gitbase</h2>
+        <pre><code><span class="kw">SELECT</span> refs.repository_id
+<span class="kw">FROM</span> refs
+<span class="kw">NATURAL JOIN</span> commits
+<span class="kw">WHERE</span> commits.commit_author_name = <span class="str">'Johnny Bravo'</span>
+    <span class="kw">AND</span> refs.ref_name = <span class="str">'HEAD'</span>;</code></pre>
+        <style>
+            .kw {
+                color: #CC7832;
+                font-weight: bold;
+            }
+
+            .str {
+                color: #6a8759;
+            }
+
+            .func {
+                color: #9e7bb0;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Parsing code</h2>
+        <img src="pictures/bblfsh-logo.png" class="center">
+        <img src="pictures/bblfsh-arch-black.png" class="black fullwidth">
+        <img src="pictures/bblfsh-arch-white.png" class="white fullwidth">
+    </section>
+
+    <section class="slide">
+        <h2>Imports for each commit</h2>
+        <pre><code><span class="kw">SELECT</span> repository_id, commit_hash, file_path,
+    <span class="func">uast_extract</span>(<span class="func">uast</span>(blob_content,
+                      <span class="func">language</span>(file_path),
+                      <span class="str">'//uast:Import/Path'</span>),
+                 <span class="str">"Value"</span>) <span class="kw">AS</span> imports
+<span class="kw">FROM</span> commit_files <span class="kw">NATURAL JOIN</span> blobs
+<span class="kw">WHERE</span> <span class="func">language</span>(file_path) = <span class="str">'Go'</span>
+    <span class="kw">AND</span> <span class="func">array_length</span>(imports) > 0;</code></pre>
+    </section>
+
+    <section class="slide">
         <h2>Diffs</h2>
         <ul>
             <li>By line: O(N×D)</li>
@@ -399,7 +508,15 @@
         <h2 class="shout shout-small">AST-annotated line diffs</h2>
     </section>
 
+    <section class="slide">
+        Dilemma: fast or universal
+    </section>
+
     <section class="slide part">
+        <h2 class="shout">MLonCode</h2>
+    </section>
+
+    <section class="slide">
         <h2 class="shout">Couples</h2>
     </section>
 
@@ -468,7 +585,7 @@
         <img src="pictures/tfprojcouples.png" class="fullslide">
     </section>
 
-    <section class="slide part">
+    <section class="slide">
         <h2 class="shout">Lines</h2>
     </section>
 
@@ -598,7 +715,7 @@
     </section>
 
     <section class="slide">
-        <h2 class="shout shout-small">Ownership</h2>
+        <h2 class="shout">Ownership</h2>
     </section>
 
     <section class="slide">
@@ -645,7 +762,7 @@
     </section>
 
     <section class="slide">
-        <h2 class="shout shout-small">Lines importance</h2>
+        <h2 class="shout">Lines importance</h2>
     </section>
 
     <section class="slide">
@@ -670,7 +787,7 @@
         <h2 class="shout shout-small">Diff 🡒 commit classification</h2>
     </section>
     
-    <section class="slide part">
+    <section class="slide">
         <h2 class="shout">Time series</h2>
     </section>
 
@@ -878,72 +995,73 @@
         </ul>
     </section>
 
+    <section class="slide">
+        <h2 class="shout">Identifier embeddings</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">todo missing image</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Nearest to “foo”</h2>
+        <ul class="two-cols">
+            <li>afoo</li>
+            <li>qux</li>
+            <li>myfoo</li>
+            <li>baz</li>
+            <li>mfoo</li>
+            <li>wibble</li>
+            <li>dofoo</li>
+            <li>quux</li>
+            <li>dfoo</li>
+            <li>testing</li>
+            <li>ifoo</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Analogies</h2>
+        <p>“bug” <span class="compare">-</span> “test” <span class="compare">+</span> “expect” <span
+                class="compare">=</span> “suppress”</p>
+        <p>“database” <span class="compare">-</span> “query” <span class="compare">+</span> “tune” <span
+                class="compare">=</span> “settings”</p>
+        <p>“send” <span class="compare">-</span> “receive” <span class="compare">+</span> “pop” <span
+                class="compare">=</span> “push”</p>
+        <div id="analogies" class="vista"></div>
+        <style>
+            .compare {
+                color: #fff01f;
+            }
+    
+            #analogies {
+                position: absolute;
+                bottom: 50px;
+                right: 50px;
+                width: 500px;
+                height: 300px;
+                background-image: url("pictures/analogy_black.png");
+            }
+    
+            @media not print {
+                #analogies {
+                    background-image: url("pictures/analogy_white.png");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Typos</h2>
+        <ul>
+            <li>recieve <span class="compare">=</span> receive</li>
+            <li>grey <span class="compare">=</span> gray</li>
+            <li>calback <span class="compare">=</span> callbak <span class="compare">=</span> callback</li>
+        </ul>
+    </section>
+
     <section class="slide part">
         <h2 class="shout">Tools</h2>
-    </section>
-
-    <section class="slide vista vista-cover" id="lake">
-        <h2 class="shout shout-small">Code Lake</h2>
-        <style>
-            #lake {
-                background-image: url("pictures/lake.jpg");
-            }
-            #lake > h2 {
-                color: white;
-            }
-            #lake:before {
-                content: "";
-                position: absolute;
-                z-index: -1;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.5);
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>github.com/src-d/gitbase</h2>
-        <pre><code><span class="kw">SELECT</span> refs.repository_id
-<span class="kw">FROM</span> refs
-<span class="kw">NATURAL JOIN</span> commits
-<span class="kw">WHERE</span> commits.commit_author_name = <span class="str">'Johnny Bravo'</span>
-    <span class="kw">AND</span> refs.ref_name = <span class="str">'HEAD'</span>;</code></pre>
-        <style>
-            .kw {
-                color: #CC7832;
-                font-weight: bold;
-            }
-
-            .str {
-                color: #6a8759;
-            }
-
-            .func {
-                color: #9e7bb0;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>Parsing code</h2>
-        <img src="pictures/bblfsh-logo.png" class="center">
-        <img src="pictures/bblfsh-arch-black.png" class="black fullwidth">
-        <img src="pictures/bblfsh-arch-white.png" class="white fullwidth">
-    </section>
-
-    <section class="slide">
-        <h2>Imports for each commit</h2>
-        <pre><code><span class="kw">SELECT</span> repository_id, commit_hash, file_path,
-    <span class="func">uast_extract</span>(<span class="func">uast</span>(blob_content,
-                      <span class="func">language</span>(file_path),
-                      <span class="str">'//uast:Import/Path'</span>),
-                 <span class="str">"Value"</span>) <span class="kw">AS</span> imports
-<span class="kw">FROM</span> commit_files <span class="kw">NATURAL JOIN</span> blobs
-<span class="kw">WHERE</span> <span class="func">language</span>(file_path) = <span class="str">'Go'</span>
-    <span class="kw">AND</span> <span class="func">array_length</span>(imports) > 0;</code></pre>
     </section>
 
     <section class="slide">
@@ -955,6 +1073,12 @@
             <li>Data processing: Go (<a href="https://github.com/src-d/go-git">go-git</a>)</li>
             <li>Data analysis: Python</li>
         </ul>
+    </section>
+
+    <section class="slide">
+        <h2>github.com/src-d/ml-core</h2>
+        <h2>github.com/src-d/ml-mining</h2>
+        todo example
     </section>
 
     <section class="slide">
