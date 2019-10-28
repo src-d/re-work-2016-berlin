@@ -8,7 +8,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@vadimlearning" />
     <meta name="twitter:label1" content="Number of slides" />
-    <meta name="twitter:data1" content="69" />
+    <meta name="twitter:data1" content="102" />
     <meta name="twitter:label2" content="Where and when" />
     <meta name="twitter:data2" content="San Francisco, CA, USA - 28.10.2019" />
     <meta property="og:type" content="article" />
@@ -1463,6 +1463,10 @@
     </section>
 
     <section class="slide">
+        <h2 class="shout shout-small">Swivel one more time</h2>
+    </section>
+
+    <section class="slide">
         <h2>Nearest to “foo”</h2>
         <ul class="two-cols">
             <li>afoo</li>
@@ -1537,7 +1541,20 @@
     <section class="slide">
         <h2>github.com/src-d/ml-core</h2>
         <h2>github.com/src-d/ml-mining</h2>
-        todo example
+        <pre id="ml-core"><code>>>> from sourced.ml.core.algorithms.token_parser import TokenParser
+>>> parser = TokenParser(use_nn=True)
+>>> list(parser.split("progressbar"))
+['progress', 'bar']
+>>> list(parser.split("bigLITTLE"))
+['big', 'LITTLE']
+>>> list(parser.split("PreSet"))
+['preset']
+</code></pre>
+        <style>
+            #ml-core {
+                font-size: 19px;
+            }
+        </style>
     </section>
 
     <section class="slide">
