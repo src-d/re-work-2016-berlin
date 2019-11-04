@@ -194,17 +194,17 @@
             margin: 0 -0.1em;
             padding: 0.1em 0.3em 0.3em 0.3em;
         }
-        img.black {
+        img.black, object.black {
             display: block;
         }
-        img.white {
+        img.white, object.white {
             display: none;
         }
         @media not print {
-            img.black {
+            img.black, object.black {
                 display: none;
             }
-            img.white {
+            img.white, object.white {
                 display: block;
             }
         }
@@ -245,6 +245,9 @@
             right: 50px;
             transform: rotate(-90deg);
         }
+        .strikethrough {
+            text-decoration: line-through;
+        }
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
@@ -282,6 +285,286 @@
 				background: rgba(0, 0, 0, 0.7);
 			}
         </style>
+    </section>
+
+    <section class="slide">
+        <h2>Plan</h2>
+        <ol>
+            <li>Introduction to distributed deep learning</li>
+            <li>TensorFlow Execution Strategies</li>
+            <li>Horovod</li>
+            <li>Problems and limitations</li>
+        </ol>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Introduction</h2>
+    </section>
+
+    <section class="slide">
+        <object class="black model-data-parallel center" type="image/svg+xml"
+            data="pictures/model_data_parallel_black.svg"></object>
+        <object class="white model-data-parallel center" type="image/svg+xml"
+            data="pictures/model_data_parallel_white.svg"></object>
+        <style>
+            .model-data-parallel {
+                width: 100%;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Distributed deep learning</h2>
+        <ul>
+            <li>Workflow partitioning</li>
+            <li>Parallel model
+                <ul>
+                    <li>tensorflow/mesh</li>
+                </ul>
+            </li>
+            <li>Parallel data
+                <ul>
+                    <li>Execution Strategies</li>
+                    <li>Horovod</li>
+                    <li>tensorflow/federated</li>
+                </ul>
+            </li>
+        </ul>
+        <a id="parallelism" href="https://medium.com/@esaliya/model-parallelism-in-deep-learning-is-not-what-you-think-94d2f81e82ed">
+        <img class="black" src="pictures/parallelism_black.png">
+        <img class="white" src="pictures/parallelism_white.png">
+        </a>
+        <style>
+            #parallelism {
+                position: absolute;
+                left: 400px;
+                top: 100px;
+            }
+            #parallelism > img {
+                width: 530px;
+                height: 530px;
+                object-fit: contain;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Workflow partitioning + and −</h2>
+        <ul>
+            <li class="pro">Choosing the best device for each task</li>
+            <li class="pro">Some ops are not implemented on all devices</li>
+            <li class="con">Memory copies
+                <ul><li class="ok">XLA improves on that</li></ul>
+            </li>
+            <li class="con">Device memory size bottleneck</li>
+            <li class="con">Device initialization lag</li>
+        </ul>
+        <style>
+            .pro::before {
+                content: "+" !important;
+            }
+            .con::before {
+                content: "−" !important;
+            }
+            li.ok::before {
+                content: "✓" !important;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Parallel model + and −</h2>
+        <ul>
+            <li class="pro">Better performance</li>
+            <li class="pro">Training huge models</li>
+            <li class="con">Not trivial to program</li>
+            <li class="con">IO overhead</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Parallel data + and −</h2>
+        <ul>
+            <li class="pro">Linear speedup</li>
+            <li class="pro">Bigger batch size</li>
+            <li class="pro">Trivial to program</li>
+            <li class="con">IO overhead</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">Parallel data</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Parallel data training approaches</h2>
+        <ul>
+            <li>Parameter averaging
+                <ul>
+                    <li class="pro">Saves network bandwidth</li>
+                    <li class="con">Stateless = vanilla SGD only</li>
+                </ul>
+            </li>
+            <li>Individual updates
+                <ul>
+                    <li class="con">Universal</li>
+                    <li class="pro">Hungry to network bandwidth</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Parallel data training approaches</h2>
+        <ul>
+            <li>Synchronous updates
+                <ul>
+                    <li class="pro">Equivalent result</li>
+                    <li class="con">Sub-optimal load balancing (N nodes)</li>
+                </ul>
+            </li>
+            <li>Asynchronous updates
+                <ul>
+                    <li class="con">Worse convergence (stale gradients)</li>
+                    <li class="pro">Great load balancing</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">Synchronous training</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Parallel data approaches</h2>
+        <ul>
+            <li>Parameter server, "star arch", master-slave, etc.</li>
+            <li>Collective ops; single node, multiple device</li>
+            <li>Collective ops; multiple node, multiple device</li>
+            <li>Parallel inference - TensorFlow Extended (TFX)</li>
+            <li>Federated Learning</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Parameter server + and −</h2>
+        <ul>
+            <li class="pro">Easiest to implement</li>
+            <li class="pro">Simplicity</li>
+            <li class="con">Single master bottleneck</li>
+            <li class="con">Network bottleneck</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Collective ops; 1x + and −</h2>
+        <ul>
+            <li class="pro">Great vertical scalability</li>
+            <li class="pro">Peer-to-peer communication</li>
+            <li class="con">Single node (apparently)</li>
+            <li class="con">Hardware-specific (complex) optimizations</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Collective ops; Nx + and −</h2>
+        <ul>
+            <li class="pro">Great horizontal&vertical scalability</li>
+            <li class="pro">Peer-to-peer communication</li>
+            <li class="con">Overall complexity</li>
+            <li class="con">No load balancing</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">Collective ops</h2>
+    </section>
+
+    <section class="slide">
+        <h2>nvidia/nccl</h2>
+        <div id="nccl-images">
+            <div>
+                <img src="pictures/nccl_allgather_black.png" class="black">
+                <img src="pictures/nccl_allgather_white.png" class="white">
+                <img src="pictures/nccl_reduce_black.png" class="black">
+                <img src="pictures/nccl_reduce_white.png" class="white">
+            </div>
+            <div>
+                <img src="pictures/nccl_allreduce_black.png" class="black">
+                <img src="pictures/nccl_allreduce_white.png" class="white">
+                <img src="pictures/nccl_reducescatter_black.png" class="black">
+                <img src="pictures/nccl_reducescatter_white.png" class="white">
+            </div>
+        </div>
+        <style>
+            #nccl-images {
+                display: flex;
+                align-items: center;
+                align-content: center;
+            }
+            #nccl-images > div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                align-content: center;
+            }
+            #nccl-images > div:first-child {
+                margin-right: 50px;;
+            }
+            #nccl-images > div > img:nth-of-type(1), #nccl-images > div > img:nth-of-type(2) {
+                margin-bottom: 50px;;
+            }
+            #nccl-images img {
+                width: 100%;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <img class="black choosing center" src="pictures/choosing_black.svg">
+        <img class="white choosing center" src="pictures/choosing_white.svg">
+        <style>
+            .choosing {
+                height: calc(100% - 50px);
+            }
+        </style>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Execution Strategies</h2>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Horovod</h2>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Problems<br>and<br>limitations</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">GPU hangs</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">Data input pipeline</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">Bandwidth</h2>
+    </section>
+
+    <section class="slide part">
+        <h2>Ideas</h2>
+        <ul>
+            <li>p2p, NCCL</li>
+            <li>Bandwidth is more important than latency</li>
+            <li>Execution Strategies: mirrored, multi-worker</li>
+            <li>Horovod - not only for TensorFlow</li>
+            <li>Bottlenecks, my failure</li>
+            <li>Training ImageNet in 20 minutes</li>
+        </ul>
     </section>
     
     <section class="slide part">
