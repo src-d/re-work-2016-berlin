@@ -590,7 +590,10 @@
         <ul>
             <li>Batch is split evenly</li>
             <li>Dark shape magic inside
-                <ul><li>Careful with hard-coding the batch size!</li></ul>
+                <ul>
+                    <li>Careful with hard-coding the batch size!</li>
+                    <li>Automatic <code>tf.data.Dataset</code> sharding</li>
+                </ul>
             </li>
             <li>Collective ops (NCCL)</li>
             <li>Model instance per device</li>
@@ -602,7 +605,10 @@
         <ul>
             <li>Batch is split evenly</li>
             <li>Dark shape magic inside
-                <ul><li>Careful with hard-coding the batch size!</li></ul>
+                <ul>
+                    <li>Careful with hard-coding the batch size!</li>
+                    <li>Automatic <code>tf.data.Dataset</code> sharding</li>
+                </ul>
             </li>
             <li>Collective ops (NCCL + gRPC)</li>
             <li>Model instance per device per process</li>
@@ -662,22 +668,234 @@
     </section>
 
     <section class="slide">
-        <h2 class="shout shout-small">Data input pipeline</h2>
+        <h2 class="shout shout-small">Intel IOMMU + NCCL = <span class="emoji">💔</span></h2>
     </section>
 
     <section class="slide">
-        <h2 class="shout shout-small">Bandwidth</h2>
+        <h2>Solution</h2>
+        Boot Linux with <code>intel_iommu=off</code> or <code>intel_iommu=soft</code><br>
+        <a href="http://bit.ly/2CkRkxH">bit.ly/2CkRkxH</a>
     </section>
 
-    <section class="slide part">
-        <h2>Ideas</h2>
+
+    <section class="slide">
+        <h2 class="shout shout-small">P2P</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Checking P2P</h2>
+        <pre class="pre">I tensorflow/.../gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+I tensorflow/.../gpu_device.cc:1165]      0 1 2 3
+I tensorflow/.../gpu_device.cc:1178] 0:   N Y N N
+I tensorflow/.../gpu_device.cc:1178] 1:   Y N N N
+I tensorflow/.../gpu_device.cc:1178] 2:   N N N Y
+I tensorflow/.../gpu_device.cc:1178] 3:   N N Y N</pre>
+            <div id="highlight-1" class="log-highlight"></div>
+            <div id="highlight-2" class="log-highlight"></div>
+        <style>
+            .pre {
+                white-space: pre-wrap !important;
+            }
+            .log-highlight {
+                position: absolute;
+                width: 100px;
+                height: 28px;
+                border-radius: 15px;
+                border: 2px solid red;
+                transform: rotate(-60deg);
+            }
+            #highlight-1 {
+                left: 703px;
+                top: 398px;
+            }
+            #highlight-2 {
+                left: 763px;
+                top: 497px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Checking P2P</h2>
+        <code class="inline">p2pBandwidthLatencyTest</code>
+        <a href="https://github.com/NVIDIA/cuda-samples/tree/master/Samples/p2pBandwidthLatencyTest">github.com/NVIDIA/cuda-samples</a>
+        <pre class="pre" id="latency-p2p">P2P=Enabled Latency (P2P Writes) Matrix (us)
+   GPU     0      1      2      3
+     0   1.25   0.99  12.84  13.39
+     1   1.01   1.37  11.21  10.36
+     2  12.39  12.33   1.28   1.07
+     3  10.39  10.86   1.04   1.27</pre>
+    <div id="latency-highlight1" class="rect-highlight"></div>
+    <div id="latency-highlight2" class="rect-highlight"></div>
+     <style>
+        #latency-p2p {
+            margin-top: 20px;
+        }
+        #latency-highlight1 {
+           width: 186px;
+           height: 96px;
+           left: 224px;
+           top: 334px;
+        }
+        #latency-highlight2 {
+           width: 186px;
+           height: 96px;
+           left: 435px;
+            top: 434px;
+        }
+     </style>
+    </section>
+
+    <section class="slide">
+        <h2>Checking P2P</h2>
+        <pre class="pre" id="latency-p2p">Unidirectional P2P=Enabled Bandwidth (P2P Writes) Matrix (GB/s)
+   D\D     0      1      2      3
+     0 354.15  10.28  11.18  11.16
+     1  10.27 152.29  11.16  11.11
+     2  11.15  10.85 355.44  10.28
+     3  11.15  10.94  10.28 354.15</pre>
+        <img src="pictures/wasted.png" id="wasted">
+        <div id="bandwidth-highlight1" class="rect-highlight"></div>
+        <div id="bandwidth-highlight2" class="rect-highlight"></div>
+        <style>
+            #wasted {
+                position: absolute;
+                right: 100px;
+                bottom: 100px;
+            }
+            #bandwidth-highlight1 {
+                width: 212px;
+                height: 92px;
+                left: 196px;
+                top: 316px;
+            }
+            #bandwidth-highlight2 {
+                width: 212px;
+                height: 92px;
+                left: 408px;
+                top: 416px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">Network bandwidth</h2>
+    </section>
+
+    <section class="slide">
+        <object class="black model-data-parallel center" type="image/svg+xml"
+            data="pictures/speedup_black.svg"></object>
+        <object class="white model-data-parallel center" type="image/svg+xml"
+            data="pictures/speedup_white.svg"></object>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">1gbps is <span class="important">not</span> enough</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">Data pipeline performance</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">Training Imagenet in 20 min</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Quick diagnostics: nvidia-smi</h2>
+        <pre class="pre" id="nvidia-smi">+-----------------------------------------------------------------------------+
+| NVIDIA-SMI 410.78       Driver Version: 410.78       CUDA Version: 10.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 108...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 43%   63C    P2   101W / 250W |  10909MiB / 11178MiB |     77%      Default |
++-------------------------------+----------------------+----------------------+
+|   1  GeForce GTX 108...  Off  | 00000000:03:00.0 Off |                  N/A |
+| 42%   60C    P2   101W / 250W |  10913MiB / 11178MiB |     22%      Default |
++-------------------------------+----------------------+----------------------+
+|   2  GeForce GTX 108...  Off  | 00000000:82:00.0 Off |                  N/A |
+| 41%   60C    P2    93W / 250W |  10909MiB / 11178MiB |     92%      Default |
++-------------------------------+----------------------+----------------------+
+|   3  GeForce GTX 108...  Off  | 00000000:83:00.0 Off |                  N/A |
+| 43%   62C    P2    92W / 250W |  10913MiB / 11178MiB |     69%      Default |
++-------------------------------+----------------------+----------------------+</pre>
+        <div id="smi-highlight" class="rect-highlight"></div>
+        <style>
+            #nvidia-smi {
+                font-size: 17px;
+                line-height: 19px;
+            }
+            .rect-highlight {
+                position: absolute;
+                border-radius: 15px;
+                border: 2px solid red;
+            }
+            #smi-highlight {
+                top: 281px;
+                left: 715px;
+                width: 45px;
+                height: 204px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Quick diagnostics: top</h2>
+        <pre><code>tf.data.Dataset() \</code>
+<code>    .from_whatever() \</code>
+<code>    .map(augment, num_parallel_calls=N) \</code>
+<code>    .batch(batch_size, drop_remainder=True)</code></pre>
+        <pre id="top"><code>PID USER PR NI   VIRT    RES    SHR S  %CPU %MEM    TIME+ COMMAND
+ 21 root 20  0 0.122t 0.023t 945388 R  1333  9.3 63880:08 python3</code></pre>
+        <div id="top-highlight1" class="rect-highlight"></div>
+        <div id="top-highlight2" class="rect-highlight"></div>
+        <style>
+            #top {
+                font-size: 80%;
+            }
+            #top-highlight1 {
+                width: 330px;
+                height: 40px;
+                left: 360px;
+                top: 270px;
+            }
+            #top-highlight2 {
+                width: 61px;
+                height: 40px;
+                left: 560px;
+                top: 427px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Advanced diagnostics: profile</h2>
+        <a href="https://www.tensorflow.org/tensorboard/tensorboard_profiling_keras">tensorflow.org/tensorboard/tensorboard_profiling_keras</a>
+        <img src="pictures/profile_tensorboard.png" id="profile-tensorboard">
+        <style>
+            #profile-tensorboard {
+                width: 100%;
+                height: 340px;
+                object-fit: contain;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">Bugs</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Bugs found by myself</h2>
         <ul>
-            <li>p2p, NCCL</li>
-            <li>Bandwidth is more important than latency</li>
-            <li>Distribution Strategies: mirrored, multi-worker</li>
-            <li>Horovod - not only for TensorFlow</li>
-            <li>Bottlenecks, my failure</li>
-            <li>Training ImageNet in 20 minutes</li>
+            <li><a href="https://github.com/tensorflow/tensorflow/issues/29481">tensorflow/tensorflow#29481</a></li>
+            <li><a href="https://github.com/tensorflow/tensorflow/issues/32654">tensorflow/tensorflow#32654</a></li>
+            <li><a href="https://github.com/tensorflow/tensorflow/issues/33531">tensorflow/tensorflow#33531</a></li>
+            <li><a href="https://github.com/tensorflow/tensorflow/issues/34039">tensorflow/tensorflow#34039</a></li>
+            <li><a href="https://github.com/tensorflow/tensorflow/issues/34046">tensorflow/tensorflow#34046</a></li>
+            <li><a href="https://github.com/tensorflow/addons/issues/605">tensorflow/addons#605</a></li>
         </ul>
     </section>
     
