@@ -527,6 +527,8 @@
         <style>
             .choosing {
                 height: calc(100% - 50px);
+                max-width: 800px;
+                object-fit: contain;
             }
         </style>
     </section>
@@ -657,6 +659,105 @@
 
     <section class="slide part">
         <h2 class="shout">Horovod</h2>
+    </section>
+
+    <section class="slide">
+        <h2>In a nutshell</h2>
+        <ul>
+            <li>Up to 1k GPUs</li>
+            <li>MPI or Gloo</li>
+            <li>TensorFlow, vanilla Keras, PyTorch, MXNet</li>
+            <li>Backed by Uber?</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <img src="pictures/horovod_contrib1.png" class="choosing center">
+    </section>
+
+    <section class="slide">
+        <img src="pictures/horovod_contrib2.png" class="choosing center">
+    </section>
+
+    <section class="slide">
+        <img src="pictures/horovod_contrib3.png" class="choosing center">
+    </section>
+
+    <section class="slide">
+        <h2>Concepts</h2>
+        <ul>
+            <li>Size = number of processes</li>
+            <li>Rank = process index</li>
+            <li>Local rank = process index on the same machine</li>
+            <li>Batch size is multiplied, not divided</li>
+        </ul>
+        <a href="http://bit.ly/2PWJhzs">bit.ly/2PWJhzs</a>
+    </section>
+
+    <section class="slide">
+        <h2>Tensor Fusion</h2>
+        Batching of small allreduce ops.
+        <img src="pictures/nccl_allreduce_black.png" class="center black allreduce-horovod">
+        <img src="pictures/nccl_allreduce_white.png" class="center white allreduce-horovod">
+        <style>
+            .allreduce-horovod {
+                margin-top: 50px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Usage with <code>tf.keras</code> 2.0</h2>
+        <pre><code><span class="kw">import</span> horovod.tensorflow.keras <span class="kw">as</span> hvd</code>
+<code>hvd.init()</code>
+<code>gpus = tf.config.experimental.list_physical_devices(<span class="str">"GPU"</span>)</code>
+<code><span class="kw">for</span> gpu <span class="kw">in</span> gpus:</code>
+<code>    tf.config.experimental.set_memory_growth(gpu, <span class="kw">True</span>)</code>
+<code>tf.config.experimental.set_visible_devices(</code>
+<code>    [gpus[hvd.local_rank()]], <span class="str">"GPU"</span>)</code>
+</pre>
+        <style>
+            .kw {
+                color: #CC7832;
+                font-weight: bold;
+            }
+            .str {
+                color: #6a8759;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Usage with <code>tf.keras</code> 2.0</h2>
+        <pre><code>learning_rate *= hvd.size()</code>
+<code>opt = hvd.DistributedOptimizer(opt)</code>
+<code>model.compile(..., experimental_run_tf_function=<span class="kw">False</span>)</code>
+<code>callbacks.append(</code>
+<code>    hvd.callbacks.BroadcastGlobalVariablesCallback(<span class="lit">0</span>))</code>
+<code><span class="kw">if</span> hvd.rank() == <span class="lit">0</span>:</code>
+<code>    callbacks.append(<span class="str">"""checkpoint"""</span>)</code>
+</pre>
+        <style>
+            .lit {
+                color: #7a9ec2;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Usage with <code>tf.keras</code> 2.0</h2>
+        <pre><code>horovodrun -np 4 -H localhost:4 python3 entry.py</code></pre>
+        <img src="pictures/dog.jpg" id="dog">
+        <style>
+            #dog {
+                height: 300px;
+                object-fit: contain;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">Are you sure?</h2>
     </section>
 
     <section class="slide part">
@@ -897,6 +998,14 @@ I tensorflow/.../gpu_device.cc:1178] 3:   N N Y N</pre>
             <li><a href="https://github.com/tensorflow/tensorflow/issues/34046">tensorflow/tensorflow#34046</a></li>
             <li><a href="https://github.com/tensorflow/addons/issues/605">tensorflow/addons#605</a></li>
         </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">Kubernetes is for the bravest</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shout-small">Kubeflow</h2>
     </section>
     
     <section class="slide part">
