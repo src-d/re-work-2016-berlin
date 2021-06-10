@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-MYTITLE
-MYDESCRIPTION
-MYURL
 <head>
-	<title>MYTITLE</title>
+	<title>Full software development cycle analytics in near real-time</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
@@ -15,11 +12,13 @@ MYURL
     <meta name="twitter:label2" content="Where and when" />
     <meta name="twitter:data2" content="???" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://vmarkovtsev.github.io/MYURL" />
-    <meta property="og:title" content="MYTITLE" />
-    <meta property="og:description" content="MYDESCRIPTION" />
-    <meta property="og:image" content="https://vmarkovtsev.github.io/MYURL/pictures/cover.jpg" />
-    <meta property="twitter:image" content="https://vmarkovtsev.github.io/MYURL/pictures/cover.jpg" />
+    <meta property="og:url" content="https://vmarkovtsev.github.io/ods-2021-remote" />
+    <meta property="og:title" content="Full software development cycle analytics in near real-time" />
+    <meta property="og:description" content="I work in an international startup Athenian as a Head of Analytics. I am responsible for the product's backend. We sell the SaaS web application that guides engineering managers with various software development metrics: point at bottlenecks in coding, CI, JIRA, deploys, etc. We try to stick to the filosophy of blameless, non-personal insights.
+
+One of Athenian's core features is that we continuously analyze the GitHub and JIRA events and update all the metrics and charts on the fly. It proved to be hard, and I'll talk about why, what mistakes were made, how we fixed them, what we achieved, and how much it cost us." />
+    <meta property="og:image" content="https://vmarkovtsev.github.io/ods-2021-remote/pictures/the_ninth_wave.jpg" />
+    <meta property="twitter:image" content="https://vmarkovtsev.github.io/ods-2021-remote/pictures/the_ninth_wave.jpg" />
     <link rel="stylesheet" href="node_modules/shower-ribbon/styles/styles.css">
     <link rel="stylesheet" href="fonts/Cerebri_Sans/font.css">
     <link rel="stylesheet" href="fonts/Source_Sans_Pro/font.css">
@@ -34,8 +33,8 @@ MYURL
 
 	<header class="caption">
 		<button type="button" id="fullscreen" title="Go fullscreen" onclick="fullscreen()"><i class="fa fa-arrows-alt"></i></button>
-		<h1>MYTITLE</h1>
-		<p>Vadim Markovtsev, <a href="https://sourced.tech">source{d}</a>.</p>
+		<h1>Full software development cycle analytics in near real-time</h1>
+		<p>Vadim Markovtsev, <a href="https://athenian.co">Athenian</a>.</p>
 	</header>
 
 	<style>
@@ -188,7 +187,7 @@ MYURL
             font-family: 'Cerebri Sans Extra Bold', sans-serif;;
         }
         .part {
-            background: radial-gradient(circle at center, #8719cb 0, #400d9a 130%);
+            background: radial-gradient(circle at center, #FF9E68 0, #FF7427 130%);
         }
         mark.important {
             background-color: #dd0000;
@@ -218,7 +217,10 @@ MYURL
             font-size: 70px !important;
         }
         .shout-small a {
-           background: none !important;
+            background: none !important;
+        }
+        .bold {
+            font-weight: bold;
         }
         .fullslide {
             position: relative;
@@ -248,11 +250,17 @@ MYURL
             right: 50px;
             transform: rotate(-90deg);
         }
+        .shower.list .slide.active {
+            box-shadow:
+                0 0 0 1px #FF7427,
+                0 0 0 20px #FF9E68,
+                0 20px 50px rgba(0, 0, 0, 0.3);
+        }
     </style>
 
 	<section class="slide vista vista-cover" id="cover">
-		<h2>MYTITLE</h2>
-		<p>Vadim Markovtsev<br><a href="https://sourced.tech">source{d}</a></p>
+		<h2>Full software development cycle analytics in near real‑time</h2>
+		<p>Vadim Markovtsev<br><a href="https://athenian.co">Athenian</a></p>
 
 		<style>
             .black {
@@ -272,7 +280,7 @@ MYURL
                 font-size: 20px;
             }
 			#cover {
-				background: url("pictures/cover.jpg") black;
+				background: url("pictures/the_ninth_wave.jpg") black;
 			}
 			#cover h2:before {
 				content: "";
@@ -282,28 +290,309 @@ MYURL
 				top: 0;
 				right: 0;
 				bottom: 0;
-				background: rgba(0, 0, 0, 0.7);
+				background: rgba(0, 0, 0, 0.5);
 			}
         </style>
     </section>
     
     <section class="slide part">
-        <h2 class="shout">Summary</h2>
+        <h2 class="shout">The product</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Software development lifecycle</h2>
+        <ol>
+            <li>Plan coding.</li>
+            <li>Start coding.</li>
+            <li>Open the pull request.</li>
+            <li>Pass the review.</li>
+            <li>Pass the CI.</li>
+            <li>Merge the pull request.</li>
+            <li>Release the pull request.</li>
+            <li>Deploy the pull request.</li>
+        </ol>
+        <img class="repeat white" src="pictures/repeat_white.svg">
+        <img class="repeat black" src="pictures/repeat_black.svg">
+        <style>
+            img.repeat {
+                position: absolute;
+                right: 100px;
+                top: 150px;
+                width: 400px;
+                height: 400px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="product">
+        <style>
+            #product {
+                background-image: url("pictures/product.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="code-analysis">
+        <h2>Source code analysis?</h2>
+        <ul>
+            <li>Security.</li>
+            <li>Trust.</li>
+            <li>Scale.</li>
+        </ul>
+        <style>
+            #code-analysis {
+                background-image: url("pictures/banksy_white.jpg");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Confidence intervals</h2>
+        <ul>
+            <li>The distributions are neither normal, log-normal, nor any other well-known.</li>
+            <li>Some are "semi-discrete" ≥ 0.</li>
+            <li>We use the <a href="https://ocw.mit.edu/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/readings/MIT18_05S14_Reading24.pdf">bootstrap method</a>.</li>
+            <li>Very fast after optimizations.
+                <ul>
+                    <li>Cached randomness.</li>
+                    <li>Control the number of iterations.</li>
+                </ul>
+            </li>
+            <li class="important">95%: ±50%</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Focus</h2>
+        <ul>
+            <li>Allow quantiles (percentiles) everywhere.</li>
+            <li>Average vs. median.</li>
+        </ul>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">GitHub</h2>
+    </section>
+
+    <section class="slide">
+        <h2>GitHub API</h2>
+        <ul>
+            <li>REST
+                <ul>
+                    <li>Best suited for casual or specific analysis.</li>
+                </ul>
+            </li>
+            <li>GraphQL
+                <ul>
+                    <li>Best suited for mirroring GitHub DB.</li>
+                </ul>
+            </li>
+            <li class="important">Rate limits.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Node ID</h2>
+        <pre>
+            <code>from base64 import b64decode</code>
+            <code>print(b64decode(</code>
+            <code>    "MDY6Q29tbWl0MjI1OTI0NDI3OjA1MTkyMDUwOWJmMTk1N2Y"</code>
+            <code>    "4NDIzMDdmMzdkZGI0NDFiZmQyNTMwMGY="))</code>
+            <code>06:Commit225924427:051920509bf1957f842307f37ddb441bfd25300f</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Two kinds of data retrieval</h2>
+        <ul>
+            <li>Cold start.</li>
+            <li>Event stream.
+                <ul>
+                    <li>Must register a GitHub application.</li>
+                    <li class="important">Must re-scan periodically.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Gotcha!</h2>
+        <ul>
+            <li>Node ID format changes.</li>
+            <li>Merges happen after closures.</li>
+            <li>PRs close before opening.</li>
+            <li>HTTP 500.</li>
+            <li>Incomplete.</li>
+            <li>Eventual consistency.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Eventual consistency</h2>
+        Incoming events:
+        <ol>
+            <li>Somebody committed <code>aabbccd</code> as a child of <code>dccbbaa</code> in repo <span class="bold">XXX</span>.</li>
+            <li>Commit <code>aabbccd</code> has message "Fix".</li>
+            <li>Commit <code>aabbccd</code> belongs to pull request <span class="bold">PPP</span>.</li>
+            <li>New pull request <span class="bold">PPP</span> in repo <span class="bold">XXX</span> titled "merge me".</li>
+        </ol>
+    </section>
+
+    <section class="slide">
+        <h2>Releases</h2>
+        <ul>
+            <li>What is a release?
+                <ul class="no-bullets fa-bullets">
+                    <li><i class="fa fa-tag monofa" aria-hidden="true"></i>A tag.</li>
+                    <li><i class="fa fa-random monofa" aria-hidden="true"></i>A branch merge.</li>
+                    <li><i class="fa fa-hand-pointer-o monofa" aria-hidden="true"></i>A hash sent by the client.</li>
+                </ul>
+            </li>
+            <li>Which PRs were released?
+                <ul>
+                    <li>GitHub does not show this for a reason.</li>
+                </ul>
+            </li>
+        </ul>
+        <img class="releases-commits black" src="pictures/commits_black.svg">
+        <img class="releases-commits white" src="pictures/commits_white.svg">
+        <style>
+            .releases-commits {
+                position: absolute;
+                right: 50px;
+                top: 250px;
+                width: 400px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="releases-hard">
+        <h2>Releases</h2>
+        <style>
+            #releases-hard {
+                background-image: url("pictures/commits_hard_black.svg");
+                background-origin: content-box;
+                padding-bottom: 60px;
+            }
+            @media not print {
+                #releases-hard {
+                    background-image: url("pictures/commits_hard_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>git push --force</h2>
+        Including <code>git rebase</code>
+        <ul>
+            <li>Changes the hashes.</li>
+            <li>May change the diff-s.</li>
+            <li>May change the messages.</li>
+        </ul>
+        <img class="black doom" src="pictures/doom_black.jpg">
+        <img class="white doom" src="pictures/doom_white.jpg">
+        <style>
+            .doom {
+                position: absolute;
+                right: 150px;
+                bottom: 100px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>git push --force</h2>
+        Including <code>git rebase</code>
+        <ul>
+            <li>Changes the hashes.</li>
+            <li>Usually does not change the diff-s.</li>
+            <li><span class="success">Usually does not change the messages.</span>
+                <ul>
+                    <li>Accuracy: 99.9%.</li>
+                </ul>
+            </li>
+        </ul>
+        <img class="doom" src="pictures/doom_smile.png">
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">JIRA</h2>
+    </section>
+
+
+    <section class="slide part">
+        <h2 class="shout">Case studies</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout-small">We did our job too well</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout-small">Pandas in prod</h2>
+    </section>
+
+    <section class="slide">
+        <h2">Pandas</h2>
+        <ul>
+            <li>Have requirements on response time?</li>
+            <li>Work with many small dataframes?</li>
+            <li>Learn how to iterate rows fast.</li>
+            <li>95% can be rewritten in pure numpy, much faster.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Tips for Python</h2>
+        <ul>
+            <li>Use a profiler, e.g. <a href="https://github.com/benfred/py-spy">py-spy</a>.</li>
+            <li>Vectorize everything.</li>
+            <li>Cython.</li>
+            <li>Precompute everything.</li>
+            <li>Cache everything.</li>
+            <li>Using a DB? Prepare to optimize queries and suffer.</li>
+            <li>Choose incremental algorithms.</li>
+            <li>KISS.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout-small">Educating the client</h2>
+    </section>
+
+    <section class="slide vista" id="too-busy">
+        <span>Credit: <a href="https://workcompass.com">workcompass.com</a></span>
+        <style>
+            #too-busy {
+                background-image: url("pictures/too_busy_black.png");
+            }
+            @media not print {
+                #too-busy {
+                    background-image: url("pictures/too_busy_white.png");
+                }
+            }
+            #too-busy > span {
+                position: absolute;
+                bottom: 20px;
+                right: 0px;
+                font-size: 50%;
+            }
+        </style>
     </section>
 
 	<section class="slide">
         <h2>Thank you</h2>
         <ul class="no-bullets fa-bullets">
-            <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@sourced.tech">vadim@sourced.tech</a></li>
-            <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">vadimlearning</a></li>
+            <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://vadim@athenian.co">vadim@athenian.co</a></li>
+            <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/vadimlearning">@vadimlearning</a></li>
             <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/vmarkovtsev">vmarkovtsev</a></li>
-            <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
-            <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
+            <li><i class="fa fa-medium monofa" aria-hidden="true"></i><a href="https://medium.com/@vadimlearning">@vadimlearning</a></li>
         </ul>
         <div id="qrcode-container">
             <img class="qrcode black" src="pictures/qrcode_black.svg">
             <img class="qrcode white" src="pictures/qrcode_white.svg">
-            <a href="http://bit.ly/???????" id="bitly">bit.ly/???????</a>
+            <a href="https://bit.ly/2RHdp55" id="bitly">bit.ly/2RHdp55</a>
         </div>
         <style>
             #qrcode-container {
