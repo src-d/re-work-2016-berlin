@@ -346,6 +346,20 @@ One of Athenian's core features is that we continuously analyze the GitHub and J
         </style>
     </section>
 
+    <section class="slide vista" id="boss">
+        <h2>Money estimations?</h2>
+        <ul>
+            <li>Bull shit in 99% of the cases.</li>
+            <li>Require a great cost model specific to the client.</li>
+            <li>Require knowing the salaries.</li>
+        </ul>
+        <style>
+            #boss {
+                background-image: url("pictures/boss.png");
+            }
+        </style>
+    </section>
+
     <section class="slide">
         <h2>Confidence intervals</h2>
         <ul>
@@ -365,9 +379,25 @@ One of Athenian's core features is that we continuously analyze the GitHub and J
     <section class="slide">
         <h2>Focus</h2>
         <ul>
-            <li>Allow quantiles (percentiles) everywhere.</li>
-            <li>Average vs. median.</li>
+            <li>Support percentiles everywhere.</li>
+            <li>Average vs. median.
+                <ul>
+                    <li>Average on 95th percentile.</li>
+                </ul>
+            </li>
+            <li>Stale garbage.</li>
+            <img class="black target" src="pictures/target_black.svg">
+            <img class="white target" src="pictures/target_white.svg">
         </ul>
+        <style>
+            .target {
+                position: absolute;
+                right: 150px;
+                bottom: 150px;
+                width: 300px;
+                height: 300px;
+            }
+        </style>
     </section>
 
     <section class="slide part">
@@ -516,10 +546,81 @@ One of Athenian's core features is that we continuously analyze the GitHub and J
         <img class="doom" src="pictures/doom_smile.png">
     </section>
 
+    <section class="slide fullwidth" id="ci">
+        <h2>Continuous Integration</h2>
+        <img src="pictures/ci.png" >
+        <style>
+            #ci {
+                background-color: #0d1117;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Continuous Integration</h2>
+        <ul class="no-bullets">
+            <li>👎 Check suites point at commits.</li>
+            <li>👎 Same commit may belong to several pull requests.</li>
+            <li>👎 Check suites may launch after PR is closed.</li>
+            <li>👎 Check suites may launch before PR is opened.</li>
+            <li>👎 Check suites may glitch.
+                <ul>
+                    <li>E.g., stay enqueued forever.</li>
+                </ul>
+            </li>
+            <li>👎 No finish timestamp for legacy API check runs.</li>
+        </ul>
+    </section>
+
     <section class="slide part">
         <h2 class="shout">JIRA</h2>
     </section>
 
+    <section class="slide vista" id="jira-api">
+        <style>
+            #jira-api {
+                background-image: url("pictures/jira_api_black.png");
+            }
+            @media not print {
+                #jira-api {
+                    background-image: url("pictures/jira_api_white.png");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>JIRA API</h2>
+        <ul>
+            <li>No event stream. Pull vs. push.</li>
+            <li>Next gen vs. classic. Migrations.</li>
+            <li>So many fields may be custom.</li>
+            <li>Frequent re-opens.</li>
+            <li>Super strict privacy.
+                <li>Only user name by default.</li>
+                <li>No emails.</li>
+            </li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>JIRA identity matching</h2>
+        <ul>
+            <li>Fuzzy names matching problem: <a href="https://towardsdatascience.com/fuzzy-matching-people-names-6e738d6b8fe">blog post</a>.</li>
+            <li>0.94 F1. Good enough.</li>
+            <li>Open-source tool: <a href="https://github.com/athenianco/names-matcher">names-matcher</a>.</li>
+        </ul>
+        <img class="black names-matcher" src="pictures/names_matcher_black.png">
+        <img class="white names-matcher" src="pictures/names_matcher_white.png">
+        <style>
+            .names-matcher {
+                position: absolute;
+                right: 50px;
+                bottom: 50px;
+                width: 400px;
+            }
+        </style>
+    </section>
 
     <section class="slide part">
         <h2 class="shout">Case studies</h2>
@@ -530,18 +631,185 @@ One of Athenian's core features is that we continuously analyze the GitHub and J
     </section>
 
     <section class="slide">
+        <h2>Client X</h2>
+        <ul>
+            <li>200 developers.</li>
+            <li>Growing x2 in one year.</li>
+            <li>Strong advocate of Athenian.</li>
+            <li>>$1,000 MRR.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>What we did</h2>
+        Dedicated custom analysis of their data showed:
+        <ul>
+            <li>They are growing very fast.</li>
+            <li>The PRs frequency stays the same.</li>
+            <li>Changed lines stay the same.</li>
+        </ul> 
+    </section>
+
+    <section class="slide figure-centered">
+        <figure>
+            <blockquote>
+                <p>Thank you!<br>This is a great insight.</p>
+            </blockquote>
+            <figcaption>Client X.</figcaption>
+        </figure>
+        <style>
+            .figure-centered {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+    </section>
+
+    <section class="slide figure-centered">
+        <figure>
+            <blockquote>
+                <p>Do you know why?</p>
+            </blockquote>
+            <figcaption>Client X.</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide figure-centered">
+        <figure>
+            <blockquote>
+                <p>We must be hiring the wrong people.</p>
+            </blockquote>
+            <figcaption>Client X.</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide vista" id="wall-street">
+        <style>
+            #wall-street {
+                background-image: url("pictures/sell_me_this_pen.gif");
+            }
+        </style>
+    </section>
+
+    <section class="slide figure-centered">
+        <figure>
+            <blockquote>
+                <p>We switch to <img class="black code-climate" src="pictures/code_climate_black.png"><img class="white code-climate" src="pictures/code_climate_white.png"></p>
+            </blockquote>
+            <figcaption>Client X.</figcaption>
+        </figure>
+        <style>
+            .code-climate {
+                width: 300px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
         <h2 class="shout-small">Pandas in prod</h2>
     </section>
 
     <section class="slide">
-        <h2">Pandas</h2>
+        <h2">When to use Pandas</h2>
         <ul>
             <li>Have requirements on response time?</li>
             <li>Work with many small dataframes?</li>
-            <li>Learn how to iterate rows fast.</li>
-            <li>95% can be rewritten in pure numpy, much faster.</li>
+            <li>Have memory constraints?</li>
         </ul>
     </section>
+
+    <section class="slide">
+        <h2">How to use Pandas</h2>
+        Learn how to iterate rows fast.
+        <pre>
+            <code>for a, b in zip(df["a"].values, df["b"].values):</code>
+            <code>    print(a, b)</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2">How to use Pandas</h2>
+        Learn how to select rows fast.
+        <pre>
+            <code>df[df["a"] > 10]</code>
+            <code># versus</code>
+            <code>df.take(np.flatnonzero(df["a"].values > 10))</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2">How to use Pandas</h2>
+        Learn how to groupby fast.
+        <pre>
+            <code>for key, sub_df in df.groupby("a", sort=False):</code>
+            <code>    # ...</code>
+            <code># versus</code>
+            <code>df.groupby("a", sort=False).grouper.groups</code>
+            <code># dict key -> row indexes</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>How to use Pandas</h2>
+        Ensure your dtype is not <code>object</code>.
+    </section>
+
+    <section class="slide">
+        <h2>How to live without Pandas</h2>
+        <ul></ul>
+        95% ops can be rewritten in pure numpy.
+        <ul>
+            <li>datetime64</li>
+            <li>indexing</li>
+            <li>sort_values</li>
+            <li>groupby</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>How to live without Pandas</h2>
+        <code class="task">&gt;&gt;&gt; sort_values("a")</code>
+        <pre>
+            <code>order = np.argsort(array_a)</code>
+            <code>index = order</code>
+            <code>array_a = array_a[order]</code>
+            <code>array_b = array_b[order]</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>How to live without Pandas</h2>
+        <code class="task">&gt;&gt;&gt; groupby("a")</code>
+        <pre>
+            <code>keys, indexes, counts = np.unique(</code>
+            <code>    array_a, return_inverse=True, return_counts=True)</code>
+            <code>order = np.argsort(indexes)</code>
+            <code>borders = np.cumsum(counts[:-1])</code>
+            <code>groups_a = np.split(array_a[order], borders)</code>
+            <code>groups_b = np.split(array_b[order], borders)</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>How to live without Pandas</h2>
+        <code class="task">&gt;&gt;&gt; groupby("a").mean()</code>
+        <pre>
+            <code>keys, indexes, counts = np.unique(</code>
+            <code>    array_a, return_inverse=True, return_counts=True)</code>
+            <code>masks = np.zeros((len(keys), len(df)), bool)</code>
+            <code>arr_y = np.repeat(np.arange(len(keys)), counts)</code>
+            <code>arr_x = np.argsort(indexes)</code>
+            <code>masks[arr_y, arr_x] = True</code>
+            <code>mean_a = np.mean(array_a, where=masks, axis=1)</code>
+        </pre>
+    </section>
+
+    <style>
+        .task {
+            padding-left: 0 !important;
+        }
+    </style>
 
     <section class="slide">
         <h2>Tips for Python</h2>
@@ -577,6 +845,30 @@ One of Athenian's core features is that we continuously analyze the GitHub and J
                 bottom: 20px;
                 right: 0px;
                 font-size: 50%;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>I can do the same with my script</h2>
+        <ul class="no-bullets">
+            <li>✔ It will cover 80% of what you need.</li>
+            <li>✘ It will not be correct.</li>
+            <li>✘ Write-only.</li>
+            <li>✘ Charts.</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>The book</h2>
+        <p class="bold">Accelerate: The Science of Lean Software and DevOps: Building and Scaling High Performing Technology Organizations.</p>
+        <p>Gene Kim, Jez Humble, and Nicole Forsgren.</p>
+    </section>
+
+    <section class="slide vista" id="gym">
+        <style>
+            #gym {
+                background-image: url("pictures/gym.jpg");
             }
         </style>
     </section>
